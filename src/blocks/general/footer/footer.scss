@@ -1,0 +1,126 @@
+@use "core/breakpoints" as bp;
+
+footer.footer {
+    --footer-line: rgb(255 255 255 / 20%);
+
+    position: relative;
+    padding: 100px 0 32px;
+    color: var(--color-white);
+    background: linear-gradient(132deg, #121333 26.34%, #125999 79.09%);
+
+    @include bp.mq(tablet) {
+        padding: 100px 0 39px;
+    }
+
+    @include bp.mq(mobile-l) {
+        padding: 33px 0 28px;
+    }
+
+    a {
+        color: var(--color-white);
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    .footer-main {
+        margin-bottom: 48px;
+
+        @include bp.mq(tablet) {
+            margin-bottom: 40px;
+        }
+
+        .block {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 60px 100px;
+            align-items: flex-start;
+
+            @include bp.mq(tablet-xl) {
+                flex-wrap: nowrap;
+                justify-content: space-between;
+            }
+
+            @include bp.mq(tablet) {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 35px 18px;
+            }
+        }
+
+        .logo-wrap {
+            @include bp.mq(tablet) {
+                display: flex;
+                grid-column: 1 / -1;
+                justify-content: center;
+            }
+
+            .logo {
+                display: inline-flex;
+                line-height: 0;
+
+                img {
+                    display: block;
+                    width: 180px;
+                    max-width: 100%;
+                    height: auto;
+                }
+            }
+        }
+
+        .nav-wrap,
+        .contacts-wrap {
+            @include bp.mq(tablet) {
+                justify-self: start;
+            }
+        }
+
+        .actions-wrap {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: flex-start;
+            margin-left: auto;
+
+            @include bp.mq(tablet-xl) {
+                display: none;
+            }
+
+            .messengers {
+                display: flex;
+                gap: 12px;
+                align-items: center;
+            }
+
+            .footer-messenger {
+                display: inline-flex;
+                flex: 0 0 auto;
+                line-height: 0;
+                text-decoration: none;
+                border-radius: 10px;
+
+                &:hover {
+                    text-decoration: none;
+                    opacity: 0.8;
+                }
+
+                svg {
+                    display: block;
+                    width: 48px;
+                    height: auto;
+                }
+            }
+        }
+    }
+
+    .footer-bottom {
+        padding-top: 36px;
+        border-top: 1px solid var(--footer-line);
+
+        @include bp.mq(mobile-l) {
+            padding-top: 19px;
+        }
+    }
+}

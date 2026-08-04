@@ -1,0 +1,16 @@
+{% set meta = { title: "Акции" } %}
+{% set page = { breadcrumbs: true, heading: false } %}
+{% set breadcrumbs = {
+    items: [
+        { title: "Главная", url: "./home.html" },
+        { title: "Акции" }
+    ]
+} %}
+{% extends "layouts/default.njk" %}
+{% block content %}
+    <section class="section">
+        <div class="container">
+            <p class="page-stub">Здесь будет страница акций.</p>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,72 @@
+{% set cornerIcon %}
+    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="11" viewBox="0 0 10 11" fill="none" aria-hidden="true">
+        <path
+            d="M2.29068 8.8952C2.29068 9.5275 1.77787 10.0403 1.14512 10.0403C0.512824 10.0403 0 9.5275 0 8.8952V4.3771C0 3.17213 0.492191 2.07759 1.285 1.28501C2.07757 0.492202 3.17236 0 4.37732 0H8.68028C9.31258 0 9.82539 0.512835 9.82539 1.14513C9.82539 1.77765 9.31258 2.29024 8.68028 2.29024H4.37732C3.80465 2.29024 3.28322 2.52556 2.90416 2.90417C2.52555 3.283 2.29068 3.80443 2.29068 4.3771V8.8952Z"
+            fill="white"
+        />
+    </svg>
+{% endset %}
+
+{% set weAreWorkingItems = [
+    {
+        num: "1",
+        title: "Консультация технолога",
+        items: [
+            "Отправьте чертёж изделия в формате dxf на почту info@zavod1.ru",
+            "Составим чертеж в случае его отсутствия",
+            "Согласовываем сроки исполнения заказа"
+        ]
+    },
+    {
+        num: "2",
+        title: "Предоставление индивидуальной сметы",
+        items: [
+            "Цена фиксируется в договоре",
+            "Расчёт стоимости в день обращения",
+            "Специальные предложения для крупных партий"
+        ]
+    },
+    {
+        num: "3",
+        title: "Сначала тестируете, потом заказываете партию",
+        text: "Вы убедитесь в качестве нашей работы на пробной детали по спеццене, снижая риски перед запуском большого и дорогостоящего серийного заказа"
+    },
+    {
+        num: "4",
+        title: "Оценка качества штатным технологом и доставка",
+        items: [
+            "Предоставим Вам закрывающую документацию, паспорта, инструкции.",
+            "Исправим любой недочёт за наш счёт.",
+            "Упакуем загрузим и доставим по адресу"
+        ]
+    }
+] %}
+
+<section class="we-are-working section">
+    <div class="container">
+        <h2 class="center">{{ weAreWorkingTitle | default("Как мы работаем") }}</h2>
+        <ol class="list">
+            {% for item in weAreWorkingItems %}
+                <li class="item">
+                    <div class="icon" aria-hidden="true">
+                        <span class="corner tl">{{ cornerIcon | safe }}</span>
+                        <span class="corner tr">{{ cornerIcon | safe }}</span>
+                        <span class="corner br">{{ cornerIcon | safe }}</span>
+                        <span class="corner bl">{{ cornerIcon | safe }}</span>
+                        <span class="value">{{ item.num }}</span>
+                    </div>
+                    <div class="name">{{ item.title }}</div>
+                    {% if item.items %}
+                        <ol class="steps">
+                            {% for step in item.items %}
+                                <li>{{ step }}</li>
+                            {% endfor %}
+                        </ol>
+                    {% elif item.text %}
+                        <div class="desc">{{ item.text }}</div>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ol>
+    </div>
+</section>

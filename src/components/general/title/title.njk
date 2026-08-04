@@ -1,0 +1,17 @@
+{% if title.tag == "h1" %}
+    <h1 class="{{ title.class }}">{{ title.text | safe }}</h1>
+{% elif title.tag == "h2" %}
+    <h2 class="{{ title.class }}">{{ title.text | safe }}</h2>
+{% elif title.tag == "h3" %}
+    <h3 class="{{ title.class }}">{{ title.text | safe }}</h3>
+{% elif title.tag == "h4" %}
+    <h4 class="{{ title.class }}">{{ title.text | safe }}</h4>
+{% elif title.tag == "h5" %}
+    <h5 class="{{ title.class }}">{{ title.text | safe }}</h5>
+{% elif title.tag == "h6" %}
+    <h6 class="{{ title.class }}">{{ title.text | safe }}</h6>
+{% elif title.tag == "span" %}
+    <span class="{{ title.class }}">{{ title.text | safe }}</span>
+{% else %}
+    <div class="{{ title.class }}">{{ title.text | safe }}</div>
+{% endif %}

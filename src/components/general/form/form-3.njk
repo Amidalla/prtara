@@ -1,0 +1,61 @@
+{% from "components/general/button/button.njk" import render as button %}
+{% from "components/general/input/input.njk" import render as input %}
+{% from "components/general/textarea/textarea.njk" import render as textarea %}
+{% from "components/general/consent-checkbox/consent-checkbox.njk" import render as consentCheckbox %}
+{% from "components/general/icons/button-icon.njk" import render as buttonIcon %}
+
+<form class="form" data-validate>
+    <div class="grid">
+        <div class="field">
+            <label class="label" for="popup-callback-name">Ваше имя</label>
+            {{ input(
+                type="text",
+                id="popup-callback-name",
+                name="name",
+                placeholder="Ваше имя",
+                autocomplete="name",
+                required=true,
+                minlength="2",
+                data={"error": "Введите имя (минимум 2 буквы)"}
+            ) }}
+        </div>
+        <div class="field">
+            <label class="label" for="popup-callback-phone">Ваш телефон</label>
+            {{ input(
+                type="tel",
+                id="popup-callback-phone",
+                name="phone",
+                placeholder="Ваш телефон",
+                autocomplete="tel",
+                data={"mask": "phone", "error": "Введите полный номер телефона"},
+                required=true
+            ) }}
+        </div>
+        <div class="field">
+            <label class="label" for="popup-callback-message">Сообщение</label>
+            {{ textarea(
+                id="popup-callback-message",
+                name="message",
+                placeholder="Сообщение",
+                rows=1,
+                data={"error": "Введите сообщение"}
+            ) }}
+        </div>
+        <div class="field-consent">
+            {{ consentCheckbox(
+                id="popup-callback-consent",
+                text='Я согласен(-на) на обработку <a href="./policy.html">Персональных данных</a>',
+                data={"error": "Необходимо отметить"},
+                required=true
+            ) }}
+        </div>
+        <div class="actions">
+            {{ button(
+                text="Отправить",
+                type="submit",
+                disabled=true,
+                icon=buttonIcon()
+            ) }}
+        </div>
+    </div>
+</form>

@@ -1,0 +1,16 @@
+@use "core/breakpoints" as bp;
+
+.logo {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+
+    @include bp.mq(mobile-l) {
+        max-width: 129px;
+    }
+
+    &:hover {
+        text-decoration: none;
+        opacity: 0.8;
+    }
+}

@@ -1,0 +1,115 @@
+{% from "components/common/news-card/news-card.njk" import render as newsCard %}
+{% from "components/general/pagination/pagination.njk" import render as pagination %}
+
+{% set newsContentItems = newsContentItems | default([
+    {
+        title: "Заголовок новости",
+        excerpt: "Название новости может быть в две или три строки может быть в две строки",
+        date: "20/11/2025",
+        image: "./assets/images/content/news-short1.jpg",
+        href: "./news-detail.html"
+    },
+    {
+        title: "Заголовок новости",
+        excerpt: "Название новости может быть в две или три строки может быть в две строки",
+        date: "20/11/2025",
+        image: "./assets/images/content/news-short2.jpg",
+        href: "./news-detail.html"
+    },
+    {
+        title: "Заголовок новости",
+        excerpt: "Название новости может быть в две или три строки может быть в две строки",
+        date: "20/11/2025",
+        image: "./assets/images/content/news-short3.jpg",
+        href: "./news-detail.html"
+    },
+    {
+        title: "Заголовок новости",
+        excerpt: "Название новости может быть в две или три строки может быть в две строки",
+        date: "20/11/2025",
+        image: "./assets/images/content/news-short4.jpg",
+        href: "./news-detail.html"
+    },
+    {
+        title: "Заголовок новости",
+        excerpt: "Название новости может быть в две или три строки может быть в две строки",
+        date: "18/11/2025",
+        image: "./assets/images/content/news-short1.jpg",
+        href: "./news-detail.html"
+    },
+    {
+        title: "Заголовок новости",
+        excerpt: "Название новости может быть в две или три строки может быть в две строки",
+        date: "18/11/2025",
+        image: "./assets/images/content/news-short2.jpg",
+        href: "./news-detail.html"
+    },
+    {
+        title: "Заголовок новости",
+        excerpt: "Название новости может быть в две или три строки может быть в две строки",
+        date: "15/11/2025",
+        image: "./assets/images/content/news-short3.jpg",
+        href: "./news-detail.html"
+    },
+    {
+        title: "Заголовок новости",
+        excerpt: "Название новости может быть в две или три строки может быть в две строки",
+        date: "15/11/2025",
+        image: "./assets/images/content/news-short4.jpg",
+        href: "./news-detail.html"
+    },
+    {
+        title: "Заголовок новости",
+        excerpt: "Название новости может быть в две или три строки может быть в две строки",
+        date: "12/11/2025",
+        image: "./assets/images/content/news-short1.jpg",
+        href: "./news-detail.html"
+    },
+    {
+        title: "Заголовок новости",
+        excerpt: "Название новости может быть в две или три строки может быть в две строки",
+        date: "12/11/2025",
+        image: "./assets/images/content/news-short2.jpg",
+        href: "./news-detail.html"
+    },
+    {
+        title: "Заголовок новости",
+        excerpt: "Название новости может быть в две или три строки может быть в две строки",
+        date: "10/11/2025",
+        image: "./assets/images/content/news-short3.jpg",
+        href: "./news-detail.html"
+    },
+    {
+        title: "Заголовок новости",
+        excerpt: "Название новости может быть в две или три строки может быть в две строки",
+        date: "10/11/2025",
+        image: "./assets/images/content/news-short4.jpg",
+        href: "./news-detail.html"
+    }
+]) %}
+
+{% set newsPaginationItems = newsPaginationItems | default([
+    { type: "page", number: 1, url: "./news.html" },
+    { type: "page", number: 2, url: "./news.html?page=2", active: true },
+    { type: "page", number: 3, url: "./news.html?page=3" },
+    { type: "ellipsis" },
+    { type: "page", number: 15, url: "./news.html?page=15" }
+]) %}
+
+<section class="news-content section">
+    <div class="container">
+        <h1>Новости</h1>
+        <div class="list">
+            {% for item in newsContentItems %}
+                {{ newsCard(
+                    title=item.title,
+                    excerpt=item.excerpt,
+                    date=item.date,
+                    image=item.image,
+                    href=item.href
+                ) }}
+            {% endfor %}
+        </div>
+        {{ pagination(items=newsPaginationItems) }}
+    </div>
+</section>

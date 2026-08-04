@@ -1,0 +1,59 @@
+{% macro render(
+        items=[],
+        class="",
+        aria={}
+    ) %}
+    {% set paginationClasses = "pagination" %}
+    {% if class %}
+        {% set paginationClasses = paginationClasses + " " + class %}
+    {% endif %}
+
+    {% set cornerIcon %}
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="16" viewBox="0 0 15 16" fill="none" aria-hidden="true">
+            <path
+                d="M3.43602 13.3428C3.43602 14.2912 2.6668 15.0605 1.71768 15.0605C0.769236 15.0605 0 14.2912 0 13.3428V6.56565C0 4.7582 0.738287 3.11638 1.92749 1.92751C3.11636 0.738304 4.75853 0 6.56598 0H13.0204C13.9689 0 14.7381 0.769252 14.7381 1.71769C14.7381 2.66648 13.9689 3.43535 13.0204 3.43535H6.56598C5.70697 3.43535 4.92483 3.78834 4.35624 4.35625C3.78833 4.9245 3.43602 5.70664 3.43602 6.56565V13.3428Z"
+                fill="currentColor"
+            />
+        </svg>
+    {% endset %}
+
+    <nav
+        class="{{ paginationClasses }}"
+        {% if aria %}
+            {% for key, val in aria %}
+                aria-{{ key | replace("_", "-") }}="{{ val }}"
+            {% endfor %}
+        {% endif %}
+        {% if not aria.label %}aria-label="Пагинация"{% endif %}
+    >
+        <ul>
+            {% for item in items %}
+                {% if item.type == "ellipsis" %}
+                    <li class="ellipsis">
+                        <span>...</span>
+                    </li>
+                {% elif item.type == "page" %}
+                    <li class="page{% if item.active %} active{% endif %}">
+                        {% if item.active %}
+                            <span class="link" aria-current="page">
+                                <span class="corner tl">{{ cornerIcon | safe }}</span>
+                                <span class="corner tr">{{ cornerIcon | safe }}</span>
+                                <span class="corner br">{{ cornerIcon | safe }}</span>
+                                <span class="corner bl">{{ cornerIcon | safe }}</span>
+                                <span class="value">{{ item.number }}</span>
+                            </span>
+                        {% else %}
+                            <a class="link" href="{{ item.url }}">
+                                <span class="corner tl">{{ cornerIcon | safe }}</span>
+                                <span class="corner tr">{{ cornerIcon | safe }}</span>
+                                <span class="corner br">{{ cornerIcon | safe }}</span>
+                                <span class="corner bl">{{ cornerIcon | safe }}</span>
+                                <span class="value">{{ item.number }}</span>
+                            </a>
+                        {% endif %}
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </nav>
+{% endmacro %}

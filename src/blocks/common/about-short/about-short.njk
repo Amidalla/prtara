@@ -1,0 +1,54 @@
+{% from "components/general/button/button.njk" import render as button %}
+{% from "components/general/icons/button-icon.njk" import render as buttonIcon %}
+{% from "components/general/icons/corner-icon.njk" import render as cornerIcon %}
+
+{% set aboutShortStats = [
+    { value: "25 000+", label: "выполненных заказов" },
+    { value: "18 лет", label: "стаж работы" },
+    { value: "500+", label: "клиентов в год" },
+    { value: "58", label: "профессиональных сотрудников" }
+] %}
+
+<section class="about-short section">
+    <div class="container">
+        <div class="about-short-inner">
+            <div class="content">
+                <h2 class="title">О компании</h2>
+                <div class="text">
+                    <p>
+                        Компания работает на рынке производства металлоизделий с 2008 года и является динамически
+                        развивающейся молодой компанией, производящей широкий спектр продукции.
+                    </p>
+                    <p>
+                        Мы также оказываем ряд услуг по обработке металлических изделий и заготовок, а для повышения
+                        производительности и удобства приемки и выдачи заказов, наше предприятие находится
+                        непосредственно на территории завода. Ввиду этого вся наша работа является максимально
+                        производительной, оптимизированной под нужды клиентов, а также эффективной в финансовом плане.
+                    </p>
+                </div>
+                <div class="actions">
+                    {{ button(
+                        text="Подробнее",
+                        type="link",
+                        href="./about.html",
+                        icon=buttonIcon()
+                    ) }}
+                </div>
+            </div>
+            <div class="stats">
+                {% for stat in aboutShortStats %}
+                    <div class="stat">
+                        <div class="value">
+                            <span class="corner tl">{{ cornerIcon() }}</span>
+                            <span class="corner tr">{{ cornerIcon() }}</span>
+                            <span class="corner br">{{ cornerIcon() }}</span>
+                            <span class="corner bl">{{ cornerIcon() }}</span>
+                            {{ stat.value }}
+                        </div>
+                        <div class="label">{{ stat.label }}</div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>

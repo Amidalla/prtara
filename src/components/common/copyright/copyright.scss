@@ -1,0 +1,27 @@
+@use "core/breakpoints" as bp;
+
+.copyright {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 150%;
+    color: var(--color-white);
+
+    @include bp.mq(tablet) {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+    }
+
+    a {
+        color: var(--color-white);
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}

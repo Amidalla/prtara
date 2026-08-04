@@ -1,0 +1,47 @@
+{% from "components/general/button/button.njk" import render as button %}
+{% from "components/common/service-card/service-card.njk" import render as serviceCard %}
+{% from "components/general/icons/button-icon.njk" import render as buttonIcon %}
+
+{% set servicesShortItems = [
+    { title: "Токарная обработка металла с ЧПУ", href: "./service-detail.html" },
+    { title: "Фрезерная обработка металла с ЧПУ", href: "./service-detail.html" },
+    { title: "Электроэрозионная проволочно-вырезная обработка металла с ЧПУ", href: "./service-detail.html" },
+    {
+        title: "Создание и внедрение технологий обработки и управляющих программ для станков с ЧПУ",
+        href: "./service-detail.html"
+    },
+    { title: "Электроэрозионная прошивная обработка металла с ЧПУ", href: "./service-detail.html" },
+    { title: "3D моделирование", href: "./service-detail.html" }
+] %}
+
+<section class="services-short section">
+    <div class="container">
+        <div class="services-short-inner">
+            <div class="content">
+                <h2 class="title">Услуги по металлообработке</h2>
+                <div class="text">
+                    <p>
+                        Приоритетное направление нашей деятельности – обработка металла, изготовление металлоизделий для
+                        строительства. Это может быть производство как полуфабрикатов для дальнейшей обработки, так и
+                        конечного изделия. Все виды работ на нашем предприятии выполняют высококвалифицированные
+                        специалисты, уделяя огромное внимание качеству в каждом отдельном заказе. Преимущества компании
+                        – отличное качество продукции по доступной цене.
+                    </p>
+                </div>
+                <div class="actions">
+                    {{ button(
+                        text="Подробнее",
+                        type="link",
+                        href="./services.html",
+                        icon=buttonIcon()
+                    ) }}
+                </div>
+            </div>
+            <div class="list">
+                {% for item in servicesShortItems %}
+                    {{ serviceCard(title=item.title, href=item.href) }}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>

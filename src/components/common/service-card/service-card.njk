@@ -1,0 +1,14 @@
+{% macro render(
+        title="",
+        href="./service-detail.html",
+        class=""
+    ) %}
+    {% set cardClasses = "service-card" %}
+    {% if class %}
+        {% set cardClasses = cardClasses + " " + class %}
+    {% endif %}
+
+    <a class="{{ cardClasses }}" href="{{ href }}">
+        <span class="name">{{ title }}</span>
+    </a>
+{% endmacro %}

@@ -1,0 +1,17 @@
+{% set meta = { title: "Категория каталога" } %}
+{% set page = { breadcrumbs: true, heading: false } %}
+{% set breadcrumbs = {
+    items: [
+        { title: "Главная", url: "./home.html" },
+        { title: "Каталог", url: "./catalog.html" },
+        { title: "Категория каталога" }
+    ]
+} %}
+{% extends "layouts/default.njk" %}
+{% block content %}
+    <section class="section">
+        <div class="container">
+            <p class="page-stub">Здесь будет каталог второго уровня.</p>
+        </div>
+    </section>
+{% endblock %}

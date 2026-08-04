@@ -1,0 +1,129 @@
+@use "core/breakpoints" as bp;
+
+.advantages {
+    position: relative;
+    color: var(--color-white);
+    background: url("../assets/images/content/advantages-bg.jpg") center / cover no-repeat;
+
+    .advantages-inner {
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+        gap: 60px 70px;
+        align-items: center;
+
+        @include bp.mq(laptop) {
+            gap: 48px;
+        }
+
+        @include bp.mq(tablet-xl) {
+            grid-template-columns: 1fr;
+            gap: 48px;
+        }
+
+        @include bp.mq(mobile-l) {
+            gap: 36px;
+        }
+    }
+
+    .content {
+        max-width: 590px;
+
+        @include bp.mq(tablet-xl) {
+            max-width: none;
+        }
+    }
+
+    .text {
+        margin-bottom: 40px;
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 150%;
+        color: var(--color-white);
+
+        p {
+            margin: 0 0 40px;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        @include bp.mq(mobile-l) {
+            margin-bottom: 25px;
+        }
+    }
+
+    .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 60px 21px;
+        padding: 30px 0 0;
+        margin: 0;
+        list-style: none;
+
+        @include bp.mq(mobile-xl) {
+            grid-template-columns: 1fr;
+            gap: 49px;
+        }
+    }
+
+    .item {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+        min-height: 100%;
+        padding: 46px 24px 28px;
+        text-align: center;
+        background: rgb(255 255 255 / 20%);
+        border-radius: 10px;
+        backdrop-filter: blur(11px);
+
+        @include bp.mq(laptop) {
+            gap: 14px;
+            padding: 46px 20px 24px;
+        }
+
+        @include bp.mq(mobile-l) {
+            gap: 12px;
+            padding: 46px 18px 22px;
+        }
+    }
+
+    .icon {
+        position: absolute;
+        top: -30px;
+        left: 50%;
+        width: 60px;
+        height: 60px;
+        line-height: 0;
+        transform: translateX(-50%);
+
+        svg {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .name {
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 120%;
+        color: var(--color-white);
+    }
+
+    .desc {
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 120%;
+        color: var(--color-white);
+    }
+}

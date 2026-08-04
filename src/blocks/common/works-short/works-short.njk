@@ -1,0 +1,48 @@
+{% from "components/general/button/button.njk" import render as button %}
+{% from "components/common/work-card/work-card.njk" import render as workCard %}
+{% from "components/general/icons/button-icon.njk" import render as buttonIcon %}
+
+{% set worksShortItems = [
+    {
+        title: "Токарная обработка металла с ЧПУ",
+        image: "./assets/images/content/works-short1.png",
+        href: "./work-detail.html"
+    },
+    {
+        title: "Токарная обработка металла с ЧПУ",
+        image: "./assets/images/content/works-short2.png",
+        href: "./work-detail.html"
+    },
+    {
+        title: "Токарная обработка металла с ЧПУ",
+        image: "./assets/images/content/works-short3.png",
+        href: "./work-detail.html"
+    }
+] %}
+
+<section class="works-short section" data-works-short>
+    <div class="container">
+        <h2 class="center">Выполненные работы и изготовленные детали</h2>
+        <div class="swiper">
+            <div class="swiper-wrapper list">
+                {% for item in worksShortItems %}
+                    <div class="swiper-slide">
+                        {{ workCard(
+                            title=item.title,
+                            image=item.image,
+                            href=item.href
+                        ) }}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="actions">
+            {{ button(
+                text="Показать все",
+                type="link",
+                href="./works.html",
+                icon=buttonIcon()
+            ) }}
+        </div>
+    </div>
+</section>

@@ -1,0 +1,70 @@
+{% set partners = [
+    { alt: "Prtara" },
+    { alt: "Prtara" },
+    { alt: "Prtara" },
+    { alt: "Prtara" },
+    { alt: "Prtara" },
+    { alt: "Prtara" }
+] %}
+
+<section class="partners-short section" data-partners-short>
+    <div class="container">
+        <h2 class="center">Нам доверяют</h2>
+        <div class="slider">
+            <button class="nav prev" type="button" aria-label="Назад">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    aria-hidden="true"
+                >
+                    <path
+                        d="M15.0901 19.9201L8.57009 13.4001C7.80009 12.6301 7.80009 11.3701 8.57009 10.6001L15.0901 4.08008"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-miterlimit="10"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    />
+                </svg>
+            </button>
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    {% for partner in partners %}
+                        <div class="swiper-slide{% if loop.index % 2 == 1 %} is-muted{% endif %}">
+                            <img
+                                class="lazy"
+                                src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='1'%20height='1'/%3E"
+                                data-src="./assets/images/content/logo.png"
+                                alt="{{ partner.alt }}"
+                                width="200"
+                                height="60"
+                            />
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <button class="nav next" type="button" aria-label="Вперёд">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    aria-hidden="true"
+                >
+                    <path
+                        d="M8.91016 19.9201L15.4302 13.4001C16.2002 12.6301 16.2002 11.3701 15.4302 10.6001L8.91016 4.08008"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-miterlimit="10"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    />
+                </svg>
+            </button>
+        </div>
+    </div>
+</section>

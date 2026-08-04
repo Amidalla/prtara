@@ -1,0 +1,16 @@
+{% set meta = { title: "Доставка и оплата" } %}
+{% set page = { breadcrumbs: true, heading: false } %}
+{% set breadcrumbs = {
+    items: [
+        { title: "Главная", url: "./home.html" },
+        { title: "Доставка и оплата" }
+    ]
+} %}
+{% extends "layouts/default.njk" %}
+{% block content %}
+    <section class="section">
+        <div class="container">
+            <p class="page-stub">Здесь будет страница доставки и оплаты.</p>
+        </div>
+    </section>
+{% endblock %}

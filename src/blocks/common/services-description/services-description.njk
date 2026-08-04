@@ -1,0 +1,35 @@
+{% from "components/common/service-card/service-card.njk" import render as serviceCard %}
+
+{% set servicesDescriptionItems = [
+    { title: "Токарная обработка металла с ЧПУ", href: "./service-detail.html" },
+    { title: "Фрезерная обработка металла с ЧПУ", href: "./service-detail.html" },
+    { title: "Электроэрозионная проволочно-вырезная обработка металла с ЧПУ", href: "./service-detail.html" },
+    {
+        title: "Создание и внедрение технологий обработки и управляющих программ для станков с ЧПУ",
+        href: "./service-detail.html"
+    },
+    { title: "Электроэрозионная прошивная обработка металла с ЧПУ", href: "./service-detail.html" },
+    { title: "3D моделирование", href: "./service-detail.html" }
+] %}
+
+<section class="services-description section">
+    <div class="container">
+        <div class="services-description-inner">
+            <div class="content">
+                <h1>Услуги</h1>
+                <div class="text">
+                    <p>
+                        Компания давно и успешно работает на рынке металлообработки города Санкт-Петербург. Мы оказываем
+                        только качественные услуги и используем гибкую ценовую политику, благодаря чему пользуемся среди
+                        клиентов заслуженно высокой репутацией
+                    </p>
+                </div>
+            </div>
+            <div class="list">
+                {% for item in servicesDescriptionItems %}
+                    {{ serviceCard(title=item.title, href=item.href) }}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>

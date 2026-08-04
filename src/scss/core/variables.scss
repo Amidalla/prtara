@@ -1,0 +1,41 @@
+@use "core/breakpoints" as bp;
+@use "core/mixins" as mix;
+
+:root {
+    // --------------------------------------
+    // -- Base Сolors
+    // --------------------------------------
+    --color-white: #fff;
+    --color-black: #07192a;
+    --color-gray: #f6f6f7;
+    --color-blue: #055faa;
+
+    // --------------------------------------
+    // -- Others Сolors
+    // --------------------------------------
+    --color-1: #061e49;
+    --color-2: #eff2f6;
+    --color-3: #2c2a68;
+
+    // --------------------------------------
+    // -- Fonts
+    // --------------------------------------
+    --font-family-primary: "Nunito", sans-serif;
+
+    // --------------------------------------
+    // -- Sizes
+    // --------------------------------------
+    --container-width: 1444px;
+    --container-padding: 40px;
+    --header-height: 90px;
+    --section-mb: 60px;
+
+    @include bp.mq(laptop-m) {
+        --container-padding: 22px;
+        --section-mb: 40px;
+    }
+
+    @include bp.mq(tablet) {
+        --container-padding: 15px;
+    }
+}

@@ -1,0 +1,50 @@
+@mixin reset-child-outer-margins {
+    > *:first-child {
+        margin-top: 0;
+    }
+
+    > *:last-child {
+        margin-bottom: 0;
+    }
+}
+
+@mixin line-clamp($lines: 3) {
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+}
+
+// Блик при наведении. $overlay: true — поверх контента (для иконок с фоном в SVG)
+@mixin shine-hover($overlay: false) {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+
+    &::before {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        content: "";
+        background: linear-gradient(105deg, transparent 35%, rgb(255 255 255 / 28%) 50%, transparent 65%);
+        transform: translateX(-130%) skewX(-18deg);
+        transition: transform 0.55s ease;
+
+        @if $overlay {
+            z-index: 1;
+        } @else {
+            z-index: -1;
+        }
+    }
+
+    &:hover::before {
+        transform: translateX(130%) skewX(-18deg);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        &::before {
+            transition: none;
+        }
+    }
+}

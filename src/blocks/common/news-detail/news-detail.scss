@@ -1,0 +1,104 @@
+@use "core/breakpoints" as bp;
+
+.news-detail {
+    padding-top: 48px;
+    padding-bottom: 0;
+    color: var(--color-3);
+    background: var(--color-2);
+
+    @include bp.mq(mobile-l) {
+        padding-top: 33px;
+    }
+
+    h1 {
+        margin: 0 0 40px;
+        font-family: var(--font-family-primary);
+        font-size: 48px;
+        font-weight: 500;
+        line-height: 120%;
+        color: var(--color-3);
+        text-transform: uppercase;
+
+        &::after {
+            display: block;
+            width: 53px;
+            height: 3px;
+            margin-top: 10px;
+            content: "";
+            background: var(--color-blue);
+        }
+
+        @include bp.mq(tablet-xl) {
+            font-size: 40px;
+        }
+
+        @include bp.mq(mobile-l) {
+            margin-bottom: 25px;
+            font-size: 28px;
+
+            &::after {
+                width: 50px;
+            }
+        }
+    }
+
+    .news-detail-inner {
+        display: grid;
+        grid-template-columns: minmax(0, 560px) minmax(0, 1fr);
+        gap: 40px 57px;
+        align-items: start;
+
+        @include bp.mq(tablet-xl) {
+            grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr);
+            gap: 30px 40px;
+        }
+
+        @include bp.mq(tablet) {
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+    }
+
+    .media {
+        overflow: hidden;
+        border-radius: 20px;
+
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+    }
+
+    .text {
+        font-family: var(--font-family-primary);
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 150%;
+        color: var(--color-3);
+
+        p {
+            margin: 0 0 24px;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .actions {
+        margin-top: 40px;
+
+        @include bp.mq(mobile-l) {
+            margin-top: 30px;
+        }
+    }
+}

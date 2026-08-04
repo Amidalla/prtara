@@ -1,0 +1,59 @@
+@use "core/breakpoints" as bp;
+
+.works-short {
+    color: var(--color-3);
+    background: #eff2f6;
+
+    .swiper {
+        width: 100%;
+        margin-bottom: 40px;
+
+        @include bp.mq(tablet-xl) {
+            margin-bottom: 36px;
+        }
+    }
+
+    .list {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 24px;
+
+        @include bp.mq(tablet-xl) {
+            gap: 20px;
+        }
+
+        @include bp.mq(mobile-xl) {
+            box-sizing: content-box;
+            display: flex;
+            gap: 0;
+        }
+    }
+
+    .swiper-slide {
+        height: auto;
+
+        @include bp.mq(mobile-xl) {
+            width: auto;
+        }
+
+        .work-card {
+            height: 100%;
+        }
+    }
+
+    .actions {
+        display: flex;
+        justify-content: center;
+    }
+
+    @include bp.mq(mobile-xl) {
+        > .container {
+            padding-right: 0;
+        }
+
+        h2,
+        .actions {
+            padding-right: var(--container-padding);
+        }
+    }
+}

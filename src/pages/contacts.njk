@@ -1,0 +1,16 @@
+{% set meta = { title: "Контакты" } %}
+{% set page = { breadcrumbs: true, heading: false } %}
+{% set breadcrumbs = {
+    items: [
+        { title: "Главная", url: "./home.html" },
+        { title: "Контакты" }
+    ]
+} %}
+{% extends "layouts/default.njk" %}
+{% block content %}
+    <section class="section">
+        <div class="container">
+            <p class="page-stub">Здесь будет страница контактов.</p>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% set meta = { title: "Политика обработки персональных данных" } %}
+{% set page = { breadcrumbs: true, heading: false } %}
+{% set breadcrumbs = {
+    items: [
+        { title: "Главная", url: "./home.html" },
+        { title: "Политика обработки персональных данных" }
+    ]
+} %}
+{% extends "layouts/default.njk" %}
+{% block content %}
+    {% include "blocks/common/policy-content/policy-content.njk" %}
+{% endblock %}

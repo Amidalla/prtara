@@ -1,0 +1,18 @@
+{% set meta = { title: "Карточка товара" } %}
+{% set page = { breadcrumbs: true, heading: false } %}
+{% set breadcrumbs = {
+    items: [
+        { title: "Главная", url: "./home.html" },
+        { title: "Каталог", url: "./catalog.html" },
+        { title: "Категория каталога", url: "./catalog-category.html" },
+        { title: "Карточка товара" }
+    ]
+} %}
+{% extends "layouts/default.njk" %}
+{% block content %}
+    <section class="section">
+        <div class="container">
+            <p class="page-stub">Здесь будет карточка товара.</p>
+        </div>
+    </section>
+{% endblock %}

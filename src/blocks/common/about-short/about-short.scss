@@ -1,0 +1,177 @@
+@use "core/breakpoints" as bp;
+
+.about-short {
+    position: relative;
+    padding: 120px 0 242px;
+    overflow: hidden;
+    color: var(--color-white);
+    background: url("../assets/images/content/about-short-bg.jpg") center / cover no-repeat;
+
+    @include bp.mq(laptop) {
+        padding: 182.5px 0;
+    }
+
+    @include bp.mq(tablet-xl) {
+        padding: 83px 0 102px;
+    }
+
+    @include bp.mq(tablet-l) {
+        background-image: url("../assets/images/content/about-short-tablet.jpg");
+    }
+
+    @include bp.mq(mobile-l) {
+        padding: 62px 0 73px;
+        background-image: url("../assets/images/content/about-short-mobile.jpg");
+    }
+
+    .about-short-inner {
+        display: grid;
+        grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+        gap: 60px 20px;
+        align-items: center;
+
+        @include bp.mq(laptop) {
+            gap: 48px 56px;
+        }
+
+        @include bp.mq(tablet-xl) {
+            grid-template-columns: 1fr;
+            gap: 48px;
+        }
+
+        @include bp.mq(mobile-l) {
+            gap: 36px;
+        }
+    }
+
+    .content {
+        max-width: 590px;
+
+        @include bp.mq(tablet-xl) {
+            max-width: none;
+        }
+    }
+
+    .text {
+        margin-bottom: 40px;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 150%;
+        color: var(--color-white);
+
+        @include bp.mq(mobile-l) {
+            margin-bottom: 25px;
+        }
+
+        p {
+            margin: 0 0 40px;
+
+            &:first-child {
+                font-size: 20px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: 150%;
+            }
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .stats {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 36px 55px;
+        justify-items: start;
+
+        @include bp.mq(tablet-xl) {
+            gap: 43px 165px;
+            max-width: 560px;
+        }
+
+        @include bp.mq(mobile-l) {
+            gap: 15px 20px;
+            max-width: none;
+        }
+    }
+
+    .stat {
+        width: 100%;
+        max-width: 240px;
+
+        .value {
+            position: relative;
+            display: inline-block;
+            padding: 8px 12px;
+            margin: 0 0 8px;
+            font-family: var(--font-family-primary);
+            font-size: 80px;
+            font-weight: 500;
+            line-height: 120%;
+            color: var(--color-white);
+            white-space: nowrap;
+
+            @include bp.mq(laptop) {
+                font-size: 60px;
+            }
+
+            @include bp.mq(mobile-xl) {
+                margin-bottom: 4px;
+                font-size: 30px;
+            }
+        }
+
+        .corner {
+            position: absolute;
+            z-index: 1;
+            display: block;
+            width: 15px;
+            height: 16px;
+            color: #055faa;
+            pointer-events: none;
+
+            svg {
+                display: block;
+                width: 100%;
+                height: 100%;
+            }
+
+            &.tl {
+                top: 0;
+                left: 0;
+                transform: rotate(90deg);
+            }
+
+            &.tr {
+                top: 0;
+                right: 0;
+                transform: rotate(180deg);
+            }
+
+            &.br {
+                right: 0;
+                bottom: 0;
+                transform: rotate(-90deg);
+            }
+
+            &.bl {
+                bottom: 0;
+                left: 0;
+            }
+        }
+
+        .label {
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 120%;
+            color: var(--color-white);
+        }
+    }
+}

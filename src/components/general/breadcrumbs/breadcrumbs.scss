@@ -1,0 +1,117 @@
+@use "core/breakpoints" as bp;
+
+.breadcrumbs {
+    display: block;
+    width: 100%;
+    padding: 16px 0 9px;
+    font-family: var(--font-family-primary);
+    color: #2c2a68;
+    background: #eff2f6;
+
+    .container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+
+        &::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: rgb(44 42 104 / 25%);
+            border-radius: 4px;
+        }
+    }
+
+    // --------------------------------------
+    // List
+    // --------------------------------------
+
+    .list {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 8px;
+        align-items: center;
+        width: max-content;
+        min-width: 100%;
+        padding: 0;
+        margin: 0;
+        font-family: var(--font-family-primary);
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 150%;
+        list-style: none;
+    }
+
+    // --------------------------------------
+    // Item
+    // --------------------------------------
+
+    .item {
+        display: inline-flex;
+        flex-shrink: 0;
+        gap: 8px;
+        align-items: center;
+    }
+
+    // --------------------------------------
+    // Link
+    // --------------------------------------
+
+    .link {
+        display: inline-flex;
+        align-items: center;
+        font-family: inherit;
+        font-size: inherit;
+        font-style: inherit;
+        font-weight: inherit;
+        line-height: inherit;
+        color: #2c2a68;
+        white-space: nowrap;
+        text-decoration: none;
+        transition: color 0.2s ease-in-out;
+
+        &:hover {
+            color: var(--color-blue);
+            text-decoration: none;
+        }
+    }
+
+    // --------------------------------------
+    // Current Page
+    // --------------------------------------
+
+    .current-page {
+        display: inline-flex;
+        align-items: center;
+        font-family: inherit;
+        font-size: inherit;
+        font-style: inherit;
+        font-weight: inherit;
+        line-height: inherit;
+        color: #2c2a68;
+        white-space: nowrap;
+    }
+
+    // --------------------------------------
+    // Separator
+    // --------------------------------------
+
+    .separator {
+        display: block;
+        flex-shrink: 0;
+        width: 15px;
+        height: 1px;
+        overflow: hidden;
+        font-size: 0;
+        line-height: 0;
+        color: transparent;
+        user-select: none;
+        background: #055faa;
+
+        svg {
+            display: none;
+        }
+    }
+}

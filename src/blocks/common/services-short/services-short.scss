@@ -1,0 +1,67 @@
+@use "core/breakpoints" as bp;
+
+.services-short {
+    color: var(--color-3);
+    background: var(--color-2);
+
+    .services-short-inner {
+        display: grid;
+        grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+        gap: 60px 70px;
+        align-items: center;
+
+        @include bp.mq(laptop) {
+            gap: 48px;
+        }
+
+        @include bp.mq(tablet-xl) {
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        @include bp.mq(mobile-l) {
+            gap: 59px;
+        }
+    }
+
+    .content {
+        max-width: 590px;
+
+        @include bp.mq(tablet-xl) {
+            max-width: none;
+        }
+    }
+
+    .text {
+        margin-bottom: 40px;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 150%;
+        color: var(--color-3);
+
+        p {
+            margin: 0 0 40px;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+
+        @include bp.mq(mobile-xl) {
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+    }
+}

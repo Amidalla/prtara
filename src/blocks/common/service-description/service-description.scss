@@ -1,0 +1,109 @@
+@use "core/breakpoints" as bp;
+
+.service-description {
+    color: var(--color-white);
+    background: url("../assets/images/content/service-description-bg.jpg") center / cover no-repeat;
+
+    .service-description-inner {
+        display: grid;
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+        gap: 60px;
+        align-items: start;
+
+        @include bp.mq(laptop) {
+            gap: 48px;
+        }
+
+        @include bp.mq(tablet-xl) {
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        @include bp.mq(mobile-l) {
+            gap: 30px;
+        }
+    }
+
+    .content {
+        max-width: 760px;
+
+        @include bp.mq(tablet-xl) {
+            max-width: none;
+        }
+    }
+
+    h2 {
+        color: var(--color-white);
+
+        &::after {
+            background: var(--color-blue);
+        }
+    }
+
+    .purpose-title {
+        margin: 0 0 40px;
+        font-family: var(--font-family-primary);
+        font-size: 22px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 120%;
+        color: #fff;
+        text-transform: uppercase;
+    }
+
+    .text {
+        margin-bottom: 40px;
+        font-family: var(--font-family-primary);
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 150%;
+        color: #fff;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        p {
+            margin: 0 0 24px;
+            font-family: var(--font-family-primary);
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 150%;
+            color: #fff;
+
+            &:first-child {
+                font-size: 20px;
+            }
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .media {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+
+        @include bp.mq(tablet-xl) {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        @include bp.mq(tablet-s) {
+            grid-template-columns: 1fr;
+        }
+    }
+}

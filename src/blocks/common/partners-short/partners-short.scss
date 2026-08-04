@@ -1,0 +1,107 @@
+@use "core/breakpoints" as bp;
+
+.partners-short {
+    color: var(--color-3);
+    background: #fff;
+
+    .slider {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+
+        @include bp.mq(mobile-l) {
+            gap: 8px;
+        }
+    }
+
+    .swiper {
+        flex: 1 1 auto;
+        width: 100%;
+        min-width: 0;
+    }
+
+    .swiper-slide {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: auto;
+
+        &.is-muted {
+            img {
+                opacity: 0.55;
+                filter: grayscale(1);
+            }
+        }
+
+        img {
+            display: block;
+            width: auto;
+            max-width: 100%;
+            height: auto;
+            max-height: 48px;
+            object-fit: contain;
+            transition:
+                filter 0.3s ease,
+                opacity 0.3s ease;
+
+            @include bp.mq(tablet) {
+                max-height: 40px;
+            }
+
+            @include bp.mq(mobile-l) {
+                max-height: 32px;
+            }
+        }
+    }
+
+    .nav {
+        display: inline-flex;
+        flex: 0 0 auto;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        padding: 0;
+        color: #9c9c9c;
+        cursor: pointer;
+        background: transparent;
+        border: none;
+        transition: color 0.25s ease;
+
+        svg {
+            display: block;
+            width: 24px;
+            height: 24px;
+        }
+
+        &:hover,
+        &:focus-visible {
+            color: var(--color-blue);
+        }
+
+        &:focus-visible {
+            outline: 2px solid var(--color-blue);
+            outline-offset: 2px;
+        }
+
+        &.swiper-button-disabled {
+            pointer-events: none;
+            cursor: default;
+            opacity: 0.35;
+        }
+
+        &.swiper-button-lock {
+            display: none;
+        }
+
+        @include bp.mq(mobile-l) {
+            width: 32px;
+            height: 32px;
+
+            svg {
+                width: 20px;
+                height: 20px;
+            }
+        }
+    }
+}

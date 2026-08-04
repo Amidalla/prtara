@@ -1,0 +1,16 @@
+{% set meta = { title: "Сертификаты" } %}
+{% set page = { breadcrumbs: true, heading: false } %}
+{% set breadcrumbs = {
+    items: [
+        { title: "Главная", url: "./home.html" },
+        { title: "Сертификаты" }
+    ]
+} %}
+{% extends "layouts/default.njk" %}
+{% block content %}
+    <section class="section">
+        <div class="container">
+            <p class="page-stub">Здесь будут сертификаты.</p>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% from "components/general/navigation-mobile/navigation-mobile.njk" import render as navigationMobile %}
+
+<div class="menu" data-dropdown="menu" aria-hidden="true">
+    <div class="menu-header">
+        <button class="menu-close" type="button" aria-label="Закрыть меню" data-toggle="menu">
+            <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 45 45" fill="none">
+                <path
+                    d="M22.4999 23.8275L12.6636 33.6638C12.4886 33.8388 12.2736 33.9325 12.0186 33.945C11.7636 33.9575 11.5361 33.8638 11.3361 33.6638C11.1361 33.4638 11.0361 33.2425 11.0361 33C11.0361 32.7575 11.1361 32.5363 11.3361 32.3363L21.1724 22.5L11.3361 12.6638C11.1611 12.4888 11.0674 12.2738 11.0549 12.0188C11.0424 11.7638 11.1361 11.5363 11.3361 11.3363C11.5361 11.1363 11.7574 11.0363 11.9999 11.0363C12.2424 11.0363 12.4636 11.1363 12.6636 11.3363L22.4999 21.1725L32.3361 11.3363C32.5111 11.1613 32.7268 11.0675 32.983 11.055C33.2368 11.0425 33.4636 11.1363 33.6636 11.3363C33.8636 11.5363 33.9636 11.7575 33.9636 12C33.9636 12.2425 33.8636 12.4638 33.6636 12.6638L23.8274 22.5L33.6636 32.3363C33.8386 32.5113 33.9324 32.7269 33.9449 32.9831C33.9574 33.2369 33.8636 33.4638 33.6636 33.6638C33.4636 33.8638 33.2424 33.9638 32.9999 33.9638C32.7574 33.9638 32.5361 33.8638 32.3361 33.6638L22.4999 23.8275Z"
+                    fill="#7C7E81"
+                />
+            </svg>
+        </button>
+    </div>
+    <div class="menu-navigation">
+        {{ navigationMobile(items=mainNavItemsMobile) }}
+    </div>
+    <div class="menu-contacts">
+        {% include "components/common/contacts-mobile/contacts-mobile.njk" %}
+    </div>
+</div>
+<div class="overlay" aria-hidden="true"></div>

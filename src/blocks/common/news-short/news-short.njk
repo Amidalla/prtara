@@ -1,0 +1,59 @@
+{% from "components/general/button/button.njk" import render as button %}
+{% from "components/common/news-card/news-card.njk" import render as newsCard %}
+{% from "components/general/icons/button-icon.njk" import render as buttonIcon %}
+
+{% set newsShortTitle = newsShortTitle | default("Новости") %}
+{% set newsShortShowActions = true if newsShortShowActions is not defined else newsShortShowActions %}
+{% set newsShortItems = newsShortItems | default([
+    {
+        title: "Название новости может быть в две или три строки может быть в две строки",
+        image: "./assets/images/content/news-short1.jpg",
+        href: "./news-detail.html"
+    },
+    {
+        title: "Название новости может быть в две или три строки может быть в две строки",
+        image: "./assets/images/content/news-short2.jpg",
+        href: "./news-detail.html"
+    },
+    {
+        title: "Название новости может быть в две или три строки может быть в две строки",
+        image: "./assets/images/content/news-short3.jpg",
+        href: "./news-detail.html"
+    },
+    {
+        title: "Название новости может быть в две или три строки может быть в две строки",
+        image: "./assets/images/content/news-short4.jpg",
+        href: "./news-detail.html"
+    }
+]) %}
+
+<section class="news-short section" data-news-short>
+    <div class="container">
+        <h2 class="center">{{ newsShortTitle }}</h2>
+        <div class="swiper">
+            <div class="swiper-wrapper list">
+                {% for item in newsShortItems %}
+                    <div class="swiper-slide">
+                        {{ newsCard(
+                            title=item.title,
+                            image=item.image,
+                            href=item.href,
+                            date=item.date,
+                            excerpt=item.excerpt
+                        ) }}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% if newsShortShowActions %}
+            <div class="actions">
+                {{ button(
+                    text="Показать все",
+                    type="link",
+                    href="./news.html",
+                    icon=buttonIcon()
+                ) }}
+            </div>
+        {% endif %}
+    </div>
+</section>
