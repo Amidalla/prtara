@@ -8,12 +8,17 @@
         name="",
         value="",
         disabled=false,
+        variant="",
         class="",
         icon="",
         data={},
         aria={}
     ) %}
+    {# variant: "" (синяя) | "red" | "outline"; type: "button" | "submit" | "reset" | "link" #}
     {% set buttonClasses = "button" %}
+    {% if variant %}
+        {% set buttonClasses = buttonClasses + " " + variant %}
+    {% endif %}
     {% if class %}
         {% set buttonClasses = buttonClasses + " " + class %}
     {% endif %}

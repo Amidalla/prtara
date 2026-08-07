@@ -1,5 +1,4 @@
 @use "core/breakpoints" as bp;
-@use "core/mixins" as mix;
 
 *,
 *::after,
@@ -18,8 +17,10 @@ body {
     min-height: 100vh;
     margin: 0;
     font-family: var(--font-family-primary);
+    font-size: var(--font-size-paragraph-m);
+    font-weight: 400;
     line-height: 1.4;
-    color: var(--color-2);
+    color: var(--color-black);
     background: var(--color-white);
     text-rendering: optimizelegibility;
     -webkit-font-smoothing: antialiased;
@@ -52,12 +53,27 @@ textarea {
     font-family: inherit;
 }
 
-a {
-    color: var(--color-primary);
+a:not(.button) {
+    font-family: var(--font-family-primary);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--color-blue);
     text-decoration: none;
+    transition: color 0.3s ease;
 
     &:hover {
-        text-decoration: underline;
+        color: var(--color-blue-hover);
+        text-decoration: none;
+    }
+
+    @include bp.mq(laptop-m) {
+        font-size: 16px;
+    }
+
+    @include bp.mq(tablet-l) {
+        font-size: 15px;
     }
 }
 
@@ -67,77 +83,60 @@ h3,
 h4,
 h5,
 h6 {
-    margin: var(--heading-margin);
-    line-height: var(--heading-line-height);
+    margin: 0;
+    font-family: var(--font-family-primary);
+    font-weight: 500;
+    line-height: 120%;
+    color: var(--color-black);
 }
 
 h1 {
-    font-size: 3em;
+    font-size: var(--font-size-h1);
+
+    &.large {
+        font-size: var(--font-size-h1-large);
+    }
 }
 
 h2 {
-    margin: 0 0 40px;
-    font-family: var(--font-family-primary);
-    font-size: 48px;
-    font-weight: 500;
-    line-height: 120%;
-    text-transform: uppercase;
-
-    &::after {
-        display: block;
-        width: 53px;
-        height: 3px;
-        margin-top: 10px;
-        content: "";
-        background: var(--color-blue);
-    }
-
-    &.center {
-        text-align: center;
-
-        &::after {
-            margin-top: 39px;
-            margin-right: auto;
-            margin-left: auto;
-        }
-    }
-
-    @include bp.mq(laptop) {
-        font-size: 46px;
-    }
-
-    @include bp.mq(tablet-xl) {
-        font-size: 40px;
-    }
-
-    @include bp.mq(mobile-l) {
-        margin-bottom: 25px;
-        font-size: 28px;
-
-        &::after {
-            width: 50px;
-        }
-
-        &.center::after {
-            margin-top: 30px;
-        }
-    }
+    font-size: var(--font-size-h2);
 }
 
 h3 {
-    font-size: 1.75em;
+    font-size: var(--font-size-h3);
 }
 
 h4 {
-    font-size: 1.5em;
+    font-size: var(--font-size-h4);
 }
 
 h5 {
-    font-size: 1.25em;
+    font-size: var(--font-size-h5);
 }
 
 h6 {
-    font-size: 1em;
+    font-size: var(--font-size-h5);
+}
+
+p {
+    margin: 0;
+    font-size: var(--font-size-paragraph-m);
+    line-height: 140%;
+}
+
+.paragraph-l {
+    font-size: var(--font-size-paragraph-l);
+    line-height: 140%;
+}
+
+.paragraph-m {
+    font-size: var(--font-size-paragraph-m);
+    line-height: 140%;
+}
+
+.paragraph-s {
+    font-size: var(--font-size-paragraph-s);
+    line-height: 140%;
 }
 
 .visually-hidden {
@@ -195,18 +194,7 @@ h6 {
 
         .heading {
             .title {
-                font-size: 44px;
-                font-weight: 500;
-
-                @include bp.mq(laptop-l) {
-                    font-size: 36px;
-                }
-                @include bp.mq(laptop) {
-                    font-size: 32px;
-                }
-                @include bp.mq(tablet) {
-                    font-size: 28px;
-                }
+                margin: 0;
             }
         }
     }
@@ -225,8 +213,8 @@ h6 {
 // --------------------------------------
 
 .fancybox__backdrop {
-    background: rgb(255 255 255 / 80%);
-    backdrop-filter: blur(5px);
+    background: rgb(255 255 255 / 70%);
+    backdrop-filter: blur(17.75px);
 }
 
 // --------------------------------------
@@ -242,7 +230,8 @@ h6 {
     width: 100%;
     height: 100%;
     pointer-events: none;
-    background: rgb(24 33 40 / 81%);
+    background: rgb(19 74 155 / 80%);
+    backdrop-filter: blur(3.9px);
     opacity: 0;
     transition:
         opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1),

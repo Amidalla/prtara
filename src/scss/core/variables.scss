@@ -1,40 +1,78 @@
 @use "core/breakpoints" as bp;
-@use "core/mixins" as mix;
 
 :root {
     // --------------------------------------
-    // -- Base Сolors
+    // -- Base Colors
     // --------------------------------------
     --color-white: #fff;
-    --color-black: #07192a;
-    --color-gray: #f6f6f7;
-    --color-blue: #055faa;
-
-    // --------------------------------------
-    // -- Others Сolors
-    // --------------------------------------
-    --color-1: #061e49;
-    --color-2: #eff2f6;
-    --color-3: #2c2a68;
+    --color-blue: #134a9b;
+    --color-blue-hover: #0d3979;
+    --color-red: #b52f59;
+    --color-red-hover: #89153a;
+    --color-black: #37383a;
+    --color-gray: #f2f2f2;
 
     // --------------------------------------
     // -- Fonts
     // --------------------------------------
-    --font-family-primary: "Nunito", sans-serif;
+    --font-family-primary: "Golos Text", sans-serif;
+
+    // --------------------------------------
+    // -- Typography: headings (desktop)
+    // --------------------------------------
+    --font-size-h1-large: 64px;
+    --font-size-h1: 58px;
+    --font-size-h2: 52px;
+    --font-size-h3: 38px;
+    --font-size-h4: 24px;
+    --font-size-h5: 20px;
+
+    // --------------------------------------
+    // -- Typography: paragraphs (desktop)
+    // --------------------------------------
+    --font-size-paragraph-l: 18px;
+    --font-size-paragraph-m: 16px;
+    --font-size-paragraph-s: 14px;
 
     // --------------------------------------
     // -- Sizes
     // --------------------------------------
-    --container-width: 1444px;
-    --container-padding: 40px;
-    --header-height: 90px;
+    --container-width: 1446px;
+    --container-padding: 30px;
+    --header-height: 148px;
     --section-mb: 60px;
 
+    // Laptop
     @include bp.mq(laptop-m) {
-        --container-padding: 22px;
+        --font-size-h1-large: 50px;
+        --font-size-h1: 48px;
+        --font-size-h2: 44px;
+        --font-size-h3: 28px;
+        --font-size-h4: 20px;
+        --font-size-h5: 18px;
+
+        --font-size-paragraph-l: 16px;
+        --font-size-paragraph-m: 15px;
+        --font-size-paragraph-s: 13px;
+
         --section-mb: 40px;
     }
 
+    // Tablet
+    @include bp.mq(tablet-l) {
+        --font-size-h1-large: 40px;
+        --font-size-h1: 38px;
+        --font-size-h2: 30px;
+        --font-size-h3: 24px;
+        --font-size-h4: 18px;
+        --font-size-h5: 16px;
+
+        --font-size-paragraph-l: 15px;
+        --font-size-paragraph-m: 13px;
+        --font-size-paragraph-s: 12px;
+    }
+
+    // Mobile
     @include bp.mq(tablet) {
         --container-padding: 15px;
     }

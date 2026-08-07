@@ -5,12 +5,15 @@
     align-items: center;
     text-decoration: none;
 
-    @include bp.mq(mobile-l) {
-        max-width: 129px;
+    svg {
+        display: block;
+        width: 159px;
+        height: auto;
+        max-width: 100%;
     }
 
     &:hover {
         text-decoration: none;
-        opacity: 0.8;
+        opacity: 0.85;
     }
 }

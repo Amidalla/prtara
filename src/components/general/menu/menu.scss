@@ -1,68 +1,232 @@
 @use "core/breakpoints" as bp;
 
 .menu {
-    --menu-text: #111827;
-    --menu-muted: #9ca3af;
-    --menu-border: #f3f4f6;
-    --menu-accent: #4318d1;
-    --menu-phone: #1a3a8f;
-
     position: fixed;
-    top: 0;
+    top: var(--header-height, 0px);
     right: 0;
     z-index: 120;
     display: flex;
     flex-direction: column;
-    width: 100%;
-    max-width: 695px;
-    height: 100dvh;
-    min-height: 100dvh;
-    padding: 36px 33px 30px 110px;
+    width: min(54vw, 430px);
+    height: calc(100dvh - var(--header-height, 0px));
+    min-height: calc(100dvh - var(--header-height, 0px));
     overflow-y: auto;
+    overscroll-behavior: contain;
     background: var(--color-white);
-    box-shadow: 0 4px 28px 0 rgb(0 0 0 / 25%);
+    box-shadow: -6px 0 18px rgb(19 74 155 / 12%);
     transform: translateX(100%);
     transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-
-    @include bp.mq(tablet-s) {
-        padding: 36px 20px 30px 28px;
-    }
 
     &.is-open {
         transform: translateX(0);
     }
 
-    .menu-header {
-        display: flex;
-        justify-content: flex-end;
-        margin-bottom: 18px;
+    .menu-content {
+        display: none;
+        padding: 0;
     }
 
-    .menu-close {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 40px;
-        height: 40px;
-        padding: 0;
-        color: var(--menu-muted);
-        cursor: pointer;
-        background: none;
-        border: none;
-        border-radius: 8px;
+    .menu-content--navigation {
+        display: block;
+    }
 
-        &:hover {
-            color: var(--menu-text);
+    .menu-content--catalog {
+        padding: 0;
+
+        .header-catalog-menu {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: min(427px, 100%);
+            background: #fff;
+            backdrop-filter: blur(17.75px);
+
+            ul {
+                align-self: stretch;
+            }
+
+            a {
+                display: flex;
+                gap: 8px;
+                align-items: center;
+                align-self: stretch;
+                padding: 10px 8px 10px 20px;
+                font-family: "Golos Text", sans-serif;
+                font-size: 20px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: normal;
+                color: #37383a;
+
+                &:hover {
+                    color: #134a9b;
+                    background: #f4f5f7;
+                }
+            }
+        }
+    }
+
+    &.is-catalog {
+        gap: 0;
+        padding: 0;
+
+        .menu-content--navigation {
+            display: none;
+        }
+
+        .menu-content--catalog {
+            display: block;
+        }
+
+        .menu-products {
+            color: var(--color-blue);
+            background: var(--color-white);
+            border-color: var(--color-blue);
         }
     }
 
     .menu-navigation {
-        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 22.5px;
+
+        a {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            align-self: stretch;
+            padding: 8px 0;
+            font-family: "Golos Text", sans-serif;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+            color: #134a9b;
+            text-decoration: none;
+            border-bottom: 1px solid #d3d3d3;
+        }
     }
 
     .menu-contacts {
-        padding-top: 41px;
-        margin-top: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        font-family: "Golos Text", sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: normal;
+        color: #37383a;
+
+        .menu-contact-address,
+        .menu-contact-phones {
+            display: flex;
+            gap: 8px;
+            align-items: flex-start;
+        }
+
+        .menu-contact-address {
+            margin-bottom: 13px;
+
+            svg {
+                flex: 0 0 24px;
+                color: #134a9b;
+            }
+
+            p {
+                margin: 0;
+            }
+        }
+
+        > a {
+            width: fit-content;
+            margin-bottom: 13px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #37383a;
+            text-decoration: none;
+        }
+
+        .menu-contact-phones {
+            align-items: center;
+            margin-bottom: 13px;
+
+            svg {
+                flex: 0 0 24px;
+                color: #134a9b;
+            }
+
+            > div {
+                display: flex;
+                flex-direction: column;
+            }
+
+            a {
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 22px;
+                color: #37383a;
+                text-decoration: none;
+            }
+        }
+    }
+
+    .menu-contacts-callback {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        justify-content: center;
+        width: 204px;
+        height: auto;
+        min-width: 0;
+        padding: 6px 15px 8px;
+        font-family: "Golos Text", sans-serif;
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        color: #134a9b;
+        border: 1px solid #134a9b;
+        border-radius: 1px;
+    }
+
+    .menu-socials {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+        margin-top: 16px;
+
+        a {
+            display: block;
+            width: 31px;
+            height: 32px;
+            color: #134a9b;
+
+            svg {
+                display: block;
+            }
+        }
+    }
+
+    @include bp.mq(tablet-l) {
+        align-items: flex-start;
+        width: 419px;
+        padding: 18px 43px 160.5px 20px;
+        gap: 22.5px;
+        background: #fff;
+        backdrop-filter: blur(3.9000000953674316px);
+    }
+
+    @include bp.mq(tablet) {
+        flex-shrink: 0;
+        width: 312px;
+        padding: 18px 22px 154.5px 20px;
+        gap: 20.5px;
+    }
+
+    @include bp.mq(mobile-l) {
+        &.is-catalog {
+            width: 100vw;
+        }
     }
 }
 

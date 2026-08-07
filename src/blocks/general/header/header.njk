@@ -1,84 +1,192 @@
 {% from "components/general/navigation-top/navigation-top.njk" import render as navigationTop %}
 {% from "components/general/logo/logo.njk" import render as logo %}
+{% from "components/general/button/button.njk" import render as button %}
+{% from "components/common/lang-switcher/lang-switcher.njk" import render as langSwitcher %}
+{% from "components/common/catalog-menu/catalog-menu.njk" import render as catalogMenu %}
+
+{% set productsIcon %}
+    <span class="products-icon" aria-hidden="true">
+        <svg class="products-icon-default" xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23" fill="none">
+            <rect width="11.25" height="11.25" fill="white" />
+            <rect width="11.25" height="11.25" transform="translate(11.25 11.25)" fill="white" />
+            <rect width="5.625" height="5.625" transform="translate(2.8125 14.0625)" fill="#B52F59" />
+            <rect width="5.625" height="5.625" transform="translate(14.0625 2.8125)" fill="#B52F59" />
+        </svg>
+        <svg class="products-icon-open" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <rect width="9.375" height="9.375" transform="translate(9.375 10) rotate(90)" fill="#134A9B" />
+            <rect width="9.375" height="9.375" transform="translate(19.3749) rotate(90)" fill="#134A9B" />
+            <rect width="4.6875" height="4.6875" transform="translate(17.3959 11.6667) rotate(90)" fill="#B52F59" />
+            <rect width="4.6875" height="4.6875" transform="translate(6.5625 2.5) rotate(90)" fill="#B52F59" />
+        </svg>
+    </span>
+{% endset %}
 
 <header class="header">
-    <div class="container">
-        <div class="block">
-            <div class="wrap logo-wrap">
-                {{ logo() }}
+    <div class="header-top">
+        <div class="container">
+            <div class="header-top-inner">
+                <div class="header-top-left">
+                    <div class="header-address">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path
+                                d="M12.0009 13.4299C13.724 13.4299 15.1209 12.0331 15.1209 10.3099C15.1209 8.58681 13.724 7.18994 12.0009 7.18994C10.2777 7.18994 8.88086 8.58681 8.88086 10.3099C8.88086 12.0331 10.2777 13.4299 12.0009 13.4299Z"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                            />
+                            <path
+                                d="M3.61971 8.49C5.58971 -0.169998 18.4197 -0.159997 20.3797 8.5C21.5297 13.58 18.3697 17.88 15.5997 20.54C13.5897 22.48 10.4097 22.48 8.38971 20.54C5.62971 17.88 2.46971 13.57 3.61971 8.49Z"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                            />
+                        </svg>
+                        <span>Россия, Московская область, г. Сергиев Посад</span>
+                    </div>
+                    <a class="header-email" href="mailto:info@prtara.ru">info@prtara.ru</a>
+                    <div class="header-phones" data-header-phones>
+                        <button class="header-phones-toggle" type="button" aria-expanded="false" aria-controls="header-phones-list">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path
+                                    d="M21.97 18.33C21.97 18.69 21.89 19.06 21.72 19.42C21.55 19.78 21.33 20.12 21.04 20.44C20.55 20.98 20.01 21.37 19.4 21.62C18.8 21.87 18.15 22 17.45 22C16.43 22 15.34 21.76 14.19 21.27C13.04 20.78 11.89 20.12 10.75 19.29C9.6 18.45 8.51 17.52 7.47 16.49C6.44 15.45 5.51 14.36 4.68 13.22C3.86 12.08 3.2 10.94 2.72 9.81C2.24 8.67 2 7.58 2 6.54C2 5.86 2.12 5.21 2.36 4.61C2.6 4 2.98 3.44 3.51 2.94C4.15 2.31 4.85 2 5.59 2C5.87 2 6.15 2.06 6.4 2.18C6.66 2.3 6.89 2.48 7.07 2.74L9.39 6.01C9.57 6.26 9.7 6.49 9.79 6.71C9.88 6.92 9.93 7.13 9.93 7.32C9.93 7.56 9.86 7.8 9.72 8.03C9.59 8.26 9.4 8.5 9.16 8.74L8.4 9.53C8.29 9.64 8.24 9.77 8.24 9.93C8.24 10.01 8.25 10.08 8.27 10.16C8.3 10.24 8.33 10.3 8.35 10.36C8.53 10.69 8.84 11.12 9.28 11.64C9.73 12.16 10.21 12.69 10.73 13.22C11.27 13.75 11.79 14.24 12.32 14.69C12.84 15.13 13.27 15.43 13.61 15.61C13.66 15.63 13.72 15.66 13.79 15.69C13.87 15.72 13.95 15.73 14.04 15.73C14.21 15.73 14.34 15.67 14.45 15.56L15.21 14.81C15.46 14.56 15.7 14.37 15.93 14.25C16.16 14.11 16.39 14.04 16.64 14.04C16.83 14.04 17.03 14.08 17.25 14.17C17.47 14.26 17.7 14.39 17.95 14.56L21.26 16.91C21.52 17.09 21.7 17.3 21.81 17.55C21.91 17.8 21.97 18.05 21.97 18.33Z"
+                                    stroke="currentColor"
+                                    stroke-width="1.5"
+                                    stroke-miterlimit="10"
+                                />
+                            </svg>
+                            <span class="header-phones-text">
+                                <span>+7 (496) 549-20-41</span><span class="header-phones-second">, +7 (985) 259-92-89</span>
+                            </span>
+                            <svg class="header-phones-chevron" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                              <path d="M9.75932 12.1142C9.36022 12.5798 8.6399 12.5798 8.2408 12.1142L4.41499 7.6508C3.85897 7.00213 4.31988 6 5.17424 6L12.8258 6C13.6801 6 14.1411 7.00211 13.5851 7.65079L9.75932 12.1142Z" fill="white"/>
+                            </svg>
+                        </button>
+                        <ul class="header-phones-list" id="header-phones-list" hidden>
+                            <li>
+                                <a href="tel:+74965492041">+7 (496) 549-20-41</a>
+                            </li>
+                            <li>
+                                <a href="tel:+79852599289">+7 (985) 259-92-89</a>
+                            </li>
+                        </ul>
+                    </div>
+                    {{ button(
+                         text="Заказать звонок",
+                         type="button",
+                         variant="outline light",
+                         class="header-callback",
+                         data={ src: "popup-callback" }
+                     ) }}
+                </div>
+                <div class="header-top-right">
+                    <div class="header-socials">
+                        <a
+                            class="header-social"
+                            href="https://max.ru/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Max"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="31" height="32" viewBox="0 0 31 32" fill="none" aria-hidden="true">
+                                <path
+                                    d="M30 0C30.5523 4.83191e-07 31 0.447716 31 1V31C31 31.5523 30.5523 32 30 32H1C0.447716 32 0 31.5523 0 31V1C0 0.447715 0.447715 0 1 0H30ZM15.6299 8C11.2211 8 7.5 11.4269 7.5 15.9814C7.50005 17.8882 7.85171 19.2041 8.16113 20.3857C8.42092 21.345 8.65039 22.2238 8.65039 23.2637C8.7612 24.6486 11.3009 23.8395 12.1035 22.8037C13.3718 23.7245 14.1018 23.9541 15.6719 23.9541C20.0124 23.9308 23.5147 20.3828 23.5 16.0234C23.5 11.5955 20.0425 8.00001 15.6299 8ZM15.7373 11.9365V11.9404C17.9621 12.0687 19.6748 13.9637 19.5879 16.2002C19.4383 18.4319 17.5371 20.1329 15.3125 20.0254C14.6162 19.9693 13.9468 19.7298 13.3721 19.3311C13.0245 19.6801 12.4668 20.1325 12.2451 20.0791C11.7829 19.9563 11.2404 17.5968 11.5459 15.6592C11.9165 13.3186 13.5902 11.8252 15.7373 11.9365Z"
+                                    fill="currentColor"
+                                />
+                            </svg>
+                        </a>
+                        <a
+                            class="header-social"
+                            href="https://vk.com/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="VK"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="31" height="32" viewBox="0 0 31 32" fill="none" aria-hidden="true">
+                                <path
+                                    d="M30 0C30.5523 4.83191e-07 31 0.447716 31 1V31C31 31.5523 30.5523 32 30 32H1C0.447716 32 0 31.5523 0 31V1C0 0.447715 0.447715 0 1 0H30ZM5.25 10C4.62517 10.0001 4.50007 10.2972 4.5 10.625C4.5 11.2105 5.24213 14.1145 7.9541 17.9551C9.76207 20.5777 12.309 21.9998 14.627 22C16.0176 22 16.1904 21.6843 16.1904 21.1406V19.1582C16.1904 18.5266 16.3223 18.4004 16.7627 18.4004C17.0873 18.4005 17.6435 18.5649 18.9414 19.8291C20.4247 21.3279 20.6694 22 21.5039 22H23.6924C24.3173 21.9999 24.6295 21.6836 24.4492 21.0605C24.2518 20.4394 23.5432 19.5388 22.6035 18.4707C22.0936 17.8618 21.3293 17.2057 21.0977 16.8779C20.773 16.4564 20.8657 16.2692 21.0977 15.8945C21.1091 15.8783 23.7634 12.0978 24.041 10.8125C24.1801 10.3443 24.0412 10.0002 23.3799 10H21.1914C20.6351 10 20.3784 10.2971 20.2393 10.625C20.2393 10.625 19.1269 13.3647 17.5508 15.1445C17.0408 15.6597 16.8085 15.8242 16.5303 15.8242C16.3912 15.8239 16.1906 15.6599 16.1904 15.1924V10.8125C16.1904 10.2506 16.0289 10.0001 15.5654 10H12.127C11.7795 10 11.5705 10.2606 11.5703 10.5078C11.5703 11.0407 12.358 11.1638 12.4395 12.6621V15.918C12.4394 16.6316 12.3114 16.7607 12.0332 16.7607C11.2912 16.7597 9.48703 14.008 8.41699 10.8594C8.20731 10.2475 7.99739 10.0001 7.43848 10H5.25Z"
+                                    fill="currentColor"
+                                />
+                            </svg>
+                        </a>
+                        <a
+                            class="header-social"
+                            href="https://t.me/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Telegram"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="31" height="32" viewBox="0 0 31 32" fill="none" aria-hidden="true">
+                                <path
+                                    d="M30 0C30.5523 4.83191e-07 31 0.447716 31 1V31C31 31.5523 30.5523 32 30 32H1C0.447716 32 0 31.5523 0 31V1C0 0.447715 0.447715 0 1 0H30ZM21.2383 9C20.6659 9.01272 19.7753 9.31806 15.54 11.0859C14.0518 11.7092 11.0876 12.9943 6.63574 14.9277C5.92381 15.2202 5.54232 15.4996 5.50391 15.7793C5.44031 16.3135 6.2033 16.4789 7.15723 16.7842C7.94585 17.0386 8.98919 17.331 9.53613 17.3438C10.0321 17.3564 10.579 17.1531 11.1895 16.7334C15.3487 13.9224 17.4861 12.4981 17.626 12.4727C17.7277 12.4473 17.8544 12.4219 17.9434 12.498C18.0322 12.5742 18.0322 12.7261 18.0195 12.7646C17.9432 13.0826 14.0403 16.6425 13.8096 16.873C12.9447 17.7633 11.9655 18.3108 13.4785 19.3027C14.7886 20.1677 15.5394 20.7151 16.8877 21.5928C17.7399 22.1524 18.4143 22.8136 19.3047 22.7373C19.7117 22.6991 20.1314 22.3175 20.3477 21.1729C20.8564 18.4763 21.8482 12.6121 22.0771 10.1953C22.1025 9.99183 22.0772 9.72479 22.0518 9.59766C22.0263 9.47049 21.9885 9.30486 21.8359 9.17773C21.6453 9.02528 21.3656 9.00004 21.2383 9Z"
+                                    fill="currentColor"
+                                />
+                            </svg>
+                        </a>
+                    </div>
+                    {{ langSwitcher(
+                        class="header-lang",
+                        languages=[
+                            { code: "ru", label: "RU", current: true },
+                            { code: "en", label: "EN" }
+                        ]
+                    ) }}
+                </div>
             </div>
-            <div class="wrap nav-wrap">
-                {{ navigationTop(items=mainNavItems) }}
-            </div>
-            <div class="wrap actions-wrap">
-                <a class="header-phone" href="tel:+79215555555">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+        </div>
+    </div>
+
+    <div class="header-main">
+        <div class="container">
+            <div class="header-main-inner">
+                <div class="header-logo">
+                    {{ logo() }}
+                </div>
+                <div class="header-nav">
+                    <div class="header-catalog">
+                        {{ button(
+                            text="Продукция",
+                            type="button",
+                            class="header-products",
+                            icon=productsIcon,
+                            data={ toggle_catalog: true },
+                            aria={ expanded: "false", controls: "mobile-catalog-menu" }
+                        ) }}
+                        {{ catalogMenu(items=catalogMenuItems, class="header-catalog-menu") }}
+                    </div>
+                    {{ navigationTop(items=headerNavItems) }}
+                </div>
+                <button class="menu-open" type="button" data-toggle="menu" aria-label="Открыть меню">
+                    <span class="menu-open-text">Меню</span>
+                    <span class="menu-open-icon" aria-hidden="true">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                </button>
+                <form class="header-search" action="./catalog.html" method="get" role="search">
+                    <label class="visually-hidden" for="header-search">Поиск продукции</label>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                         <path
-                            d="M8.38028 8.85323C9.07627 10.3028 10.0251 11.6615 11.2266 12.8631C12.4282 14.0646 13.7869 15.0134 15.2365 15.7094C15.3612 15.7693 15.4235 15.7992 15.5024 15.8222C15.7828 15.904 16.127 15.8453 16.3644 15.6752C16.4313 15.6274 16.4884 15.5702 16.6027 15.4559C16.9523 15.1063 17.1271 14.9315 17.3029 14.8172C17.9658 14.3862 18.8204 14.3862 19.4833 14.8172C19.6591 14.9315 19.8339 15.1063 20.1835 15.4559L20.3783 15.6508C20.9098 16.1822 21.1755 16.448 21.3198 16.7333C21.6069 17.3009 21.6069 17.9712 21.3198 18.5387C21.1755 18.8241 20.9098 19.0898 20.3783 19.6213L20.2207 19.7789C19.6911 20.3085 19.4263 20.5733 19.0662 20.7756C18.6667 21 18.0462 21.1614 17.588 21.16C17.1751 21.1588 16.8928 21.0787 16.3284 20.9185C13.295 20.0575 10.4326 18.433 8.04466 16.045C5.65668 13.6571 4.03221 10.7947 3.17124 7.76131C3.01103 7.19687 2.93092 6.91464 2.9297 6.5017C2.92833 6.04347 3.08969 5.42298 3.31411 5.02348C3.51636 4.66345 3.78117 4.39863 4.3108 3.86901L4.46843 3.71138C4.99987 3.17993 5.2656 2.91421 5.55098 2.76987C6.11854 2.4828 6.7888 2.4828 7.35636 2.76987C7.64174 2.91421 7.90747 3.17993 8.43891 3.71138L8.63378 3.90625C8.98338 4.25585 9.15819 4.43065 9.27247 4.60643C9.70347 5.26932 9.70347 6.1239 9.27247 6.78679C9.15819 6.96257 8.98338 7.13738 8.63378 7.48698C8.51947 7.60129 8.46231 7.65845 8.41447 7.72526C8.24446 7.96269 8.18576 8.30695 8.26748 8.5873C8.29048 8.6662 8.32041 8.72854 8.38028 8.85323Z"
-                            stroke="white"
+                            d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z"
+                            stroke="currentColor"
                             stroke-width="2"
                             stroke-linecap="round"
                             stroke-linejoin="round"
                         />
-                    </svg>
-                    <span>+7 (921) 555-55-55</span>
-                </a>
-                <a
-                    class="header-messenger whatsapp"
-                    href="https://wa.me/79215555555"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="WhatsApp"
-                >
-                    <svg xmlns="http://www.w3.org/2000/svg" width="72" height="65" viewBox="0 0 72 65" fill="none">
-                        <rect width="72" height="65" rx="10" fill="#30D14E" />
                         <path
-                            fill-rule="evenodd"
-                            clip-rule="evenodd"
-                            d="M36.0003 19.1671C28.6363 19.1671 22.667 25.1365 22.667 32.5005C22.667 35.0205 23.367 37.3805 24.5843 39.3911L23.395 43.4338C23.3267 43.6659 23.3222 43.9121 23.382 44.1466C23.4418 44.381 23.5636 44.5951 23.7347 44.7661C23.9058 44.9372 24.1198 45.059 24.3542 45.1188C24.5887 45.1786 24.8349 45.1741 25.067 45.1058L29.1097 43.9165C31.188 45.1737 33.5713 45.8369 36.0003 45.8338C43.3644 45.8338 49.3337 39.8645 49.3337 32.5005C49.3337 25.1365 43.3644 19.1671 36.0003 19.1671ZM32.9843 35.5178C35.6817 38.2138 38.2563 38.5698 39.1657 38.6031C40.5483 38.6538 41.895 37.5978 42.419 36.3725C42.4846 36.2199 42.5083 36.0526 42.4877 35.8879C42.4671 35.7231 42.4029 35.5668 42.3017 35.4351C41.571 34.5018 40.583 33.8311 39.6177 33.1645C39.4162 33.0248 39.1685 32.9687 38.9265 33.008C38.6845 33.0473 38.4672 33.1789 38.3203 33.3751L37.5203 34.5951C37.4781 34.6605 37.4125 34.7073 37.337 34.7261C37.2615 34.7449 37.1817 34.7343 37.1137 34.6965C36.571 34.3858 35.7803 33.8578 35.2123 33.2898C34.6443 32.7218 34.1483 31.9671 33.8697 31.4591C33.836 31.3944 33.8264 31.3198 33.8428 31.2487C33.8592 31.1775 33.9004 31.1146 33.959 31.0711L35.191 30.1565C35.3673 30.0039 35.4812 29.7917 35.5107 29.5604C35.5402 29.3291 35.4834 29.0951 35.351 28.9031C34.7537 28.0285 34.0577 26.9165 33.0483 26.1791C32.9178 26.0853 32.7653 26.0268 32.6055 26.0093C32.4457 25.9918 32.2841 26.0158 32.1363 26.0791C30.9097 26.6045 29.8483 27.9511 29.899 29.3365C29.9323 30.2458 30.2883 32.8205 32.9843 35.5178Z"
-                            fill="white"
+                            d="M20.9984 21.0004L16.6484 16.6504"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="square"
+                            stroke-linejoin="round"
                         />
                     </svg>
-                </a>
-                <a
-                    class="header-messenger max"
-                    href="https://max.ru/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Telegram"
-                >
-                    <svg xmlns="http://www.w3.org/2000/svg" width="70" height="65" viewBox="0 0 70 65" fill="none">
-                        <rect width="69.126" height="65" rx="10" fill="url(#header_max_gradient)" />
-                        <path
-                            fill-rule="evenodd"
-                            clip-rule="evenodd"
-                            d="M34.8759 46.9172C32.0176 46.9172 30.6892 46.5 28.3803 44.8309C26.9198 46.7086 22.295 48.176 22.0933 45.6654C22.0933 43.7807 21.6761 42.1881 21.2031 40.4495C20.6398 38.3074 20 35.922 20 32.4656C20 24.2105 26.7738 18 34.7994 18C42.832 18 49.1259 24.5165 49.1259 32.5421C49.1528 40.4436 42.7773 46.8751 34.8759 46.9172ZM34.9941 25.1354C31.0856 24.9337 28.0395 27.6391 27.3649 31.8814C26.8086 35.3935 27.7961 39.6705 28.6376 39.8931C29.041 39.9905 30.0564 39.1698 30.6892 38.5369C31.7357 39.2599 32.9543 39.6941 34.2222 39.7957C38.272 39.9905 41.7324 36.9074 42.0044 32.862C42.1627 28.808 39.0445 25.3744 34.9941 25.1424L34.9941 25.1354Z"
-                            fill="white"
-                        />
-                        <defs>
-                            <linearGradient
-                                id="header_max_gradient"
-                                x1="16"
-                                y1="-3.73526e-07"
-                                x2="57.5"
-                                y2="40.5"
-                                gradientUnits="userSpaceOnUse"
-                            >
-                                <stop stop-color="#4260FC" />
-                                <stop offset="1" stop-color="#9B5ADE" />
-                            </linearGradient>
-                        </defs>
-                    </svg>
-                </a>
-                <button class="menu-open" type="button" data-toggle="menu" aria-label="Открыть меню">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="66" height="65" viewBox="0 0 66 65" fill="none">
-                        <rect width="66" height="65" rx="10" fill="#F6F6F7" />
-                        <path
-                            d="M18.75 19.8333H47.25V23H18.75V19.8333ZM18.75 30.9166H47.25V34.0833H18.75V30.9166ZM18.75 42H47.25V45.1666H18.75V42Z"
-                            fill="#061E49"
-                        />
-                    </svg>
-                </button>
+                    <input
+                        id="header-search"
+                        type="search"
+                        name="q"
+                        placeholder="Найти продукцию по названию"
+                        autocomplete="off"
+                    />
+                </form>
             </div>
         </div>
     </div>

@@ -3,16 +3,32 @@
 
 {# Навигация в корневом контексте макета (include не пробрасывает {% set %}) #}
 {% set mainNavItems = [
-    { title: "Каталог", href: "./catalog.html" },
-    { title: "Акции", href: "./promotions.html" },
+    { title: "Продукция", href: "./catalog.html" },
+    { title: "О нас", href: "./about.html" },
     { title: "Сертификаты", href: "./certificates.html" },
-    { title: "О компании", href: "./about.html" },
+    { title: "Контакты", href: "./contacts.html" },
     { title: "Доставка и оплата", href: "./delivery.html" },
+    { title: "Акции", href: "./promotions.html" }
+] %}
+{% set headerNavItems = [
+    { title: "О нас", href: "./about.html" },
+    { title: "Сертификаты", href: "./certificates.html" },
     { title: "Контакты", href: "./contacts.html" }
+] %}
+{% set catalogMenuItems = [
+    { title: "Пленки и пакеты из полиэтилена", href: "./catalog-category.html" },
+    { title: "Короба и листы из гофрокартона", href: "./catalog-category.html" },
+    { title: "Фольга", href: "./catalog-category.html" },
+    { title: "Рулонная упаковка", href: "./catalog-category.html", active: true },
+    { title: "Паллетная упаковка", href: "./catalog-category.html" },
+    { title: "Пленки и пакеты БОПП", href: "./catalog-category.html" },
+    { title: "Упаковка из вспененного полиэтилена", href: "./catalog-category.html" },
+    { title: "Пленки защитные", href: "./catalog-category.html" },
+    { title: "Другие виды упаковки", href: "./catalog-category.html" }
 ] %}
 {% set mainNavItemsMobile = [
     {
-        title: "Каталог",
+        title: "Продукция",
         href: "./catalog.html",
         label: true,
         expanded: true,
@@ -20,11 +36,11 @@
             { title: "Категория каталога", href: "./catalog-category.html" }
         ]
     },
-    { title: "Акции", href: "./promotions.html" },
+    { title: "О нас", href: "./about.html" },
     { title: "Сертификаты", href: "./certificates.html" },
-    { title: "О компании", href: "./about.html" },
+    { title: "Контакты", href: "./contacts.html" },
     { title: "Доставка и оплата", href: "./delivery.html" },
-    { title: "Контакты", href: "./contacts.html" }
+    { title: "Акции", href: "./promotions.html" }
 ] %}
 
 <!DOCTYPE html>

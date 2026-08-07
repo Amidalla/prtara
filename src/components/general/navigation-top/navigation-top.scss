@@ -4,40 +4,45 @@
     ul {
         display: flex;
         flex-wrap: wrap;
-        gap: 4px;
+        gap: 24px;
         align-items: center;
-        justify-content: center;
         padding: 0;
         margin: 0;
         list-style: none;
 
         > li {
             a {
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-                padding: 26px 20px;
-                font-size: 14px;
-                font-weight: 700;
-                line-height: 120%;
-                color: var(--color-1);
-                text-transform: uppercase;
-                letter-spacing: 0.04em;
+                font-family: var(--font-family-primary);
+                font-size: 20px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: normal;
+                color: var(--color-blue);
                 white-space: nowrap;
                 text-decoration: none;
-                background: var(--color-gray);
-                border-radius: 10px;
-
-                @include bp.mq(laptop-m) {
-                    padding: 26px 14px;
-                }
+                transition: color 0.3s ease;
 
                 &:hover {
-                    color: #1b4fd8;
+                    color: var(--color-red);
                     text-decoration: none;
-                    background: #e8ecf7;
                 }
             }
+        }
+    }
+
+    @include bp.mq(laptop-m) {
+        ul {
+            gap: 16px;
+
+            > li a {
+                font-size: 16px;
+            }
+        }
+    }
+
+    @include bp.mq(tablet-l) {
+        ul > li a {
+            font-size: 15px;
         }
     }
 }

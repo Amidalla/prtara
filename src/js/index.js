@@ -12,7 +12,9 @@ import {
     popupFeedbackSuccess,
     PopupFeedbackSuccess
 } from "../components/common/popup-feedback-success/popup-feedback-success.js";
+import { langSwitcher } from "../components/common/lang-switcher/lang-switcher.js";
 import { header } from "../blocks/general/header/header.js";
+import { footer } from "../blocks/general/footer/footer.js";
 import { hero } from "../blocks/common/hero/hero.js";
 import { partnersShort } from "../blocks/common/partners-short/partners-short.js";
 import { worksShort } from "../blocks/common/works-short/works-short.js";
@@ -31,7 +33,9 @@ const components = [
     popupCallback,
     popupFeedback,
     popupFeedbackSuccess,
+    langSwitcher,
     header,
+    footer,
     hero,
     partnersShort,
     worksShort,

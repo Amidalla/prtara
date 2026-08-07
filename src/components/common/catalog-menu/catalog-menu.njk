@@ -1,0 +1,16 @@
+{% macro render(items=[], class="", ariaLabel="Каталог продукции") %}
+    {% set menuClasses = "catalog-menu" %}
+    {% if class %}
+        {% set menuClasses = menuClasses + " " + class %}
+    {% endif %}
+
+    <nav class="{{ menuClasses }}" aria-label="{{ ariaLabel }}">
+        <ul>
+            {% for item in items %}
+                <li>
+                    <a href="{{ item.href }}">{{ item.title }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </nav>
+{% endmacro %}
