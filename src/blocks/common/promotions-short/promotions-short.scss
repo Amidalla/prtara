@@ -5,6 +5,22 @@
 
     background: #fff;
 
+    &.is-page {
+        padding-top: 30px;
+
+        @include bp.mq(laptop-m) {
+            padding-top: 50px;
+        }
+
+        @include bp.mq(tablet-l) {
+            padding-top: 27px;
+        }
+
+        @include bp.mq(tablet) {
+            padding-top: 21.5px;
+        }
+    }
+
     > .container {
         position: relative;
         overflow: visible;
@@ -203,6 +219,9 @@
         color: var(--color-black);
         background: #fff;
         border: 1px solid #808080;
+        transition:
+            border-color 0.3s ease,
+            box-shadow 0.3s ease;
 
         @include bp.mq(laptop) {
             height: 397px;
@@ -214,6 +233,19 @@
 
         @include bp.mq(tablet) {
             height: 317px;
+        }
+
+        &:hover {
+            border-color: var(--color-blue);
+            box-shadow: 0 8px 24px rgb(19 74 155 / 12%);
+
+            .picture > img {
+                transform: scale(1.05);
+            }
+
+            .name {
+                color: var(--color-blue);
+            }
         }
     }
 
@@ -227,6 +259,8 @@
         min-height: 120px;
         padding-top: 24px;
         overflow: hidden;
+        color: inherit;
+        text-decoration: none;
 
         @include bp.mq(tablet) {
             min-height: 100px;
@@ -242,6 +276,7 @@
             margin: 0 auto;
             object-fit: contain;
             object-position: center;
+            transition: transform 0.4s ease;
         }
     }
 
@@ -342,6 +377,7 @@
         line-height: 1.2;
         color: #37383a;
         -webkit-box-orient: vertical;
+        transition: color 0.3s ease;
 
         @include bp.mq(laptop) {
             max-width: none;
@@ -353,6 +389,11 @@
 
         @include bp.mq(tablet) {
             font-size: 15px;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
         }
     }
 

@@ -59,9 +59,15 @@
 @use "../blocks/general/section/section";
 @use "../blocks/common/hero/hero";
 @use "../blocks/common/catalog-short/catalog-short";
+@use "../blocks/common/catalog-category/catalog-category";
+@use "../blocks/common/product/product";
+@use "../blocks/common/certificates/certificates";
 @use "../blocks/common/about-short/about-short";
+@use "../blocks/common/about/about";
+@use "../blocks/common/about-exhibition/about-exhibition";
 @use "../blocks/common/promotions-short/promotions-short";
 @use "../blocks/common/faq-short/faq-short";
+@use "../blocks/common/help-short/help-short";
 @use "../blocks/common/geography-short/geography-short";
 @use "../blocks/common/about-description/about-description";
 @use "../blocks/common/about-text/about-text";

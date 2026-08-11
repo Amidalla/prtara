@@ -1,0 +1,200 @@
+@use "core/breakpoints" as bp;
+
+.about-exhibition {
+    padding: 60px 0;
+    color: var(--color-white);
+    background: var(--color-blue);
+
+    @include bp.mq(laptop) {
+        padding: 48px 0;
+    }
+
+    @include bp.mq(tablet-l) {
+        padding: 42px 0;
+    }
+
+    @include bp.mq(tablet) {
+        padding: 36px 0;
+    }
+
+    .about-exhibition-inner {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(280px, 585px);
+        gap: 48px;
+        align-items: start;
+
+        @include bp.mq(laptop) {
+            gap: 32px;
+        }
+
+        @include bp.mq(tablet-l) {
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+    }
+
+    .about-exhibition-content {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        min-width: 0;
+
+        @include bp.mq(tablet-l) {
+            gap: 17px;
+        }
+    }
+
+    .title {
+        margin: 0;
+        font-family: var(--font-family-primary);
+        font-size: 48px;
+        font-weight: 500;
+        line-height: normal;
+        color: var(--color-white);
+
+        @include bp.mq(laptop) {
+            font-size: 36px;
+        }
+
+        @include bp.mq(tablet-l) {
+            font-size: 28px;
+        }
+
+        @include bp.mq(tablet) {
+            font-size: 24px;
+        }
+    }
+
+    .about-exhibition-text {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+
+        p {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: normal;
+            color: var(--color-white);
+
+            @include bp.mq(laptop) {
+                font-size: 16px;
+            }
+
+            @include bp.mq(tablet-l) {
+                font-size: 15px;
+            }
+        }
+
+        .lead {
+            font-size: 18px;
+            font-weight: 700;
+
+            @include bp.mq(laptop) {
+                font-size: 16px;
+            }
+
+            a {
+                color: inherit;
+                text-decoration: underline;
+            }
+        }
+
+        .closing {
+            font-weight: 500;
+        }
+    }
+
+    .about-exhibition-list-block {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .list-title {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: normal;
+        color: var(--color-white);
+
+        @include bp.mq(tablet-l) {
+            font-size: 16px;
+        }
+    }
+
+    .about-exhibition-list {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+
+        li {
+            position: relative;
+            padding-left: 18px;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: normal;
+            color: var(--color-white);
+
+            @include bp.mq(tablet-l) {
+                font-size: 15px;
+            }
+
+            &::before {
+                position: absolute;
+                top: 0.35em;
+                left: 0;
+                width: 10px;
+                height: 10px;
+                content: "";
+                background: #f1eeff;
+                border-radius: 100px;
+            }
+        }
+    }
+
+    .promo {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+
+        strong {
+            font-weight: 700;
+        }
+    }
+
+    .promo-code {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 34px;
+        padding: 4px 12px;
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--color-red);
+        background: var(--color-white);
+        border-radius: 1px;
+    }
+
+    .about-exhibition-media {
+        width: 100%;
+        overflow: hidden;
+
+        @include bp.mq(tablet-l) {
+            max-width: 486px;
+        }
+
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 585 / 454;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+}

@@ -1,0 +1,134 @@
+{% from "components/general/button/button.njk" import render as button %}
+
+{% set lazyPlaceholder = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" %}
+
+{% set aboutProducts = [
+    "пленка полиэтиленовая (ПВД, ПСД, ПНД);",
+    "мешки и пакеты упаковочные;",
+    "рулонная упаковка;",
+    "фольга алюминиевая;",
+    "пленка защитная;",
+    "пленка полиолефиниловая;",
+    "стрейч пленка, термоусадочная пленка;",
+    "защитные уголки из прессованного картона;",
+    "упаковка из гофрокартона и другие упаковочные материалы.",
+    "лента упаковочная полипропиленовая;",
+    "и другие упаковочные материалы."
+] %}
+
+{% set aboutCertificates = [
+    {
+        image: "./assets/images/content/about/cert-1.png",
+        alt: "Диплом за участие в выставке PROM-EXPO"
+    },
+    {
+        image: "./assets/images/content/about/cert-2.png",
+        alt: "Диплом Экспоцентр"
+    },
+    {
+        image: "./assets/images/content/about/cert-3.png",
+        alt: "Диплом Кубаньпродэкспо"
+    },
+    {
+        image: "./assets/images/content/about/cert-4.png",
+        alt: "Диплом Интерполитех"
+    }
+] %}
+
+<section class="about section" data-about>
+    <div class="container">
+        <h1 class="title">О компании</h1>
+
+        <div class="about-layout">
+            <div class="about-content">
+                <div class="about-text">
+                    <p class="lead">
+                        Компания&nbsp;ООО «Промрегионтара»&nbsp;создана весной 2004 года, специализируется на
+                        комплексных поставках упаковочных материалов по всей России.
+                    </p>
+                    <p>
+                        Имеет зарегистрированный&nbsp;<strong>Товарный знак</strong>&nbsp;№&nbsp;528607.
+                    </p>
+                    <p class="about-extra">
+                        Вкладывая свои средства в новую и качественную
+                        <a href="./catalog.html">упаковку</a>, вы получаете увеличение прибыли от продажи своих товаров.
+                        А вложенные средства в логотип на упаковке будут работать на вашу компанию каждый день.
+                    </p>
+                </div>
+
+                <div class="about-list-block">
+                    <p class="list-title">Мы поставляем нашим заказчикам надежную упаковку:</p>
+                    <ul class="about-list">
+                        {% for item in aboutProducts %}
+                            <li>{{ item }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <p class="about-note">
+                    Компания получила&nbsp;патент&nbsp;на уникальную технологию изготовления изделий из пленки ПНД,
+                    имеет награды и дипломы выставок «РосУпак», «Краснодарэкспо», «Логистика и склад»,
+                    «Modern Bakery», «Upakexpo», «Продэкспо», «RosBuild-2024», «ChemiCos».
+                </p>
+
+                <p class="about-mail">
+                    <span>Пишите нам на эл. почту:</span>
+                    <a href="mailto:info@prtara.ru">info@prtara.ru</a>
+                </p>
+
+                <div class="about-actions">
+                    {{ button(
+                        text="Сертификаты",
+                        type="link",
+                        href="./certificates.html",
+                        variant="outline",
+                        class="about-certs-link"
+                    ) }}
+                </div>
+            </div>
+
+            <aside class="about-aside">
+                <h2 class="certs-title">Сертификаты и патенты</h2>
+
+                <div class="about-certs-slider">
+                    <div class="swiper">
+                        <div class="swiper-wrapper">
+                            {% for cert in aboutCertificates %}
+                                <div class="swiper-slide">
+                                    <a
+                                        class="cert-card"
+                                        href="{{ cert.image }}"
+                                        data-fancybox="about-certs"
+                                        data-caption="{{ cert.alt }}"
+                                        aria-label="{{ cert.alt }}"
+                                    >
+                                        <span class="picture">
+                                            <img
+                                                class="lazy"
+                                                src="{{ lazyPlaceholder }}"
+                                                data-src="{{ cert.image }}"
+                                                alt="{{ cert.alt }}"
+                                                width="352"
+                                                height="522"
+                                            >
+                                        </span>
+                                        <span class="shade" aria-hidden="true"></span>
+                                        <span class="zoom" aria-hidden="true">
+                                            <img
+                                                src="./assets/images/content/about/zoom-icon.svg"
+                                                width="70"
+                                                height="70"
+                                                alt=""
+                                            >
+                                        </span>
+                                    </a>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </aside>
+        </div>
+    </div>
+</section>

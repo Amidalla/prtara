@@ -1,18 +1,58 @@
-{% set meta = { title: "Карточка товара" } %}
+{% set meta = { title: "Пленка полиэтиленовая термоусадочная ПВД,ПСД с флексопечатью" } %}
 {% set page = { breadcrumbs: true, heading: false } %}
 {% set breadcrumbs = {
     items: [
         { title: "Главная", url: "./home.html" },
         { title: "Каталог", url: "./catalog.html" },
-        { title: "Категория каталога", url: "./catalog-category.html" },
-        { title: "Карточка товара" }
+        { title: "Пленки и пакеты из полиэтилена", url: "./catalog-category.html" },
+        { title: "Пленка полиэтиленовая термоусадочная ПВД,ПСД с флексопечатью" }
     ]
 } %}
 {% extends "layouts/default.njk" %}
 {% block content %}
-    <section class="section">
-        <div class="container">
-            <p class="page-stub">Здесь будет карточка товара.</p>
-        </div>
-    </section>
+    {% include "blocks/common/product/product.njk" %}
+
+    {% set promotionsShortTitle = "Похожие товары" %}
+    {% set promotionsShortShowAll = false %}
+    {% set promotionsShortNavId = "similar-products" %}
+    {% set promotionsShortItems = [
+        {
+            title: "Наименование товара",
+            image: "./assets/images/content/promotions-short/promo-1.png",
+            href: "./product.html"
+        },
+        {
+            title: "Наименование товара",
+            image: "./assets/images/content/promotions-short/promo-2.png",
+            href: "./product.html"
+        },
+        {
+            title: "Наименование товара",
+            image: "./assets/images/content/promotions-short/promo-3.png",
+            href: "./product.html",
+            badge: true
+        },
+        {
+            title: "Наименование товара",
+            image: "./assets/images/content/promotions-short/promo-4.png",
+            href: "./product.html"
+        },
+        {
+            title: "Наименование товара",
+            image: "./assets/images/content/promotions-short/promo-1.png",
+            href: "./product.html"
+        },
+        {
+            title: "Наименование товара",
+            image: "./assets/images/content/promotions-short/promo-2.png",
+            href: "./product.html"
+        }
+    ] %}
+    {% include "blocks/common/promotions-short/promotions-short.njk" %}
+
+    {% include "blocks/common/faq-short/faq-short.njk" %}
+
+    {% set helpShortTitle = "Заказать оптом" %}
+    {% set helpShortFormId = "wholesale" %}
+    {% include "blocks/common/help-short/help-short.njk" %}
 {% endblock %}

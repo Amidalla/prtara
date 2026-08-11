@@ -1,0 +1,63 @@
+{% set lazyPlaceholder = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" %}
+
+{% set aboutExhibitionItems = [
+    "упаковку из полиэтилена;",
+    "упаковку из многослойных пленок, рулонную;",
+    "картонную упаковку;",
+    "БОПП пленки;",
+    "паллетную упаковку, другие виды упаковки."
+] %}
+
+<section class="about-exhibition section">
+    <div class="container">
+        <div class="about-exhibition-inner">
+            <div class="about-exhibition-content">
+                <h2 class="title">Будем рады встрече на выставке RosUpack 2026!</h2>
+
+                <div class="about-exhibition-text">
+                    <p class="lead">
+                        С&nbsp;16 по 19 июня 2026&nbsp;наша компания примет участие в 30-й Международной выставке
+                        упаковочной индустрии
+                        <a href="https://rosupack.com/ru/" target="_blank" rel="noopener noreferrer">RosUpack</a>!
+                    </p>
+                    <p>
+                        Приглашаем вас посетить наш&nbsp;стенд №&nbsp;F6121 в зале №&nbsp;15, павильон 3, МВЦ «Крокус
+                        Экспо»!
+                    </p>
+
+                    <div class="about-exhibition-list-block">
+                        <p class="list-title">На выставке наша компания представит:</p>
+                        <ul class="about-exhibition-list">
+                            {% for item in aboutExhibitionItems %}
+                                <li>{{ item }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                    <p>Наши специалисты с удовольствием проконсультируют вас и ответят на любые вопросы.</p>
+
+                    <p class="promo">
+                        Используя наш <strong>промокод</strong>
+                        <span class="promo-code">PROMREGIONTARA</span>
+                        вы сможете бесплатно получить электронный билет
+                    </p>
+
+                    <p class="closing">
+                        Ждем Вас на нашем стенде&nbsp;№&nbsp;F6121&nbsp;с 16 по 19 июня 2026 года в МВЦ «Крокус Экспо»!
+                    </p>
+                </div>
+            </div>
+
+            <div class="about-exhibition-media">
+                <img
+                    class="lazy"
+                    src="{{ lazyPlaceholder }}"
+                    data-src="./assets/images/content/about/booth.jpg"
+                    alt="Стенд ООО Промрегионтара на выставке"
+                    width="585"
+                    height="454"
+                >
+            </div>
+        </div>
+    </div>
+</section>

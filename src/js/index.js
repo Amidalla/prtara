@@ -1,4 +1,5 @@
 import lozad from "lozad";
+import "./utils/fancybox.js";
 import { menu } from "../components/general/menu/menu.js";
 import { form } from "../components/general/form/form.js";
 import { input } from "../components/general/input/input.js";
@@ -19,8 +20,11 @@ import { header } from "../blocks/general/header/header.js";
 import { footer } from "../blocks/general/footer/footer.js";
 import { hero } from "../blocks/common/hero/hero.js";
 import { aboutShort } from "../blocks/common/about-short/about-short.js";
+import { about } from "../blocks/common/about/about.js";
 import { promotionsShort } from "../blocks/common/promotions-short/promotions-short.js";
 import { faqShort } from "../blocks/common/faq-short/faq-short.js";
+import { product } from "../blocks/common/product/product.js";
+import { certificates } from "../blocks/common/certificates/certificates.js";
 import { partnersShort } from "../blocks/common/partners-short/partners-short.js";
 import { worksShort } from "../blocks/common/works-short/works-short.js";
 import { newsShort } from "../blocks/common/news-short/news-short.js";
@@ -44,8 +48,11 @@ const components = [
     footer,
     hero,
     aboutShort,
+    about,
     promotionsShort,
     faqShort,
+    product,
+    certificates,
     partnersShort,
     worksShort,
     newsShort

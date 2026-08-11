@@ -1,17 +1,56 @@
-{% set meta = { title: "Категория каталога" } %}
+{% set meta = { title: "Пленки и пакеты из полиэтилена" } %}
 {% set page = { breadcrumbs: true, heading: false } %}
 {% set breadcrumbs = {
     items: [
         { title: "Главная", url: "./home.html" },
         { title: "Каталог", url: "./catalog.html" },
-        { title: "Категория каталога" }
+        { title: "Пленки и пакеты из полиэтилена" }
     ]
 } %}
 {% extends "layouts/default.njk" %}
 {% block content %}
-    <section class="section">
-        <div class="container">
-            <p class="page-stub">Здесь будет каталог второго уровня.</p>
-        </div>
-    </section>
+    {% include "blocks/common/catalog-category/catalog-category.njk" %}
+
+    {% set helpShortIsCategory = true %}
+    {% set helpShortFormId = "help-category" %}
+    {% set helpShortButtonText = "Задать вопрос" %}
+    {% include "blocks/common/help-short/help-short.njk" %}
+
+    {% set promotionsShortTitle = "Популярные товары" %}
+    {% set promotionsShortShowAll = false %}
+    {% set promotionsShortNavId = "category-popular" %}
+    {% set promotionsShortItems = [
+        {
+            title: "Наименование товара",
+            image: "./assets/images/content/promotions-short/promo-1.png",
+            href: "./product.html"
+        },
+        {
+            title: "Наименование товара",
+            image: "./assets/images/content/promotions-short/promo-2.png",
+            href: "./product.html"
+        },
+        {
+            title: "Наименование товара",
+            image: "./assets/images/content/promotions-short/promo-3.png",
+            href: "./product.html",
+            badge: true
+        },
+        {
+            title: "Наименование товара",
+            image: "./assets/images/content/promotions-short/promo-4.png",
+            href: "./product.html"
+        },
+        {
+            title: "Наименование товара",
+            image: "./assets/images/content/promotions-short/promo-1.png",
+            href: "./product.html"
+        },
+        {
+            title: "Наименование товара",
+            image: "./assets/images/content/promotions-short/promo-2.png",
+            href: "./product.html"
+        }
+    ] %}
+    {% include "blocks/common/promotions-short/promotions-short.njk" %}
 {% endblock %}

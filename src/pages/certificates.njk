@@ -1,16 +1,12 @@
-{% set meta = { title: "Сертификаты" } %}
+{% set meta = { title: "Дипломы и сертификаты" } %}
 {% set page = { breadcrumbs: true, heading: false } %}
 {% set breadcrumbs = {
     items: [
         { title: "Главная", url: "./home.html" },
-        { title: "Сертификаты" }
+        { title: "Дипломы и сертификаты" }
     ]
 } %}
 {% extends "layouts/default.njk" %}
 {% block content %}
-    <section class="section">
-        <div class="container">
-            <p class="page-stub">Здесь будут сертификаты.</p>
-        </div>
-    </section>
+    {% include "blocks/common/certificates/certificates.njk" %}
 {% endblock %}

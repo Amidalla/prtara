@@ -1,0 +1,121 @@
+{% set lazyPlaceholder = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" %}
+
+{% set certificatesItemsDefault = [
+    {
+        image: "./assets/images/content/certificates/cert-1.png",
+        alt: "Диплом за участие в выставке PROM-EXPO"
+    },
+    {
+        image: "./assets/images/content/certificates/cert-2.png",
+        alt: "Диплом Экспоцентр — Склад. Транспорт. Логистика"
+    },
+    {
+        image: "./assets/images/content/certificates/cert-3.png",
+        alt: "Диплом Кубаньпродэкспо за высокое качество продукции"
+    },
+    {
+        image: "./assets/images/content/certificates/cert-4.png",
+        alt: "Диплом участника выставки Интерполитех"
+    },
+    {
+        image: "./assets/images/content/certificates/cert-5.png",
+        alt: "Сертификат участника выставки RosUpack"
+    },
+    {
+        image: "./assets/images/content/certificates/cert-2.png",
+        alt: "Диплом Экспоцентр — Склад. Транспорт. Логистика"
+    },
+    {
+        image: "./assets/images/content/certificates/cert-1.png",
+        alt: "Диплом за участие в выставке PROM-EXPO"
+    },
+    {
+        image: "./assets/images/content/certificates/cert-5.png",
+        alt: "Сертификат участника выставки RosUpack"
+    },
+    {
+        image: "./assets/images/content/certificates/cert-3.png",
+        alt: "Диплом Кубаньпродэкспо за высокое качество продукции"
+    },
+    {
+        image: "./assets/images/content/certificates/cert-4.png",
+        alt: "Диплом участника выставки Интерполитех"
+    },
+    {
+        image: "./assets/images/content/certificates/cert-5.png",
+        alt: "Сертификат участника выставки RosUpack"
+    },
+    {
+        image: "./assets/images/content/certificates/cert-2.png",
+        alt: "Диплом Экспоцентр — Склад. Транспорт. Логистика"
+    },
+    {
+        image: "./assets/images/content/certificates/cert-2.png",
+        alt: "Диплом Экспоцентр — Склад. Транспорт. Логистика"
+    },
+    {
+        image: "./assets/images/content/certificates/cert-1.png",
+        alt: "Диплом за участие в выставке PROM-EXPO"
+    },
+    {
+        image: "./assets/images/content/certificates/cert-2.png",
+        alt: "Диплом Экспоцентр — Склад. Транспорт. Логистика"
+    },
+    {
+        image: "./assets/images/content/certificates/cert-3.png",
+        alt: "Диплом Кубаньпродэкспо за высокое качество продукции"
+    }
+] %}
+{% set certificatesItems = certificatesItems if certificatesItems else certificatesItemsDefault %}
+{% set certificatesTitle = certificatesTitle | default("Дипломы и сертификаты") %}
+{% set certificatesTitleShort = certificatesTitleShort | default("Сертификаты") %}
+{% set certificatesIsDiplomas = certificatesIsDiplomas | default(false) %}
+{% set certificatesTitleTag = certificatesTitleTag | default("h1") %}
+
+<section class="certificates section{% if certificatesIsDiplomas %} is-diplomas{% endif %}" data-certificates>
+    <div class="container">
+        {% if certificatesTitleTag == "h2" %}
+            <h2 class="title">
+                <span class="title-full">{{ certificatesTitle }}</span>
+                <span class="title-short">{{ certificatesTitleShort }}</span>
+            </h2>
+        {% else %}
+            <h1 class="title">
+                <span class="title-full">{{ certificatesTitle }}</span>
+                <span class="title-short">{{ certificatesTitleShort }}</span>
+            </h1>
+        {% endif %}
+
+        <div class="certificates-grid">
+            {% for item in certificatesItems %}
+                <a
+                    class="certificates-card"
+                    href="{{ item.image }}"
+                    data-fancybox="{% if certificatesIsDiplomas %}diplomas{% else %}certificates{% endif %}"
+                    data-caption="{{ item.alt }}"
+                    aria-label="{{ item.alt }}"
+                >
+                    <span class="picture">
+                        <img
+                            class="lazy"
+                            src="{{ lazyPlaceholder }}"
+                            data-src="{{ item.image }}"
+                            alt="{{ item.alt }}"
+                            width="346"
+                            height="501"
+                        >
+                    </span>
+                    <span class="shade" aria-hidden="true"></span>
+                    <span class="zoom" aria-hidden="true">
+                        <img
+                            src="./assets/images/content/certificates/zoom-icon.svg"
+                            width="44"
+                            height="44"
+                            alt=""
+                        >
+                    </span>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>

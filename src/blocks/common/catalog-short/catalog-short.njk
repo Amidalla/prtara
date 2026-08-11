@@ -53,11 +53,21 @@
 
 {% set lazyPlaceholder = "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='1'%20height='1'/%3E" %}
 
-<section class="catalog-short section">
-    <div class="container">
-        <h2 class="title">Каталог</h2>
+{% set catalogShortTitleTag = catalogShortTitleTag | default("h2") %}
+{% set catalogShortTitle = catalogShortTitle | default("Каталог") %}
+{% set catalogShortFormId = catalogShortFormId | default("catalog-short") %}
+{% set catalogShortIsPage = catalogShortIsPage | default(false) %}
+{% set catalogShortHideForm = catalogShortHideForm | default(false) %}
 
-        <div class="catalog-short-inner">
+<section class="catalog-short section{% if catalogShortIsPage %} is-page{% endif %}{% if catalogShortHideForm %} is-cards-only{% endif %}">
+    <div class="container">
+        {% if catalogShortTitleTag == "h1" %}
+            <h1 class="title">{{ catalogShortTitle }}</h1>
+        {% else %}
+            <h2 class="title">{{ catalogShortTitle }}</h2>
+        {% endif %}
+
+        <div class="catalog-short-inner{% if catalogShortHideForm %} is-cards-only{% endif %}">
             <div class="catalog-short-grid">
                 {% for item in catalogShortItems %}
                     <a class="catalog-short-card" href="{{ item.href }}">
@@ -87,64 +97,66 @@
                 {% endfor %}
             </div>
 
-            <aside class="catalog-short-form">
-                <h3 class="form-title">Оставить заявку</h3>
+            {% if not catalogShortHideForm %}
+                <aside class="catalog-short-form">
+                    <h3 class="form-title">Оставить заявку</h3>
 
-                <form class="form" data-validate>
-                    <div class="grid">
-                        <div class="field">
-                            <label class="label" for="catalog-short-name">Контактное лицо*:</label>
-                            {{ input(
-                                type="text",
-                                id="catalog-short-name",
-                                name="name",
-                                placeholder="ФИО",
-                                autocomplete="name",
-                                required=true,
-                                minlength="2",
-                                data={"error": "Введите имя (минимум 2 буквы)"}
-                            ) }}
+                    <form class="form" data-validate>
+                        <div class="grid">
+                            <div class="field">
+                                <label class="label" for="{{ catalogShortFormId }}-name">Контактное лицо*:</label>
+                                {{ input(
+                                    type="text",
+                                    id=catalogShortFormId + "-name",
+                                    name="name",
+                                    placeholder="ФИО",
+                                    autocomplete="name",
+                                    required=true,
+                                    minlength="2",
+                                    data={"error": "Введите имя (минимум 2 буквы)"}
+                                ) }}
+                            </div>
+                            <div class="field">
+                                <label class="label" for="{{ catalogShortFormId }}-phone">Телефон*:</label>
+                                {{ input(
+                                    type="tel",
+                                    id=catalogShortFormId + "-phone",
+                                    name="phone",
+                                    placeholder="+7",
+                                    autocomplete="tel",
+                                    data={"mask": "phone", "error": "Введите полный номер телефона"},
+                                    required=true
+                                ) }}
+                            </div>
+                            <div class="field">
+                                <label class="label" for="{{ catalogShortFormId }}-message">Сообщение</label>
+                                {{ textarea(
+                                    id=catalogShortFormId + "-message",
+                                    name="message",
+                                    placeholder="Текст сообщения",
+                                    rows=3,
+                                    data={"error": "Введите сообщение"}
+                                ) }}
+                            </div>
+                            <div class="field-consent">
+                                {{ consentCheckbox(
+                                    id=catalogShortFormId + "-consent",
+                                    text='Я согласен(а) на обработку моих персональных данных в соответствии с <a href="./policy.html">Согласием на обработку персональных данных</a> и <a href="./policy.html">Политикой конфиденциальности</a>',
+                                    data={"error": "Необходимо отметить"},
+                                    required=true
+                                ) }}
+                            </div>
+                            <div class="actions">
+                                {{ button(
+                                    text="Отправить",
+                                    type="submit",
+                                    disabled=true
+                                ) }}
+                            </div>
                         </div>
-                        <div class="field">
-                            <label class="label" for="catalog-short-phone">Телефон*:</label>
-                            {{ input(
-                                type="tel",
-                                id="catalog-short-phone",
-                                name="phone",
-                                placeholder="+7",
-                                autocomplete="tel",
-                                data={"mask": "phone", "error": "Введите полный номер телефона"},
-                                required=true
-                            ) }}
-                        </div>
-                        <div class="field">
-                            <label class="label" for="catalog-short-message">Сообщение</label>
-                            {{ textarea(
-                                id="catalog-short-message",
-                                name="message",
-                                placeholder="Текст сообщения",
-                                rows=3,
-                                data={"error": "Введите сообщение"}
-                            ) }}
-                        </div>
-                        <div class="field-consent">
-                            {{ consentCheckbox(
-                                id="catalog-short-consent",
-                                text='Я согласен(а) на обработку моих персональных данных в соответствии с <a href="./policy.html">Согласием на обработку персональных данных</a> и <a href="./policy.html">Политикой конфиденциальности</a>',
-                                data={"error": "Необходимо отметить"},
-                                required=true
-                            ) }}
-                        </div>
-                        <div class="actions">
-                            {{ button(
-                                text="Отправить",
-                                type="submit",
-                                disabled=true
-                            ) }}
-                        </div>
-                    </div>
-                </form>
-            </aside>
+                    </form>
+                </aside>
+            {% endif %}
         </div>
     </div>
 </section>

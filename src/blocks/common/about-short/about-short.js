@@ -1,6 +1,6 @@
 import Swiper from "swiper";
 import { Pagination, EffectFade } from "swiper/modules";
-import { Fancybox } from "@fancyapps/ui/dist/fancybox/";
+import { Fancybox, galleryFancyboxOptions } from "../../../js/utils/fancybox.js";
 
 export function aboutShort(context = document) {
     const roots = context.querySelectorAll("[data-about-short]");
@@ -34,8 +34,7 @@ export function aboutShort(context = document) {
         const getGallery = () =>
             [...swiperEl.querySelectorAll(".swiper-slide:not(.swiper-slide-duplicate) .cert-card")].map((link) => ({
                 src: link.getAttribute("href") || "",
-                caption: link.dataset.caption || "",
-                thumbSrc: link.dataset.thumb || link.getAttribute("href") || ""
+                caption: link.dataset.caption || ""
             }));
 
         const onCertClick = (event) => {
@@ -50,6 +49,7 @@ export function aboutShort(context = document) {
                 : 0;
 
             Fancybox.show(getGallery(), {
+                ...galleryFancyboxOptions,
                 startIndex
             });
         };

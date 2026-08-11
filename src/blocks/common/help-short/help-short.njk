@@ -1,0 +1,130 @@
+{% from "components/general/button/button.njk" import render as button %}
+{% from "components/general/input/input.njk" import render as input %}
+{% from "components/general/textarea/textarea.njk" import render as textarea %}
+{% from "components/general/consent-checkbox/consent-checkbox.njk" import render as consentCheckbox %}
+
+{% set lazyPlaceholder = "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='1'%20height='1'/%3E" %}
+{% set helpShortFormId = helpShortFormId | default("help-short") %}
+{% set helpShortIsCategory = helpShortIsCategory | default(false) %}
+{% set helpShortButtonText = helpShortButtonText | default("Отправить") %}
+{% set helpShortTitle = helpShortTitle | default("Нужна помощь? Задайте свой вопрос!") %}
+
+<section class="help-short section{% if helpShortIsCategory %} is-category{% endif %}">
+    <div class="container">
+        {% if not helpShortIsCategory %}
+            <h2 class="title">{{ helpShortTitle }}</h2>
+        {% endif %}
+
+        <div class="help-short-inner">
+            <div class="help-short-form">
+                {% if helpShortIsCategory %}
+                    <h2 class="form-title">{{ helpShortTitle }}</h2>
+                {% endif %}
+
+                <form class="form" data-validate>
+                    <div class="grid">
+                        <div class="field">
+                            {% if helpShortIsCategory %}
+                                <label class="visually-hidden" for="{{ helpShortFormId }}-name">Имя*</label>
+                                {{ input(
+                                    type="text",
+                                    id=helpShortFormId + "-name",
+                                    name="name",
+                                    placeholder="Имя*",
+                                    autocomplete="name",
+                                    required=true,
+                                    minlength="2",
+                                    data={"error": "Введите имя (минимум 2 буквы)"}
+                                ) }}
+                            {% else %}
+                                <label class="label" for="{{ helpShortFormId }}-name">Контактное лицо*:</label>
+                                {{ input(
+                                    type="text",
+                                    id=helpShortFormId + "-name",
+                                    name="name",
+                                    placeholder="ФИО",
+                                    autocomplete="name",
+                                    required=true,
+                                    minlength="2",
+                                    data={"error": "Введите имя (минимум 2 буквы)"}
+                                ) }}
+                            {% endif %}
+                        </div>
+                        <div class="field">
+                            {% if helpShortIsCategory %}
+                                <label class="visually-hidden" for="{{ helpShortFormId }}-phone">Телефон*</label>
+                                {{ input(
+                                    type="tel",
+                                    id=helpShortFormId + "-phone",
+                                    name="phone",
+                                    placeholder="Телефон*",
+                                    autocomplete="tel",
+                                    data={"mask": "phone", "error": "Введите полный номер телефона"},
+                                    required=true
+                                ) }}
+                            {% else %}
+                                <label class="label" for="{{ helpShortFormId }}-phone">Телефон*:</label>
+                                {{ input(
+                                    type="tel",
+                                    id=helpShortFormId + "-phone",
+                                    name="phone",
+                                    placeholder="+7",
+                                    autocomplete="tel",
+                                    data={"mask": "phone", "error": "Введите полный номер телефона"},
+                                    required=true
+                                ) }}
+                            {% endif %}
+                        </div>
+                        <div class="field">
+                            {% if helpShortIsCategory %}
+                                <label class="visually-hidden" for="{{ helpShortFormId }}-message">Сообщение</label>
+                                {{ textarea(
+                                    id=helpShortFormId + "-message",
+                                    name="message",
+                                    placeholder="Сообщение",
+                                    rows=3,
+                                    data={"error": "Введите сообщение"}
+                                ) }}
+                            {% else %}
+                                <label class="label" for="{{ helpShortFormId }}-message">Сообщение</label>
+                                {{ textarea(
+                                    id=helpShortFormId + "-message",
+                                    name="message",
+                                    placeholder="Текст сообщения",
+                                    rows=3,
+                                    data={"error": "Введите сообщение"}
+                                ) }}
+                            {% endif %}
+                        </div>
+                        <div class="field-consent">
+                            {{ consentCheckbox(
+                                id=helpShortFormId + "-consent",
+                                text='Я согласен(а) на обработку моих персональных данных в соответствии с <a href="./policy.html">Согласием на обработку персональных данных</a> и <a href="./policy.html">Политикой конфиденциальности</a>',
+                                data={"error": "Необходимо отметить"},
+                                required=true
+                            ) }}
+                        </div>
+                        <div class="actions">
+                            {{ button(
+                                text=helpShortButtonText,
+                                type="submit",
+                                disabled=true
+                            ) }}
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="help-short-visual" aria-hidden="true">
+                <img
+                    class="lazy"
+                    src="{{ lazyPlaceholder }}"
+                    data-src="./assets/images/content/help-short/help-visual.png"
+                    alt=""
+                    width="737"
+                    height="457"
+                />
+            </div>
+        </div>
+    </div>
+</section>

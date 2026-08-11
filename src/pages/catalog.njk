@@ -8,9 +8,50 @@
 } %}
 {% extends "layouts/default.njk" %}
 {% block content %}
-    <section class="section">
-        <div class="container">
-            <p class="page-stub">Здесь будет каталог.</p>
-        </div>
-    </section>
+    {% set catalogShortTitleTag = "h1" %}
+    {% set catalogShortFormId = "catalog-page" %}
+    {% set catalogShortIsPage = true %}
+    {% include "blocks/common/catalog-short/catalog-short.njk" %}
+
+    {% set promotionsShortTitle = "Популярные товары" %}
+    {% set promotionsShortShowAll = false %}
+    {% set promotionsShortIsPage = true %}
+    {% set promotionsShortNavId = "popular-products" %}
+    {% set promotionsShortItems = [
+        {
+            title: "Мешки полиэтиленовые ПСД для упаковки стиральных машин с",
+            image: "./assets/images/content/promotions-short/promo-1.png",
+            href: "./product.html",
+            badge: true
+        },
+        {
+            title: "Пленка полиэтиленовая термоусадочная, с флексопечатью",
+            image: "./assets/images/content/promotions-short/promo-2.png",
+            href: "./product.html"
+        },
+        {
+            title: "Наименование товара",
+            image: "./assets/images/content/promotions-short/promo-3.png",
+            href: "./product.html"
+        },
+        {
+            title: "Наименование товара",
+            image: "./assets/images/content/promotions-short/promo-4.png",
+            href: "./product.html"
+        },
+        {
+            title: "Мешки полиэтиленовые ПСД для упаковки стиральных машин с",
+            image: "./assets/images/content/promotions-short/promo-1.png",
+            href: "./product.html",
+            badge: true
+        },
+        {
+            title: "Пленка полиэтиленовая термоусадочная, с флексопечатью",
+            image: "./assets/images/content/promotions-short/promo-2.png",
+            href: "./product.html"
+        }
+    ] %}
+    {% include "blocks/common/promotions-short/promotions-short.njk" %}
+
+    {% include "blocks/common/help-short/help-short.njk" %}
 {% endblock %}

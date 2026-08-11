@@ -1,0 +1,212 @@
+{% from "components/general/button/button.njk" import render as button %}
+
+{% set lazyPlaceholder = "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='1'%20height='1'/%3E" %}
+{% set productTitle = productTitle | default("Пленка полиэтиленовая термоусадочная ПВД,ПСД с флексопечатью") %}
+{% set productImage = productImage | default("./assets/images/content/product/hero.png") %}
+
+{% set productSpecsHeaders = productSpecsHeaders | default([
+    "ПВД,ПСД",
+    "Размер, мм",
+    "Размер, мм",
+    "Минимальная поставка,кг",
+    "Срок поставки, дни",
+    ""
+]) %}
+
+{% set productSpecsRows = productSpecsRows | default([
+    ["Рукав", "230- 2250", "45 - 180", "300", "14", "под заказ"],
+    ["Полурукав", "230 -1550", "45 - 180", "300", "14", "под заказ"],
+    ["Полотно", "70 - 1450", "45 - 180", "300", "14", "под заказ"]
+]) %}
+
+{% set productBenefits = productBenefits | default([
+    {
+        icon: "./assets/images/content/product/benefit-delivery.svg",
+        title: "Доставка по всей территории России",
+        text: "Стоимость доставки рассчитает менеджер при оформлении заказа"
+    },
+    {
+        icon: "./assets/images/content/product/benefit-free.svg",
+        title: "Бесплатная доставка",
+        text: "Бесплатная доставка упаковочных материалов по Москве и МО"
+    },
+    {
+        icon: "./assets/images/content/product/benefit-save.svg",
+        title: "Сокращение расходов",
+        text: "Экономия с вакуумной упаковке до 30%"
+    }
+]) %}
+
+<section class="product section" data-product>
+    <div class="container">
+        <div class="product-hero">
+            <h1 class="title">{{ productTitle }}</h1>
+
+            <div class="product-gallery">
+                <a
+                    class="product-gallery-main"
+                    href="{{ productImage }}"
+                    data-fancybox="product-gallery"
+                    data-caption="{{ productTitle }}"
+                >
+                    <img
+                        class="lazy"
+                        src="{{ lazyPlaceholder }}"
+                        data-src="{{ productImage }}"
+                        alt="{{ productTitle }}"
+                        width="581"
+                        height="441"
+                    />
+                    <span class="product-zoom" aria-hidden="true">
+                        <img
+                            src="./assets/images/content/product/zoom.svg"
+                            width="31"
+                            height="31"
+                            alt=""
+                        />
+                    </span>
+                </a>
+            </div>
+
+            <div class="product-anchors">
+                <a href="#product-specs">Характеристики ↓</a>
+                <a href="#product-description">Описание ↓</a>
+            </div>
+
+            <div class="product-order">
+                <p class="order-label"><span>Заказ:</span> от 100 шт.</p>
+                <div class="order-actions">
+                    {{ button(
+                        text="Заказать",
+                        type="button",
+                        data={ src: "popup-order" }
+                    ) }}
+                    {{ button(
+                        text="Задать вопрос",
+                        type="button",
+                        variant="red",
+                        data={ src: "popup-feedback" }
+                    ) }}
+                </div>
+                <a class="order-download" href="#">
+                    <img
+                        src="./assets/images/content/product/download.svg"
+                        width="27"
+                        height="27"
+                        alt=""
+                        aria-hidden="true"
+                    />
+                    <span>Скачать реквизиты</span>
+                </a>
+            </div>
+
+            <ul class="product-benefits">
+                {% for item in productBenefits %}
+                    <li>
+                        <span class="benefit-icon" aria-hidden="true">
+                            <img
+                                src="{{ item.icon }}"
+                                width="64"
+                                height="48"
+                                alt=""
+                            />
+                        </span>
+                        <span class="benefit-text">
+                            <strong>{{ item.title }}</strong>
+                            <span>{{ item.text }}</span>
+                        </span>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="product-specs" id="product-specs">
+            <h2 class="section-title">Характеристики</h2>
+            <div class="product-specs-scroll">
+                <table class="product-specs-table">
+                    <thead>
+                        <tr>
+                            {% for header in productSpecsHeaders %}
+                                <th scope="col">{{ header }}</th>
+                            {% endfor %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in productSpecsRows %}
+                            <tr>
+                                {% for cell in row %}
+                                    {% if loop.first %}
+                                        <th scope="row">{{ cell }}</th>
+                                    {% else %}
+                                        <td>{{ cell }}</td>
+                                    {% endif %}
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="product-description" id="product-description">
+            <h2 class="section-title">Описание</h2>
+            <p class="lead">
+                Термоусадочная плёнка — это полимерный материал, который при нагревании сокращается и плотно
+                облегает упакованный предмет.
+            </p>
+
+            <h3 class="subtitle">Универсальные свойства термоусадочных плёнок</h3>
+            <ul class="desc-list">
+                {% set productProps = [
+                    "способность к усадке;",
+                    "плотное прилегание и фиксация;",
+                    "защита от внешних факторов;",
+                    "прозрачность и презентабельность;",
+                    "механическая прочность;",
+                    "химическая стойкость;",
+                    "безопасность для контакта с пищевыми продуктами."
+                ] %}
+                {% for item in productProps %}
+                    <li>
+                        <img
+                            class="bullet"
+                            src="./assets/images/content/product/list-bullet.svg"
+                            width="12"
+                            height="16"
+                            alt=""
+                            aria-hidden="true"
+                        />
+                        <span>{{ item }}</span>
+                    </li>
+                {% endfor %}
+            </ul>
+
+            <h3 class="subtitle">Применение</h3>
+            <ul class="desc-list">
+                {% set productApps = [
+                    "пищевая промышленность;",
+                    "групповая упаковка;",
+                    "промышленная упаковка;",
+                    "логистика и складирование;",
+                    "маркировка и защита;",
+                    "фармацевтика и косметика;",
+                    "автомобильная промышленность;",
+                    "розничная торговля и подарки."
+                ] %}
+                {% for item in productApps %}
+                    <li>
+                        <img
+                            class="bullet"
+                            src="./assets/images/content/product/list-bullet.svg"
+                            width="12"
+                            height="16"
+                            alt=""
+                            aria-hidden="true"
+                        />
+                        <span>{{ item }}</span>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</section>

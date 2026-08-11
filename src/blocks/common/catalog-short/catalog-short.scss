@@ -18,6 +18,83 @@
         padding: 38px 0 0;
     }
 
+    &.is-cards-only {
+        padding: 60px 0;
+        background: #eceef1;
+
+        @include bp.mq(laptop) {
+            padding: 50px 0;
+        }
+
+        @include bp.mq(tablet-l) {
+            padding: 42px 0;
+        }
+
+        @include bp.mq(tablet) {
+            padding: 36px 0;
+        }
+
+        .title {
+            margin-bottom: 36px;
+            font-size: var(--font-size-h1);
+
+            @include bp.mq(tablet) {
+                margin-bottom: 24px;
+            }
+        }
+
+        .catalog-short-inner {
+            grid-template-columns: 1fr;
+        }
+
+        .catalog-short-grid {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+
+            @include bp.mq(laptop) {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+
+            @include bp.mq(tablet) {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+    }
+
+    &.is-page {
+        padding: 32px 0 30px;
+
+        @include bp.mq(laptop-m) {
+            padding: 28px 0 50px;
+        }
+
+        @include bp.mq(tablet-l) {
+            padding: 24px 0 27px;
+        }
+
+        @include bp.mq(tablet) {
+            padding: 20px 0 21.5px;
+        }
+
+        .title {
+            margin-bottom: 32px;
+            font-size: var(--font-size-h1);
+
+            @include bp.mq(tablet) {
+                margin-bottom: 24px;
+            }
+        }
+
+        @include bp.mq(tablet-xl) {
+            .catalog-short-inner {
+                grid-template-columns: 1fr;
+            }
+
+            .catalog-short-form {
+                display: none;
+            }
+        }
+    }
+
     .title {
         margin: 0 0 33px;
         font-family: var(--font-family-primary);
@@ -60,8 +137,8 @@
     .catalog-short-grid {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        width: 100%;
         gap: 0;
+        width: 100%;
 
         @include bp.mq(tablet) {
             grid-template-columns: repeat(2, minmax(0, 1fr));

@@ -63,7 +63,7 @@
                 {% if page.breadcrumbs or page.heading %}
                     <div class="page-header">
                         {% if page.breadcrumbs %}
-                            {{ breadcrumbsComponent(items=breadcrumbs.items, size="sm", separator="slash") }}
+                            {{ breadcrumbsComponent(items=breadcrumbs.items, size="sm", separator="chevron") }}
                         {% endif %}
                         {% if page.heading %}
                             {% include "components/general/heading/heading.njk" %}

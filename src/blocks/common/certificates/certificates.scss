@@ -1,0 +1,170 @@
+@use "core/breakpoints" as bp;
+
+.certificates {
+    padding: 20px 0 80px;
+
+    &.is-diplomas {
+        .title-short {
+            display: none;
+        }
+
+        @include bp.mq(tablet-l) {
+            display: none;
+        }
+    }
+
+    @include bp.mq(laptop) {
+        padding: 18px 0 70px;
+    }
+
+    @include bp.mq(tablet-l) {
+        padding: 16px 0 60px;
+    }
+
+    @include bp.mq(tablet) {
+        padding: 14px 0 48px;
+    }
+
+    .title {
+        margin: 0 0 36px;
+        font-family: var(--font-family-primary);
+        font-size: var(--font-size-h1);
+        font-weight: 500;
+        line-height: normal;
+        color: #37383a;
+
+        @include bp.mq(laptop) {
+            margin-bottom: 34px;
+            font-weight: 600;
+        }
+
+        @include bp.mq(tablet-l) {
+            margin-bottom: 24px;
+            font-weight: 500;
+        }
+
+        @include bp.mq(tablet) {
+            margin-bottom: 20px;
+        }
+    }
+
+    .title-full {
+        @include bp.mq(tablet-l) {
+            display: none;
+        }
+    }
+
+    .title-short {
+        display: none;
+
+        @include bp.mq(tablet-l) {
+            display: inline;
+        }
+    }
+
+    .certificates-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 30px;
+        width: 100%;
+
+        @include bp.mq(tablet-l) {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        @include bp.mq(mobile-xl) {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 15px;
+        }
+    }
+
+    a.certificates-card {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 346 / 501;
+        overflow: hidden;
+        color: inherit;
+        text-decoration: none;
+        background: var(--color-white);
+        border: 1px solid #e9eaed;
+        border-radius: 2px;
+
+        &:hover,
+        &:focus-visible {
+            text-decoration: none;
+
+            .shade {
+                opacity: 1;
+            }
+
+            .zoom {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.05);
+            }
+        }
+
+        &:focus-visible {
+            outline: 2px solid var(--color-blue);
+            outline-offset: 2px;
+        }
+    }
+
+    .picture {
+        position: absolute;
+        inset: 0;
+        display: block;
+
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+        }
+    }
+
+    .shade {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+        background: rgb(0 0 0 / 43%);
+        opacity: 0;
+        transition: opacity 0.25s ease;
+    }
+
+    .zoom {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        z-index: 2;
+        display: flex;
+        width: 44px;
+        height: 44px;
+        pointer-events: none;
+        opacity: 0;
+        transform: translate(-50%, -50%);
+        transition:
+            opacity 0.25s ease,
+            transform 0.25s ease;
+
+        @include bp.mq(tablet-l) {
+            width: 42px;
+            height: 42px;
+        }
+
+        @include bp.mq(tablet) {
+            width: 31px;
+            height: 31px;
+        }
+
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+    }
+}

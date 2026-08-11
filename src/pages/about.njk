@@ -8,9 +8,54 @@
 } %}
 {% extends "layouts/default.njk" %}
 {% block content %}
-    <section class="section">
-        <div class="container">
-            <p class="page-stub">Здесь будет страница о компании.</p>
-        </div>
-    </section>
+    {% include "blocks/common/about/about.njk" %}
+
+    {% include "blocks/common/about-exhibition/about-exhibition.njk" %}
+
+    {% set certificatesTitle = "Дипломы" %}
+    {% set certificatesTitleShort = "Дипломы" %}
+    {% set certificatesTitleTag = "h2" %}
+    {% set certificatesIsDiplomas = true %}
+    {% set certificatesItems = [
+        {
+            image: "./assets/images/content/certificates/cert-1.png",
+            alt: "Диплом за участие в выставке PROM-EXPO"
+        },
+        {
+            image: "./assets/images/content/certificates/cert-2.png",
+            alt: "Диплом Экспоцентр"
+        },
+        {
+            image: "./assets/images/content/certificates/cert-3.png",
+            alt: "Диплом Кубаньпродэкспо"
+        },
+        {
+            image: "./assets/images/content/certificates/cert-4.png",
+            alt: "Диплом Интерполитех"
+        },
+        {
+            image: "./assets/images/content/certificates/cert-5.png",
+            alt: "Сертификат RosUpack"
+        },
+        {
+            image: "./assets/images/content/certificates/cert-2.png",
+            alt: "Диплом Экспоцентр"
+        },
+        {
+            image: "./assets/images/content/certificates/cert-1.png",
+            alt: "Диплом за участие в выставке PROM-EXPO"
+        },
+        {
+            image: "./assets/images/content/certificates/cert-5.png",
+            alt: "Сертификат RosUpack"
+        }
+    ] %}
+    {% include "blocks/common/certificates/certificates.njk" %}
+
+    {% set catalogShortTitle = "Варианты упаковки для вашего бизнеса" %}
+    {% set catalogShortHideForm = true %}
+    {% include "blocks/common/catalog-short/catalog-short.njk" %}
+
+    {% set helpShortFormId = "about-help" %}
+    {% include "blocks/common/help-short/help-short.njk" %}
 {% endblock %}
