@@ -1,13 +1,13 @@
 @use "core/breakpoints" as bp;
 
 .section {
-    padding: 120px 0;
+    padding: 60px 0;
 
-    @include bp.mq(tablet-xl) {
-        padding: 80px 0;
+    @include bp.mq(laptop-m) {
+        padding: 54px 0;
     }
 
-    @include bp.mq(mobile-l) {
-        padding: 60px 0;
+    @include bp.mq(tablet-l) {
+        padding: 42px 0;
     }
 }

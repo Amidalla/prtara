@@ -1,0 +1,131 @@
+{% from "components/general/button/button.njk" import render as button %}
+{% from "components/general/input/input.njk" import render as input %}
+{% from "components/general/textarea/textarea.njk" import render as textarea %}
+{% from "components/general/consent-checkbox/consent-checkbox.njk" import render as consentCheckbox %}
+
+{% set faqShortItems = [
+    {
+        question: "Выполняете ли вы индивидуальные заказы?",
+        answer: "Да, мы выполняем индивидуальные заказы под задачи клиента."
+    },
+    {
+        question: "Предоставляете ли вы образцы материалов?",
+        answer: "Да, мы предоставляем образцы упаковочных материалов"
+    },
+    {
+        question: "Можно ли заказать доставку за пределы Москвы и Московской области?",
+        answer: "Да, доставка возможна по всей России."
+    },
+    {
+        question: "Предоставляются ли скидки за объем?",
+        answer: "Да, при крупных партиях предусмотрены скидки."
+    },
+    {
+        question: "Под какие размеры можно сделать заказ?",
+        answer: "Изготавливаем упаковку под необходимые размеры."
+    }
+] %}
+
+<section class="faq-short section" data-faq-short>
+    <div class="container">
+        <h2 class="title">Вопрос-ответ</h2>
+
+        <div class="faq-short-inner">
+            <div class="faq-short-list">
+                {% for item in faqShortItems %}
+                    <div class="faq-item{% if item.open %} is-open{% endif %}">
+                        <button
+                            class="faq-trigger"
+                            type="button"
+                            aria-expanded="{{ 'true' if item.open else 'false' }}"
+                        >
+                            <span class="question">{{ item.question }}</span>
+                            <span class="toggle" aria-hidden="true">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 42 42" fill="none">
+                                    <rect class="toggle-bg" x="0.389" y="0.389" width="41.222" height="41.222" fill="#fff" />
+                                    <rect class="toggle-border" x="0.389" y="0.389" width="41.222" height="41.222" stroke="#9DB1C8" stroke-width="0.778" fill="none" />
+                                    <path
+                                        class="toggle-icon"
+                                        d="M31.111 15.555L20.631 26.036L10.589 15.994"
+                                        stroke="#9DB1C8"
+                                        stroke-width="0.977"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                </svg>
+                            </span>
+                        </button>
+
+                        <div class="faq-panel">
+                            <div class="faq-panel-inner">
+                                <div class="answer">
+                                    <span class="bullet" aria-hidden="true"></span>
+                                    <p>{{ item.answer }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <aside class="faq-short-form">
+                <h3 class="form-title">Нужна помощь? Задайте свой вопрос!</h3>
+
+                <form class="form" data-validate>
+                    <div class="grid">
+                        <div class="field">
+                            <label class="label" for="faq-short-name">Контактное лицо*:</label>
+                            {{ input(
+                                type="text",
+                                id="faq-short-name",
+                                name="name",
+                                placeholder="ФИО",
+                                autocomplete="name",
+                                required=true,
+                                minlength="2",
+                                data={"error": "Введите имя (минимум 2 буквы)"}
+                            ) }}
+                        </div>
+                        <div class="field">
+                            <label class="label" for="faq-short-phone">Телефон*:</label>
+                            {{ input(
+                                type="tel",
+                                id="faq-short-phone",
+                                name="phone",
+                                placeholder="+7",
+                                autocomplete="tel",
+                                data={"mask": "phone", "error": "Введите полный номер телефона"},
+                                required=true
+                            ) }}
+                        </div>
+                        <div class="field">
+                            <label class="label" for="faq-short-message">Сообщение</label>
+                            {{ textarea(
+                                id="faq-short-message",
+                                name="message",
+                                placeholder="Текст сообщения",
+                                rows=3,
+                                data={"error": "Введите сообщение"}
+                            ) }}
+                        </div>
+                        <div class="field-consent">
+                            {{ consentCheckbox(
+                                id="faq-short-consent",
+                                text='Я согласен(а) на обработку моих персональных данных в соответствии с <a href="./policy.html">Согласием на обработку персональных данных</a> и <a href="./policy.html">Политикой конфиденциальности</a>',
+                                data={"error": "Необходимо отметить"},
+                                required=true
+                            ) }}
+                        </div>
+                        <div class="actions">
+                            {{ button(
+                                text="Отправить",
+                                type="submit",
+                                disabled=true
+                            ) }}
+                        </div>
+                    </div>
+                </form>
+            </aside>
+        </div>
+    </div>
+</section>

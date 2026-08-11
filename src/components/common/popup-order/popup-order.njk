@@ -1,0 +1,138 @@
+{% from "components/general/button/button.njk" import render as button %}
+{% from "components/general/input/input.njk" import render as input %}
+{% from "components/general/textarea/textarea.njk" import render as textarea %}
+{% from "components/general/consent-checkbox/consent-checkbox.njk" import render as consentCheckbox %}
+
+<div id="popup-order" class="popup-order">
+    <div class="block">
+        <div class="heading">
+            <div class="heading-top">
+                <div class="heading-bar">
+                    <button type="button" class="popup-close" data-fancybox-close aria-label="Закрыть">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" viewBox="0 0 33 33" fill="none" aria-hidden="true">
+                            <path d="M1.2 1.2L15.913 16.372L1.2 31.545" stroke="#134A9B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M31.545 31.545L16.833 16.372L31.545 1.2" stroke="#134A9B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="title">Оформите заказ</div>
+            </div>
+            <p class="text">
+                Ваш заказ будет обработан в ближайшее время, менеджер свяжется с вами для подтверждения.
+            </p>
+        </div>
+
+        <div class="frame">
+            <form class="form" data-validate>
+                <div class="grid">
+                    <div class="field">
+                        <label class="label" for="popup-order-name">Контактное лицо*:</label>
+                        {{ input(
+                            type="text",
+                            id="popup-order-name",
+                            name="name",
+                            placeholder="ФИО",
+                            autocomplete="name",
+                            required=true,
+                            minlength="2",
+                            data={"error": "Введите имя (минимум 2 буквы)"}
+                        ) }}
+                    </div>
+
+                    <div class="field">
+                        <label class="label" for="popup-order-phone">Телефон*:</label>
+                        {{ input(
+                            type="tel",
+                            id="popup-order-phone",
+                            name="phone",
+                            placeholder="+7",
+                            autocomplete="tel",
+                            data={"mask": "phone", "error": "Введите полный номер телефона"},
+                            required=true
+                        ) }}
+                    </div>
+
+                    <div class="field">
+                        <label class="label" for="popup-order-size">Размер упаковки*:</label>
+                        {{ input(
+                            type="text",
+                            id="popup-order-size",
+                            name="size",
+                            placeholder="от XX мм - до XXX мм",
+                            required=true,
+                            data={"error": "Укажите размер упаковки"}
+                        ) }}
+                    </div>
+
+                    <div class="field">
+                        <label class="label" for="popup-order-quantity">Кол-во*:</label>
+                        {{ input(
+                            type="text",
+                            id="popup-order-quantity",
+                            name="quantity",
+                            placeholder="от 100 шт",
+                            required=true,
+                            data={"error": "Укажите количество"}
+                        ) }}
+                    </div>
+
+                    <div class="field">
+                        <label class="label" for="popup-order-city">Город доставки*:</label>
+                        <select
+                            class="input-select"
+                            id="popup-order-city"
+                            name="city"
+                            required
+                            data-error="Выберите город доставки"
+                        >
+                            <option value="" disabled selected>к примеру: Москва</option>
+                            <option value="moscow">Москва</option>
+                            <option value="spb">Санкт-Петербург</option>
+                            <option value="kazan">Казань</option>
+                            <option value="other">Другой город</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label class="label" for="popup-order-address">Точный адрес*:</label>
+                        {{ textarea(
+                            id="popup-order-address",
+                            name="address",
+                            placeholder="улица, дом, корпус (если есть), помещение, офис",
+                            rows=2,
+                            required=true,
+                            data={"error": "Укажите точный адрес"}
+                        ) }}
+                    </div>
+
+                    <div class="field">
+                        <label class="label" for="popup-order-message">Сообщение</label>
+                        {{ textarea(
+                            id="popup-order-message",
+                            name="message",
+                            placeholder="Уточняющие комментарии. Поле не обязательно к заполнению",
+                            rows=4
+                        ) }}
+                    </div>
+
+                    <div class="field-consent">
+                        {{ consentCheckbox(
+                            id="popup-order-consent",
+                            text='Я согласен(а) на обработку моих персональных данных в соответствии с <a href="./policy.html">Согласием на обработку персональных данных</a> и <a href="./policy.html">Политикой конфиденциальности</a>',
+                            data={"error": "Необходимо отметить"},
+                            required=true
+                        ) }}
+                    </div>
+
+                    <div class="actions">
+                        {{ button(
+                            text="Отправить",
+                            type="submit",
+                            disabled=true
+                        ) }}
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

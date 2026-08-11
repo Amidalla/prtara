@@ -43,8 +43,9 @@
 @use "../components/common/catalog-menu/catalog-menu";
 @use "../components/common/popup-callback/popup-callback";
 @use "../components/common/popup-callback-success/popup-callback-success";
+@use "../components/common/popup-order/popup-order";
 @use "../components/common/popup-feedback/popup-feedback";
-@use "../components/common/popup-feedback-success/popup-feedback-success";
+@use "../components/common/popup-success/popup-success";
 @use "../components/common/contacts-mobile/contacts-mobile";
 @use "../components/common/work-card/work-card";
 @use "../components/common/news-card/news-card";
@@ -57,7 +58,11 @@
 @use "../blocks/general/footer/footer";
 @use "../blocks/general/section/section";
 @use "../blocks/common/hero/hero";
+@use "../blocks/common/catalog-short/catalog-short";
 @use "../blocks/common/about-short/about-short";
+@use "../blocks/common/promotions-short/promotions-short";
+@use "../blocks/common/faq-short/faq-short";
+@use "../blocks/common/geography-short/geography-short";
 @use "../blocks/common/about-description/about-description";
 @use "../blocks/common/about-text/about-text";
 @use "../blocks/common/services-short/services-short";

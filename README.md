@@ -85,12 +85,14 @@ src/
 - `#popup-callback` — заказ звонка
 - `#popup-callback-success` — успех callback
 - `#popup-feedback` — обратная связь
-- `#popup-feedback-success` — успех формы
+- `#popup-success` — успех отправки любой формы
 
 ```js
 window.showPopup("popup-callback");
-window.PopupFeedbackSuccess.open();
-window.PopupFeedbackSuccess.close();
+window.PopupSuccess.open();
+window.PopupSuccess.open({ title: "Заказать звонок" }); // или просто строка
+window.PopupSuccess.close();
+// алиас: window.PopupFeedbackSuccess
 window.reinit(document); // после AJAX-подстановки разметки
 ```
 

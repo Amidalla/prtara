@@ -1,0 +1,208 @@
+@use "core/breakpoints" as bp;
+
+.geography-short {
+    --geography-short-accent: #c41143;
+    --geography-short-text: #121212;
+    --geography-short-muted: #37383a;
+
+    position: relative;
+    overflow: hidden;
+    background: #fff;
+
+    .title {
+        position: relative;
+        z-index: 1;
+        margin: 0 0 35px;
+        font-family: var(--font-family-primary);
+        font-size: var(--font-size-h2);
+        font-weight: 500;
+        line-height: normal;
+        color: var(--color-black);
+
+        @include bp.mq(tablet-xl) {
+            margin-bottom: 17px;
+        }
+
+        @include bp.mq(tablet) {
+            margin-bottom: 17px;
+        }
+    }
+
+    .geography-short-inner {
+        position: relative;
+        display: grid;
+        grid-template-columns: minmax(0, 640px) minmax(0, 1fr);
+        gap: 20px;
+        align-items: start;
+        min-height: 560px;
+
+        @include bp.mq(laptop-l) {
+            grid-template-columns: minmax(0, 560px) minmax(0, 1fr);
+            min-height: 500px;
+        }
+
+        @include bp.mq(tablet-xl) {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            min-height: 0;
+        }
+
+        @include bp.mq(tablet) {
+            gap: 16px;
+        }
+    }
+
+    .geography-short-content {
+        position: relative;
+        z-index: 1;
+        max-width: 640px;
+
+        @include bp.mq(laptop-l) {
+            max-width: 560px;
+        }
+
+        @include bp.mq(tablet-xl) {
+            max-width: none;
+        }
+    }
+
+    .lead {
+        margin: 0 0 0;
+        font-family: var(--font-family-primary);
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 34.67px;
+        color: var(--geography-short-text);
+
+        @include bp.mq(tablet-xl) {
+            font-size: 18px;
+            line-height: 35px;
+        }
+
+        @include bp.mq(tablet) {
+            line-height: 26px;
+        }
+    }
+
+    .lead-name {
+        color: var(--geography-short-text);
+    }
+
+    .lead-accent {
+        font-weight: 500;
+        color: var(--geography-short-accent);
+    }
+
+    .clients-title {
+        margin: 0;
+        font-family: var(--font-family-primary);
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 34.67px;
+        color: var(--geography-short-muted);
+
+        @include bp.mq(tablet-xl) {
+            font-size: 15px;
+            line-height: 35px;
+        }
+
+        @include bp.mq(tablet) {
+            line-height: 24px;
+        }
+    }
+
+    .clients-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+
+        li {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            min-height: 35px;
+            font-family: var(--font-family-primary);
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 34.67px;
+            color: var(--geography-short-muted);
+
+            @include bp.mq(tablet-xl) {
+                gap: 10px;
+                font-size: 15px;
+                line-height: 35px;
+            }
+        }
+    }
+
+    .clients-icon {
+        flex: 0 0 auto;
+        width: 26px;
+        height: 26px;
+        object-fit: contain;
+    }
+
+    .note {
+        max-width: 499px;
+        margin: 17px 0 0;
+        font-family: var(--font-family-primary);
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 34.67px;
+        color: var(--geography-short-muted);
+
+        @include bp.mq(tablet-xl) {
+            max-width: none;
+            margin-top: 15px;
+            font-size: 15px;
+            line-height: 22px;
+        }
+
+        @include bp.mq(tablet) {
+            margin-top: 16px;
+            font-size: 15px;
+            line-height: 22px;
+        }
+    }
+
+    .geography-short-map {
+        position: absolute;
+        top: -42px;
+        right: calc(50% - 50vw);
+        width: min(1241px, 64.6vw);
+        pointer-events: none;
+        user-select: none;
+
+        @include bp.mq(laptop-l) {
+            top: -24px;
+            width: min(1100px, 62vw);
+        }
+
+        @include bp.mq(tablet-xl) {
+            position: relative;
+            top: 0;
+            right: auto;
+            width: 100%;
+            max-width: none;
+            margin: 0;
+            pointer-events: auto;
+        }
+
+        @include bp.mq(tablet) {
+            width: calc(100% + var(--container-padding) * 2);
+            margin-right: calc(-1 * var(--container-padding));
+            margin-left: calc(-1 * var(--container-padding));
+        }
+
+        picture,
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+    }
+}

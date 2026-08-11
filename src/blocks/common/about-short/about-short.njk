@@ -1,53 +1,182 @@
 {% from "components/general/button/button.njk" import render as button %}
-{% from "components/general/icons/button-icon.njk" import render as buttonIcon %}
-{% from "components/general/icons/corner-icon.njk" import render as cornerIcon %}
 
-{% set aboutShortStats = [
-    { value: "25 000+", label: "выполненных заказов" },
-    { value: "18 лет", label: "стаж работы" },
-    { value: "500+", label: "клиентов в год" },
-    { value: "58", label: "профессиональных сотрудников" }
+{% set aboutShortProducts = [
+    "пленка полиэтиленовая (ПВД, ПСД, ПНД);",
+    "мешки и пакеты упаковочные;",
+    "рулонная упаковка;",
+    "фольга алюминиевая;",
+    "пленка защитная;",
+    "пленка полиолефиниловая;",
+    "стрейч пленка, термоусадочная пленка;",
+    "защитные уголки из прессованного картона;",
+    "упаковка из гофрокартона и другие упаковочные материалы.",
+    "лента упаковочная полипропиленовая;",
+    "и другие упаковочные материалы."
 ] %}
 
-<section class="about-short section">
+{% set aboutShortCertificates = [
+    {
+        image: "./assets/images/content/about-short/certificate-1.png",
+        alt: "Сертификат участника RosUpack 2025"
+    },
+    {
+        image: "./assets/images/content/about-short/certificate-2.png",
+        alt: "Сертификат и патент"
+    },
+    {
+        image: "./assets/images/content/about-short/certificate-1.png",
+        alt: "Сертификат участника RosUpack 2025"
+    },
+    {
+        image: "./assets/images/content/about-short/certificate-2.png",
+        alt: "Сертификат и патент"
+    }
+] %}
+
+<section class="about-short section" data-about-short>
+    <div class="about-short-bg" aria-hidden="true">
+        <img
+            class="lazy"
+            src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+            data-src="./assets/images/content/about-short/about-short-bg.jpg"
+            alt=""
+        >
+        <div class="about-short-overlay"></div>
+    </div>
+
     <div class="container">
-        <div class="about-short-inner">
-            <div class="content">
-                <h2 class="title">О компании</h2>
-                <div class="text">
-                    <p>
-                        Компания работает на рынке производства металлоизделий с 2008 года и является динамически
-                        развивающейся молодой компанией, производящей широкий спектр продукции.
+        <div class="about-short-panel">
+            <div class="about-short-content">
+                <h2 class="title">О нас</h2>
+
+                <div class="about-short-text">
+                    <p class="lead">
+                        Компания&nbsp;ООО «Промрегионтара»&nbsp;создана весной 2004 года, специализируется на
+                        комплексных поставках упаковочных материалов по всей России.
                     </p>
                     <p>
-                        Мы также оказываем ряд услуг по обработке металлических изделий и заготовок, а для повышения
-                        производительности и удобства приемки и выдачи заказов, наше предприятие находится
-                        непосредственно на территории завода. Ввиду этого вся наша работа является максимально
-                        производительной, оптимизированной под нужды клиентов, а также эффективной в финансовом плане.
+                        Имеет зарегистрированный&nbsp;<strong>Товарный знак</strong>&nbsp;№&nbsp;528607.
                     </p>
                 </div>
-                <div class="actions">
+
+                <div class="about-short-list-block">
+                    <p class="list-title">Мы поставляем нашим заказчикам надежную упаковку:</p>
+                    <ul class="about-short-list">
+                        {% for item in aboutShortProducts %}
+                            <li>{{ item }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <p class="about-short-note">
+                    Компания получила&nbsp;патент&nbsp;на уникальную технологию изготовления изделий из пленки ПНД,
+                    имеет награды и дипломы выставок «РосУпак», «Краснодарэкспо», «Логистика и склад»,
+                    «Modern Bakery», «Upakexpo», «Продэкспо», «RosBuild-2024», «ChemiCos».
+                </p>
+
+                <div class="about-short-actions">
                     {{ button(
                         text="Подробнее",
                         type="link",
-                        href="./about.html",
-                        icon=buttonIcon()
+                        href="./about.html"
                     ) }}
+                    <p class="about-short-mail">
+                        <span>Пишите нам на эл. почту:</span>
+                        <a href="mailto:info@prtara.ru">info@prtara.ru</a>
+                    </p>
+                </div>
+
+                <div class="about-short-compact">
+                    {{ button(
+                        text="Сертификаты",
+                        type="link",
+                        href="./certificates.html",
+                        variant="outline",
+                        class="about-short-certs-link"
+                    ) }}
+
+                    <div class="about-short-promo">
+                        <div class="promo-text">
+                            <p class="promo-date">С&nbsp;16 по 19 июня</p>
+                            <p class="promo-title">Выставка RosUpack 2026!</p>
+                        </div>
+                        {{ button(
+                            text="Подробнее",
+                            type="link",
+                            href="./promotions.html",
+                            variant="red"
+                        ) }}
+                    </div>
                 </div>
             </div>
-            <div class="stats">
-                {% for stat in aboutShortStats %}
-                    <div class="stat">
-                        <div class="value">
-                            <span class="corner tl">{{ cornerIcon() }}</span>
-                            <span class="corner tr">{{ cornerIcon() }}</span>
-                            <span class="corner br">{{ cornerIcon() }}</span>
-                            <span class="corner bl">{{ cornerIcon() }}</span>
-                            {{ stat.value }}
+
+            <aside class="about-short-aside">
+                <div class="about-short-certs">
+                    <h3 class="certs-title">Сертификаты и патенты</h3>
+
+                    <div class="about-short-slider">
+                        <div class="swiper">
+                            <div class="swiper-wrapper">
+                                {% for cert in aboutShortCertificates %}
+                                    <div class="swiper-slide">
+                                        <a
+                                            class="cert-card"
+                                            href="{{ cert.image }}"
+                                            data-fancybox="about-short-certs"
+                                            data-thumb="{{ cert.image }}"
+                                            data-caption="{{ cert.alt }}"
+                                        >
+                                            <span class="cert-image">
+                                                <img
+                                                    class="lazy"
+                                                    src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                                    data-src="{{ cert.image }}"
+                                                    alt="{{ cert.alt }}"
+                                                >
+                                            </span>
+                                            <span class="cert-zoom" aria-hidden="true">
+                                                <img
+                                                    src="./assets/images/content/about-short/zoom-icon.svg"
+                                                    width="70"
+                                                    height="70"
+                                                    alt=""
+                                                >
+                                            </span>
+                                        </a>
+                                    </div>
+                                {% endfor %}
+                            </div>
                         </div>
-                        <div class="label">{{ stat.label }}</div>
+                        <div class="swiper-pagination"></div>
                     </div>
-                {% endfor %}
+                </div>
+
+                <div class="about-short-promo">
+                    <div class="promo-text">
+                        <p class="promo-date">С&nbsp;16 по 19 июня</p>
+                        <p class="promo-title">Выставка RosUpack<br>2026!</p>
+                    </div>
+                    {{ button(
+                        text="Подробнее",
+                        type="link",
+                        href="./promotions.html",
+                        variant="red"
+                    ) }}
+                </div>
+            </aside>
+        </div>
+
+        <div class="about-short-delivery">
+            <img
+                class="delivery-icon"
+                src="./assets/images/content/about-short/delivery-icon.svg"
+                width="75"
+                height="72"
+                alt=""
+            >
+            <div class="delivery-text">
+                <p>Доставка в любой регион России!</p>
+                <p><strong>БЕСПЛАТНО доставим по Москве и Московской области</strong></p>
             </div>
         </div>
     </div>

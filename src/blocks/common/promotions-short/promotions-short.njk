@@ -1,0 +1,142 @@
+{% from "components/general/button/button.njk" import render as button %}
+
+{% set promotionsShortItems = [
+    {
+        title: "Мешки полиэтиленовые ПСД для упаковки стиральных машин с",
+        image: "./assets/images/content/promotions-short/promo-1.png",
+        href: "./product.html"
+    },
+    {
+        title: "Пленка полиэтиленовая термоусадочная, с флексопечатью",
+        image: "./assets/images/content/promotions-short/promo-2.png",
+        href: "./product.html"
+    },
+    {
+        title: "Наименование товара",
+        image: "./assets/images/content/promotions-short/promo-3.png",
+        href: "./product.html"
+    },
+    {
+        title: "Наименование товара",
+        image: "./assets/images/content/promotions-short/promo-4.png",
+        href: "./product.html"
+    },
+    {
+        title: "Мешки полиэтиленовые ПСД для упаковки стиральных машин с",
+        image: "./assets/images/content/promotions-short/promo-1.png",
+        href: "./product.html"
+    },
+    {
+        title: "Пленка полиэтиленовая термоусадочная, с флексопечатью",
+        image: "./assets/images/content/promotions-short/promo-2.png",
+        href: "./product.html"
+    }
+] %}
+
+<section class="promotions-short section" data-promotions-short>
+    <div class="container">
+        <div class="promotions-short-head">
+            <h2 class="title">Акции</h2>
+            <a class="all-link" href="./promotions.html">Все акции</a>
+        </div>
+
+        <div class="promotions-short-slider">
+            <button class="nav prev" type="button" aria-label="Назад">
+                <svg xmlns="http://www.w3.org/2000/svg" width="77" height="42" viewBox="0 0 77 42" fill="none" aria-hidden="true">
+                    <g clip-path="url(#promotions-short-arrow-prev)">
+                        <rect
+                            class="nav-circle"
+                            x="-0.75"
+                            y="0.75"
+                            width="40.5"
+                            height="40.5"
+                            rx="20.25"
+                            transform="matrix(-1 0 0 1 40.5 0)"
+                            fill="#F2F2F2"
+                            stroke="#fff"
+                            stroke-width="1.5"
+                        />
+                        <path class="nav-line" d="M75 21H11" stroke="#134A9B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path class="nav-accent" d="M77 21H42" stroke="#B52F59" stroke-width="1.5" stroke-linejoin="round" />
+                        <path class="nav-chevron" d="M21 32L10 21L21 10" stroke="#134A9B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </g>
+                    <defs>
+                        <clipPath id="promotions-short-arrow-prev">
+                            <rect width="77" height="42" fill="white" />
+                        </clipPath>
+                    </defs>
+                </svg>
+            </button>
+
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    {% for item in promotionsShortItems %}
+                        <div class="swiper-slide">
+                            <article class="promo-card">
+                                <div class="picture">
+                                    <span class="badge" aria-hidden="true">
+                                        <img
+                                            src="./assets/images/content/promotions-short/badge-star.svg"
+                                            width="64"
+                                            height="64"
+                                            alt=""
+                                        >
+                                        <span class="badge-text">%</span>
+                                    </span>
+
+                                    <img
+                                        class="lazy"
+                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                        data-src="{{ item.image }}"
+                                        alt="{{ item.title }}"
+                                    >
+                                </div>
+
+                                <div class="body">
+                                    <h3 class="name">{{ item.title }}</h3>
+
+                                    <div class="actions">
+                                        {{ button(
+                                            text="Заказать",
+                                            type="button",
+                                            data={ src: "popup-order" }
+                                        ) }}
+                                        <a class="more" href="{{ item.href }}">Подробнее</a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <button class="nav next" type="button" aria-label="Вперёд">
+                <svg xmlns="http://www.w3.org/2000/svg" width="77" height="42" viewBox="0 0 77 42" fill="none" aria-hidden="true">
+                    <g clip-path="url(#promotions-short-arrow-next)">
+                        <rect
+                            class="nav-circle"
+                            x="0.75"
+                            y="-0.75"
+                            width="40.5"
+                            height="40.5"
+                            rx="20.25"
+                            transform="matrix(1 8.74228e-08 8.74228e-08 -1 35 40.5)"
+                            fill="#F2F2F2"
+                            stroke="#fff"
+                            stroke-width="1.5"
+                        />
+                        <path class="nav-line" d="M2 21L66 21" stroke="#134A9B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path class="nav-accent" d="M0 21L35 21" stroke="#B52F59" stroke-width="1.5" stroke-linejoin="round" />
+                        <path class="nav-chevron" d="M56 10L67 21L56 32" stroke="#134A9B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </g>
+                    <defs>
+                        <clipPath id="promotions-short-arrow-next">
+                            <rect width="77" height="42" fill="white" transform="translate(77 42) rotate(-180)" />
+                        </clipPath>
+                    </defs>
+                </svg>
+            </button>
+        </div>
+    </div>
+</section>

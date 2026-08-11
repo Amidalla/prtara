@@ -2,9 +2,10 @@
 {% set page = { breadcrumbs: false, heading: false } %}
 {% extends "layouts/default.njk" %}
 {% block content %}
-    <section class="section">
-        <div class="container">
-            <p class="page-stub">Здесь будет главная страница.</p>
-        </div>
-    </section>
+    {% include "blocks/common/hero/hero.njk" %}
+    {% include "blocks/common/catalog-short/catalog-short.njk" %}
+    {% include "blocks/common/about-short/about-short.njk" %}
+    {% include "blocks/common/promotions-short/promotions-short.njk" %}
+    {% include "blocks/common/faq-short/faq-short.njk" %}
+    {% include "blocks/common/geography-short/geography-short.njk" %}
 {% endblock %}

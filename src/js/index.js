@@ -7,15 +7,20 @@ import { inputFile } from "../components/general/input-file/input-file.js";
 import { consentNotice } from "../components/general/consent-notice/consent-notice.js";
 import { navigationMobile } from "../components/general/navigation-mobile/navigation-mobile.js";
 import { popupCallback } from "../components/common/popup-callback/popup-callback.js";
+import { popupOrder } from "../components/common/popup-order/popup-order.js";
 import { popupFeedback } from "../components/common/popup-feedback/popup-feedback.js";
 import {
-    popupFeedbackSuccess,
+    popupSuccess,
+    PopupSuccess,
     PopupFeedbackSuccess
-} from "../components/common/popup-feedback-success/popup-feedback-success.js";
+} from "../components/common/popup-success/popup-success.js";
 import { langSwitcher } from "../components/common/lang-switcher/lang-switcher.js";
 import { header } from "../blocks/general/header/header.js";
 import { footer } from "../blocks/general/footer/footer.js";
 import { hero } from "../blocks/common/hero/hero.js";
+import { aboutShort } from "../blocks/common/about-short/about-short.js";
+import { promotionsShort } from "../blocks/common/promotions-short/promotions-short.js";
+import { faqShort } from "../blocks/common/faq-short/faq-short.js";
 import { partnersShort } from "../blocks/common/partners-short/partners-short.js";
 import { worksShort } from "../blocks/common/works-short/works-short.js";
 import { newsShort } from "../blocks/common/news-short/news-short.js";
@@ -31,12 +36,16 @@ const components = [
     consentNotice,
     navigationMobile,
     popupCallback,
+    popupOrder,
     popupFeedback,
-    popupFeedbackSuccess,
+    popupSuccess,
     langSwitcher,
     header,
     footer,
     hero,
+    aboutShort,
+    promotionsShort,
+    faqShort,
     partnersShort,
     worksShort,
     newsShort
@@ -58,6 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 window.showPopup = showPopup;
+window.PopupSuccess = PopupSuccess;
 window.PopupFeedbackSuccess = PopupFeedbackSuccess;
 
 window.reinit = (context = document) => {

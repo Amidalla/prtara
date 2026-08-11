@@ -1,0 +1,129 @@
+@use "core/breakpoints" as bp;
+@use "core/popup" as *;
+
+.popup-success {
+    @include popup(474px);
+
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 474px;
+    max-width: none;
+    padding: 30px;
+    text-align: left;
+    background: #fff;
+    border-radius: 0;
+    box-shadow: 0 4px 52.6px 0 rgb(0 0 0 / 25%);
+
+    @include bp.mq(tablet) {
+        width: 100%;
+        max-width: calc(100vw - 32px);
+        padding: 24px 20px;
+    }
+
+    .popup-close {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        padding: 0;
+        cursor: pointer;
+        background: transparent;
+        border: none;
+        transition: opacity 0.25s ease;
+
+        svg {
+            display: block;
+            width: 30px;
+            height: 30px;
+        }
+
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+
+    .block {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        width: 100%;
+
+        .heading {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            align-items: flex-start;
+            margin-bottom: 0;
+            text-align: left;
+
+            .heading-top {
+                display: flex;
+                flex-direction: column;
+                gap: 2px;
+                width: 100%;
+            }
+
+            .heading-bar {
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                width: 100%;
+                min-height: 30px;
+            }
+
+            .title {
+                padding: 0;
+                margin: 0;
+                font-family: var(--font-family-primary);
+                font-size: 38px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: normal;
+                color: #37383a;
+                text-align: left;
+                text-transform: none;
+
+                @include bp.mq(tablet) {
+                    font-size: 28px;
+                }
+
+                @include bp.mq(mobile-l) {
+                    font-size: 24px;
+                }
+            }
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            width: 100%;
+        }
+
+        .message {
+            margin: 0;
+            font-family: var(--font-family-primary);
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 1.5;
+            color: #323437;
+        }
+
+        .text {
+            margin: 0;
+            font-family: var(--font-family-primary);
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #323437;
+
+            .accent {
+                font-weight: 600;
+            }
+        }
+    }
+}

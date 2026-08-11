@@ -53,7 +53,7 @@ export function componentName(context = document) {
 }
 ```
 
-Глобально: `window.reinit`, `window.showPopup`, `window.PopupFeedbackSuccess`.
+Глобально: `window.reinit`, `window.showPopup`, `window.PopupSuccess` (алиас `window.PopupFeedbackSuccess`).
 
 ### Иконки
 

@@ -1,97 +1,191 @@
-{% from "components/general/button/button.njk" import render as button %}
-{% from "components/general/icons/button-icon.njk" import render as buttonIcon %}
+{% set heroBackground = "./assets/images/content/hero/hero-bg.jpg" %}
+{% set heroBackgroundLaptop = "./assets/images/content/hero/hero-bg-laptop.jpg" %}
+{% set heroBackgroundTablet = "./assets/images/content/hero/hero-bg-tablet.jpg" %}
+{% set heroBackgroundMobile = "./assets/images/content/hero/hero-bg-mobile.jpg" %}
+{% set heroImage = "./assets/images/content/hero/hero-img.png" %}
+{% set lazyPlaceholder = "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='1'%20height='1'/%3E" %}
 
 {% set heroSlides = [
     {
-        title: "Профессиональная металлообработка",
-        items: [
-            "Стоимость от 5 руб/кг.",
-            "Специальное предложение для больших партий",
-            "Полный спектр услуг от 3D моделей до серийного производства"
-        ],
-        image: "./assets/images/content/hero/hero-img.png",
-        imageAlt: "Металлическая деталь",
-        button: { text: "Расчет стоимости работ", popup: "popup-callback" }
+        pretitle: "Инвестируйте в качественную упаковку — это не расходы, а стратегическое вложение в долгосрочный успех вашей компании",
+        title: "Упаковка для бизнеса<br>по вашим размерам",
+        category: "Рулонная упаковка",
+        imageAlt: "Рулонная упаковка"
     },
     {
-        title: "Профессиональная металлообработка",
-        items: [
-            "Стоимость от 5 руб/кг.",
-            "Специальное предложение для больших партий",
-            "Полный спектр услуг от 3D моделей до серийного производства"
-        ],
-        image: "./assets/images/content/hero/hero-img1.png",
-        imageAlt: "Металлическая деталь",
-        button: { text: "Расчет стоимости работ", popup: "popup-callback" }
+        pretitle: "Создаём упаковку, которая помогает вашему продукту выделиться на полке и повысить узнаваемость бренда",
+        title: "Яркий дизайн<br>для вашего бренда",
+        category: "Гибкая упаковка",
+        imageAlt: "Гибкая упаковка"
     },
     {
-        title: "Реализованные проекты",
-        items: [
-            "Токарная и фрезерная обработка деталей любой сложности",
-            "Серийное производство по вашим чертежам и 3D-моделям",
-            "Более 500 выполненных заказов для промышленности"
-        ],
-        image: "./assets/images/content/hero/hero-img2.png",
-        imageAlt: "Готовые металлические детали",
-        button: { text: "Смотреть наши работы", type: "link", href: "./works.html" }
+        pretitle: "Подберём оптимальное решение для сохранности продукции, логистики и удобства конечного покупателя",
+        title: "Надёжная упаковка<br>для любых задач",
+        category: "Упаковочные материалы",
+        imageAlt: "Упаковочные материалы"
+    },
+    {
+        pretitle: "Производим упаковку под ваши размеры, тираж и требования к печати — от партии до серийного выпуска",
+        title: "Производство<br>под ваши задачи",
+        category: "Индивидуальный заказ",
+        imageAlt: "Индивидуальная упаковка"
     }
 ] %}
 
 <section class="hero" data-hero>
-    <h1 class="visually-hidden">Профессиональная металлообработка</h1>
+    <h1 class="visually-hidden">Упаковка для бизнеса</h1>
     <div class="swiper">
         <div class="swiper-wrapper">
             {% for slide in heroSlides %}
                 <div class="swiper-slide">
                     <div class="hero-slide">
+                        <picture class="hero-slide-bg lazy-loader">
+                            <source
+                                media="(max-width: 479.98px)"
+                                srcset="{{ lazyPlaceholder }}"
+                                data-srcset="{{ heroBackgroundMobile }}"
+                            />
+                            <source
+                                media="(max-width: 1023.98px)"
+                                srcset="{{ lazyPlaceholder }}"
+                                data-srcset="{{ heroBackgroundTablet }}"
+                            />
+                            <source
+                                media="(max-width: 1449.98px)"
+                                srcset="{{ lazyPlaceholder }}"
+                                data-srcset="{{ heroBackgroundLaptop }}"
+                            />
+                            <img
+                                class="lazy"
+                                src="{{ lazyPlaceholder }}"
+                                data-src="{{ heroBackground }}"
+                                alt=""
+                                width="1920"
+                                height="480"
+                                aria-hidden="true"
+                            />
+                        </picture>
+
                         <div class="container">
+                            <p class="pretitle">{{ slide.pretitle }}</p>
+
                             <div class="hero-slide-inner">
                                 <div class="content">
-                                    <p class="title">{{ slide.title }}</p>
-                                    {% if slide.items %}
-                                        <ul class="list">
-                                            {% for item in slide.items %}
-                                                <li>{{ item }}</li>
-                                            {% endfor %}
-                                        </ul>
-                                    {% endif %}
-                                    {% if slide.button %}
-                                        <div class="actions">
-                                            {% if slide.button.type == "link" %}
-                                                {{ button(
-                                                    text=slide.button.text,
-                                                    type="link",
-                                                    href=slide.button.href or "#",
-                                                    target=slide.button.target or "",
-                                                    rel=slide.button.rel or "",
-                                                    icon=buttonIcon()
-                                                ) }}
-                                            {% else %}
-                                                {{ button(
-                                                    text=slide.button.text,
-                                                    data={ src: slide.button.popup or "popup-callback" },
-                                                    icon=buttonIcon()
-                                                ) }}
-                                            {% endif %}
-                                        </div>
-                                    {% endif %}
+                                    <p class="title">{{ slide.title | safe }}</p>
                                 </div>
+
                                 <div class="media">
                                     <img
                                         class="lazy"
-                                        src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='1'%20height='1'/%3E"
-                                        data-src="{{ slide.image }}"
+                                        src="{{ lazyPlaceholder }}"
+                                        data-src="{{ heroImage }}"
                                         alt="{{ slide.imageAlt }}"
-                                        width="720"
-                                        height="560"
+                                        width="520"
+                                        height="400"
                                     />
                                 </div>
+
+                                <p class="category">{{ slide.category }}</p>
                             </div>
                         </div>
                     </div>
                 </div>
             {% endfor %}
         </div>
+
         <div class="swiper-pagination"></div>
+    </div>
+
+    <div class="hero-media-nav" aria-hidden="false">
+        <div class="container">
+            <div class="hero-media-nav-spacer" aria-hidden="true"></div>
+            <div class="hero-media-nav-track">
+                <div class="hero-media-nav-box">
+                    <button class="hero-navigation hero-navigation--prev" type="button" aria-label="Предыдущий слайд">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="77" height="42" viewBox="0 0 77 42" fill="none" aria-hidden="true">
+                            <g clip-path="url(#hero-arrow-prev)">
+                                <rect
+                                    x="-0.75"
+                                    y="0.75"
+                                    width="40.5"
+                                    height="40.5"
+                                    rx="20.25"
+                                    transform="matrix(-1 0 0 1 40.5 0)"
+                                    fill="white"
+                                    fill-opacity="0.3"
+                                />
+                                <rect
+                                    x="-0.75"
+                                    y="0.75"
+                                    width="40.5"
+                                    height="40.5"
+                                    rx="20.25"
+                                    transform="matrix(-1 0 0 1 40.5 0)"
+                                    stroke="white"
+                                    stroke-width="1.5"
+                                />
+                                <path d="M75 21H11" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M75 21H11" stroke="#134A9B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M77 21H42" stroke="#B52F59" stroke-width="1.5" stroke-linejoin="round" />
+                                <path
+                                    d="M21 32L10 21L21 10"
+                                    stroke="#134A9B"
+                                    stroke-width="1.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </g>
+                            <defs>
+                                <clipPath id="hero-arrow-prev">
+                                    <rect width="77" height="42" fill="white" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+                    </button>
+
+                    <button class="hero-navigation hero-navigation--next" type="button" aria-label="Следующий слайд">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="77" height="42" viewBox="0 0 77 42" fill="none" aria-hidden="true">
+                            <g clip-path="url(#hero-arrow-next)">
+                                <rect
+                                    x="0.75"
+                                    y="-0.75"
+                                    width="40.5"
+                                    height="40.5"
+                                    rx="20.25"
+                                    transform="matrix(1 8.74228e-08 8.74228e-08 -1 35 40.5)"
+                                    fill="white"
+                                    fill-opacity="0.3"
+                                />
+                                <rect
+                                    x="0.75"
+                                    y="-0.75"
+                                    width="40.5"
+                                    height="40.5"
+                                    rx="20.25"
+                                    transform="matrix(1 8.74228e-08 8.74228e-08 -1 35 40.5)"
+                                    stroke="white"
+                                    stroke-width="1.5"
+                                />
+                                <path d="M2 21L66 21" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M2 21L66 21" stroke="#134A9B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M0 21L35 21" stroke="#B52F59" stroke-width="1.5" stroke-linejoin="round" />
+                                <path
+                                    d="M56 10L67 21L56 32"
+                                    stroke="#134A9B"
+                                    stroke-width="1.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </g>
+                            <defs>
+                                <clipPath id="hero-arrow-next">
+                                    <rect width="77" height="42" fill="white" transform="translate(77 42) rotate(-180)" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 </section>

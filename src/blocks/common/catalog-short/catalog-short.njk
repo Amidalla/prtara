@@ -1,0 +1,150 @@
+{% from "components/general/button/button.njk" import render as button %}
+{% from "components/general/input/input.njk" import render as input %}
+{% from "components/general/textarea/textarea.njk" import render as textarea %}
+{% from "components/general/consent-checkbox/consent-checkbox.njk" import render as consentCheckbox %}
+
+{% set catalogShortItems = [
+    {
+        title: "Пленки и пакеты из полиэтилена",
+        href: "./catalog-category.html",
+        image: "./assets/images/content/catalog-short1.jpg"
+    },
+    {
+        title: "Короба и листы из гофрокартона",
+        href: "./catalog-category.html",
+        image: "./assets/images/content/catalog-short2.jpg"
+    },
+    {
+        title: "Фольга",
+        href: "./catalog-category.html",
+        image: "./assets/images/content/catalog-short3.jpg"
+    },
+    {
+        title: "Рулонная упаковка",
+        href: "./catalog-category.html",
+        image: "./assets/images/content/catalog-short4.jpg"
+    },
+    {
+        title: "Паллетная упаковка",
+        href: "./catalog-category.html",
+        image: "./assets/images/content/catalog-short5.jpg"
+    },
+    {
+        title: "Пленки и пакеты БОПП",
+        href: "./catalog-category.html",
+        image: "./assets/images/content/catalog-short6.jpg"
+    },
+    {
+        title: "Упаковка из вспененного полиэтилена",
+        href: "./catalog-category.html",
+        image: "./assets/images/content/catalog-short7.jpg"
+    },
+    {
+        title: "Пленки защитные",
+        href: "./catalog-category.html",
+        image: "./assets/images/content/catalog-short8.jpg"
+    },
+    {
+        title: "Другие виды упаковки",
+        href: "./catalog-category.html",
+        image: "./assets/images/content/catalog-short9.jpg"
+    }
+] %}
+
+{% set lazyPlaceholder = "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='1'%20height='1'/%3E" %}
+
+<section class="catalog-short section">
+    <div class="container">
+        <h2 class="title">Каталог</h2>
+
+        <div class="catalog-short-inner">
+            <div class="catalog-short-grid">
+                {% for item in catalogShortItems %}
+                    <a class="catalog-short-card" href="{{ item.href }}">
+                        <span class="name">{{ item.title }}</span>
+                        <span class="picture">
+                            <img
+                                class="lazy"
+                                src="{{ lazyPlaceholder }}"
+                                data-src="{{ item.image }}"
+                                alt="{{ item.title }}"
+                                width="290"
+                                height="220"
+                            />
+                        </span>
+                        <span class="arrow" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path
+                                    d="M2.39133 21.4587L21.3792 2.61136M21.3792 17.7476L21.3792 2.61136L5.58201 2.61135"
+                                    stroke="currentColor"
+                                    stroke-width="1.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </span>
+                    </a>
+                {% endfor %}
+            </div>
+
+            <aside class="catalog-short-form">
+                <h3 class="form-title">Оставить заявку</h3>
+
+                <form class="form" data-validate>
+                    <div class="grid">
+                        <div class="field">
+                            <label class="label" for="catalog-short-name">Контактное лицо*:</label>
+                            {{ input(
+                                type="text",
+                                id="catalog-short-name",
+                                name="name",
+                                placeholder="ФИО",
+                                autocomplete="name",
+                                required=true,
+                                minlength="2",
+                                data={"error": "Введите имя (минимум 2 буквы)"}
+                            ) }}
+                        </div>
+                        <div class="field">
+                            <label class="label" for="catalog-short-phone">Телефон*:</label>
+                            {{ input(
+                                type="tel",
+                                id="catalog-short-phone",
+                                name="phone",
+                                placeholder="+7",
+                                autocomplete="tel",
+                                data={"mask": "phone", "error": "Введите полный номер телефона"},
+                                required=true
+                            ) }}
+                        </div>
+                        <div class="field">
+                            <label class="label" for="catalog-short-message">Сообщение</label>
+                            {{ textarea(
+                                id="catalog-short-message",
+                                name="message",
+                                placeholder="Текст сообщения",
+                                rows=3,
+                                data={"error": "Введите сообщение"}
+                            ) }}
+                        </div>
+                        <div class="field-consent">
+                            {{ consentCheckbox(
+                                id="catalog-short-consent",
+                                text='Я согласен(а) на обработку моих персональных данных в соответствии с <a href="./policy.html">Согласием на обработку персональных данных</a> и <a href="./policy.html">Политикой конфиденциальности</a>',
+                                data={"error": "Необходимо отметить"},
+                                required=true
+                            ) }}
+                        </div>
+                        <div class="actions">
+                            {{ button(
+                                text="Отправить",
+                                type="submit",
+                                disabled=true
+                            ) }}
+                        </div>
+                    </div>
+                </form>
+            </aside>
+        </div>
+    </div>
+</section>
