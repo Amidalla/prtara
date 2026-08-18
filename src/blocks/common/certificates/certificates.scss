@@ -1,7 +1,7 @@
 @use "core/breakpoints" as bp;
 
 .certificates {
-    padding: 20px 0 80px;
+    padding-bottom: 80px;
 
     &.is-diplomas {
         .title-short {
@@ -14,15 +14,15 @@
     }
 
     @include bp.mq(laptop) {
-        padding: 18px 0 70px;
+        padding-bottom: 70px;
     }
 
     @include bp.mq(tablet-l) {
-        padding: 16px 0 60px;
+        padding-bottom: 60px;
     }
 
     @include bp.mq(tablet) {
-        padding: 14px 0 48px;
+        padding-bottom: 48px;
     }
 
     .title {

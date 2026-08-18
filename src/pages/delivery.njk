@@ -8,9 +8,5 @@
 } %}
 {% extends "layouts/default.njk" %}
 {% block content %}
-    <section class="section">
-        <div class="container">
-            <p class="page-stub">Здесь будет страница доставки и оплаты.</p>
-        </div>
-    </section>
+    {% include "blocks/common/delivery-page/delivery-page.njk" %}
 {% endblock %}

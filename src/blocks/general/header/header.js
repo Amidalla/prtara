@@ -13,6 +13,31 @@ export function header(context = document) {
     window.addEventListener("scroll", toggleSticky, { passive: true, signal });
     toggleSticky();
 
+    const searchForm = root.querySelector(".header-search");
+    const searchInput = searchForm?.querySelector('input[type="search"]');
+    const searchClear = searchForm?.querySelector(".header-search-clear");
+
+    if (searchInput && searchClear) {
+        const toggleSearchClear = () => {
+            searchClear.hidden = searchInput.value.length === 0;
+        };
+
+        searchInput.addEventListener("input", toggleSearchClear, { signal });
+
+        searchClear.addEventListener(
+            "click",
+            () => {
+                searchInput.value = "";
+                toggleSearchClear();
+                searchInput.focus();
+                searchInput.dispatchEvent(new Event("input", { bubbles: true }));
+            },
+            { signal }
+        );
+
+        toggleSearchClear();
+    }
+
     const phones = root.querySelector("[data-header-phones]");
     if (phones) {
         const toggle = phones.querySelector(".header-phones-toggle");

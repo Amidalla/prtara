@@ -91,6 +91,28 @@
     .swiper-slide {
         display: flex;
         height: auto;
+        padding: 16px 0 24px;
+        box-sizing: border-box;
+
+        &:first-child {
+            padding-left: 16px;
+        }
+
+        &:last-child {
+            padding-right: 16px;
+        }
+
+        @include bp.mq(tablet-l) {
+            padding: 12px 0 20px;
+
+            &:first-child {
+                padding-left: 12px;
+            }
+
+            &:last-child {
+                padding-right: 12px;
+            }
+        }
     }
 
     .nav {
@@ -417,7 +439,8 @@
         @include bp.mq(mobile-l) {
             flex-direction: column;
             gap: 8px;
-            align-items: flex-start;
+            align-items: center;
+            justify-content: center;
         }
 
         .button {

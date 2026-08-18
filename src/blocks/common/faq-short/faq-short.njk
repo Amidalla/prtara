@@ -60,7 +60,9 @@
                             <div class="faq-panel-inner">
                                 <div class="answer">
                                     <span class="bullet" aria-hidden="true"></span>
-                                    <p>{{ item.answer }}</p>
+                                    <div class="answer-content">
+                                        {{ item.answer | safe }}
+                                    </div>
                                 </div>
                             </div>
                         </div>

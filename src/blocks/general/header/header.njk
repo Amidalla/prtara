@@ -66,6 +66,9 @@
                             <li>
                                 <a href="tel:+79852599289">+7 (985) 259-92-89</a>
                             </li>
+                            <li>
+                                <a href="tel:+74965413663">+7 (496) 541-36-63</a>
+                            </li>
                         </ul>
                     </div>
                     {{ button(
@@ -162,7 +165,7 @@
                         <span></span>
                     </span>
                 </button>
-                <form class="header-search" action="./catalog.html" method="get" role="search">
+                <form class="header-search" action="./search.html" method="get" role="search">
                     <label class="visually-hidden" for="header-search">Поиск продукции</label>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                         <path
@@ -187,6 +190,12 @@
                         placeholder="Найти продукцию по названию"
                         autocomplete="off"
                     />
+                    <button class="header-search-clear" type="button" aria-label="Очистить поиск" hidden>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                            <path d="M5 5L15 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                            <path d="M15 5L5 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                        </svg>
+                    </button>
                 </form>
             </div>
         </div>

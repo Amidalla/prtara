@@ -28,6 +28,7 @@ import { certificates } from "../blocks/common/certificates/certificates.js";
 import { partnersShort } from "../blocks/common/partners-short/partners-short.js";
 import { worksShort } from "../blocks/common/works-short/works-short.js";
 import { newsShort } from "../blocks/common/news-short/news-short.js";
+import { catalogShort } from "../blocks/common/catalog-short/catalog-short.js";
 import { showPopup } from "./utils/popup.js";
 import { lazyLoad } from "./utils/lazy-load.js";
 
@@ -55,7 +56,8 @@ const components = [
     certificates,
     partnersShort,
     worksShort,
-    newsShort
+    newsShort,
+    catalogShort
 ];
 
 function init(context = document) {

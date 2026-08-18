@@ -15,6 +15,7 @@
         &:last-child {
             margin-bottom: 0;
         }
+
     }
 
     .list {
@@ -33,7 +34,17 @@
         height: auto;
 
         @include bp.mq(tablet-xl) {
+            padding: 16px 0 24px;
+            box-sizing: border-box;
             width: auto;
+
+            &:first-child {
+                padding-left: 16px;
+            }
+
+            &:last-child {
+                padding-right: var(--container-padding);
+            }
         }
 
         .news-card {

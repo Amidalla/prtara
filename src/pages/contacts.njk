@@ -8,9 +8,5 @@
 } %}
 {% extends "layouts/default.njk" %}
 {% block content %}
-    <section class="section">
-        <div class="container">
-            <p class="page-stub">Здесь будет страница контактов.</p>
-        </div>
-    </section>
+    {% include "blocks/common/contacts-page/contacts-page.njk" %}
 {% endblock %}

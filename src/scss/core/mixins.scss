@@ -1,3 +1,5 @@
+@use "core/breakpoints" as bp;
+
 @mixin reset-child-outer-margins {
     > *:first-child {
         margin-top: 0;
@@ -5,6 +7,18 @@
 
     > *:last-child {
         margin-bottom: 0;
+    }
+}
+
+@mixin section-page-head-padding {
+    padding-top: 34px;
+
+    @include bp.mq(laptop) {
+        padding-top: 32px;
+    }
+
+    @include bp.mq(tablet) {
+        padding-top: 20px;
     }
 }
 

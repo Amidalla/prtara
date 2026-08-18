@@ -33,7 +33,17 @@
         height: auto;
 
         @include bp.mq(mobile-xl) {
+            padding: 16px 0 24px;
+            box-sizing: border-box;
             width: auto;
+
+            &:first-child {
+                padding-left: 16px;
+            }
+
+            &:last-child {
+                padding-right: var(--container-padding);
+            }
         }
 
         .work-card {

@@ -72,7 +72,7 @@
 {% set certificatesIsDiplomas = certificatesIsDiplomas | default(false) %}
 {% set certificatesTitleTag = certificatesTitleTag | default("h1") %}
 
-<section class="certificates section{% if certificatesIsDiplomas %} is-diplomas{% endif %}" data-certificates>
+<section class="certificates section is-page-head{% if certificatesIsDiplomas %} is-diplomas{% endif %}" data-certificates>
     <div class="container">
         {% if certificatesTitleTag == "h2" %}
             <h2 class="title">

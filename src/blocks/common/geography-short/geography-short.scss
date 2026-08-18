@@ -83,15 +83,20 @@
         @include bp.mq(tablet) {
             line-height: 26px;
         }
-    }
 
-    .lead-name {
-        color: var(--geography-short-text);
-    }
+        strong {
+            font-weight: 500;
+            color: var(--geography-short-accent);
+        }
 
-    .lead-accent {
-        font-weight: 500;
-        color: var(--geography-short-accent);
+        a {
+            color: inherit;
+            text-decoration: underline;
+
+            &:hover {
+                text-decoration: none;
+            }
+        }
     }
 
     .clients-title {
@@ -166,6 +171,19 @@
             margin-top: 16px;
             font-size: 15px;
             line-height: 22px;
+        }
+
+        strong {
+            font-weight: 600;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: underline;
+
+            &:hover {
+                text-decoration: none;
+            }
         }
     }
 

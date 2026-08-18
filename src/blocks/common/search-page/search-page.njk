@@ -1,0 +1,125 @@
+{% from "components/general/pagination/pagination.njk" import render as pagination %}
+
+{% set searchPageTitle = searchPageTitle | default("Поиск") %}
+{% set searchPageQuery = searchPageQuery | default("газовый") %}
+{% set searchPageIsEmpty = searchPageIsEmpty | default(false) %}
+
+{% if not searchPageResults %}
+    {% set searchPageResults = [
+        {
+            category: "О компании",
+            categoryHref: "./about.html",
+            href: "./about.html",
+            snippet: "... обслуживанию газопоршневых установок гарантирует выполнение договорных обязательств перед клиентами по сервисному обслуживанию ГПУ. С 2024 года компания Service Unit стала сервисным партнером АО «РОСТ ЭНЕРДЖИ» и осуществляет сопровождение и техническое обслуживание газопоршневого оборудования китайских производителей Yuchai и Jichai в России. Продукция и услуги компании: - широкий ассортимент надежных, экономичных и устойчивых промышленных газопоршневых установок Jenbacher; - услуги сервисного сопровождения ...",
+            updated: "07.07.2025",
+            path: [
+                { title: "Партнеры", href: "./about.html" },
+                { title: "О компании", href: "./about.html" }
+            ]
+        },
+        {
+            category: "Производители",
+            categoryHref: "./catalog.html",
+            href: "./product.html",
+            snippet: "... электроснабжение предприятия и минимизировать выбросы углекислого газа. Высокая надежность ГПУ Jenbacher 6й серии Продукция Jenbacher известна своей надежностью и долговечностью, что обеспечивает стабильную работу установок и минимизирует затраты на обслуживание и ремонт. Межсервисный интервал Jenbacher оставляет до 2000 моточасов. Капитальный ремонт выполняется через 30 000–60 000 часов работы двигателя. В этом случае специалисты сервисной службы компании «Сервис Юнит» проведут аудит и выполнят ...",
+            updated: "18.06.2025",
+            path: [
+                { title: "Jichai", href: "./catalog-category.html" },
+                { title: "Производители", href: "./catalog.html" }
+            ]
+        },
+        {
+            category: "Производители",
+            categoryHref: "./catalog.html",
+            href: "./product.html",
+            snippet: "... электроснабжение предприятия и минимизировать выбросы углекислого газа. Высокая надежность ГПУ Jenbacher 6й серии Продукция Jenbacher известна своей надежностью и долговечностью, что обеспечивает стабильную работу установок и минимизирует затраты на обслуживание и ремонт. Межсервисный интервал Jenbacher оставляет до 2000 моточасов. Капитальный ремонт выполняется через 30 000–60 000 часов работы двигателя. В этом случае специалисты сервисной службы компании «Сервис Юнит» проведут аудит и выполнят ...",
+            updated: "18.06.2025",
+            path: [
+                { title: "Jichai", href: "./catalog-category.html" },
+                { title: "Производители", href: "./catalog.html" }
+            ]
+        }
+    ] %}
+{% endif %}
+
+{% set searchPagePaginationItems = searchPagePaginationItems | default([
+    { type: "prev", disabled: true },
+    { type: "page", number: 1, active: true },
+    { type: "page", number: 2, url: "./search.html?q=" ~ searchPageQuery ~ "&page=2" },
+    { type: "page", number: 3, url: "./search.html?q=" ~ searchPageQuery ~ "&page=3" },
+    { type: "page", number: 4, url: "./search.html?q=" ~ searchPageQuery ~ "&page=4", desktopOnly: true },
+    { type: "ellipsis" },
+    { type: "page", number: 24, url: "./search.html?q=" ~ searchPageQuery ~ "&page=24" },
+    { type: "next", url: "./search.html?q=" ~ searchPageQuery ~ "&page=2" }
+]) %}
+
+<section class="search-page section is-page-head">
+    <div class="container">
+        <h1 class="title">{{ searchPageTitle }}</h1>
+
+        <div class="search-page-body">
+            <form class="search-page-form" action="./search.html" method="get" role="search">
+                <label class="visually-hidden" for="search-page-query">Поиск</label>
+                <input
+                    id="search-page-query"
+                    class="search-page-input"
+                    type="search"
+                    name="q"
+                    placeholder="Поиск"
+                    autocomplete="off"
+                >
+                <button class="search-page-submit" type="submit" aria-label="Найти">
+                    <img
+                        src="./assets/images/content/search/search-icon.svg"
+                        width="24"
+                        height="24"
+                        alt=""
+                    >
+                </button>
+            </form>
+
+            {% if searchPageIsEmpty %}
+                <p class="search-page-empty">К сожалению, на ваш поисковый запрос ничего не найдено.</p>
+            {% else %}
+                <div class="search-page-content">
+                    <p class="search-page-summary">Результат поиска по запросу: {{ searchPageQuery }}</p>
+
+                    <div class="search-page-panel">
+                        <div class="search-page-results">
+                            {% for item in searchPageResults %}
+                                <article class="search-page-item">
+                                    <p class="category">
+                                        <a href="{{ item.categoryHref }}">{{ item.category }}</a>
+                                    </p>
+
+                                    <div class="details">
+                                        <p class="snippet">
+                                            <a href="{{ item.href }}">{{ item.snippet }}</a>
+                                        </p>
+                                        <p class="updated">Изменен: {{ item.updated }}</p>
+                                        <p class="path">
+                                            <span class="path-label">Путь:</span>
+                                            {% for part in item.path %}
+                                                {% if not loop.first %}<span class="path-sep"> / </span>{% endif %}
+                                                <a href="{{ part.href }}">{{ part.title }}</a>
+                                            {% endfor %}
+                                        </p>
+                                    </div>
+                                </article>
+                            {% endfor %}
+                        </div>
+
+                        <p class="search-page-sort">
+                            <span>Отсортировано по релевантности | </span>
+                            <button class="search-page-sort-link" type="button">Сортировать по дате</button>
+                        </p>
+
+                        {% if searchPagePaginationItems | length %}
+                            {{ pagination(items=searchPagePaginationItems, class="search-page-pagination") }}
+                        {% endif %}
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</section>

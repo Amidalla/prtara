@@ -39,8 +39,30 @@
 ] %}
 {% set catalogCategoryItems = catalogCategoryItems if catalogCategoryItems else catalogCategoryItemsDefault %}
 {% set catalogCategoryTitle = catalogCategoryTitle | default("Пленки и пакеты из полиэтилена") %}
+{% if not catalogCategoryTextHtml %}
+    {% set catalogCategoryTextHtml %}
+        <h2>Мы предлагаем широкий ассортимент полиэтиленовой упаковки:</h2>
 
-<section class="catalog-category section">
+        <ul>
+            <li>
+                <span>Пленки: </span>
+                <strong>полотно, рукав, полурукав, термоусадочную пленку.</strong>
+            </li>
+            <li>
+                <span>Готовые изделия: </span>
+                <strong>мешки и пакеты.</strong>
+            </li>
+        </ul>
+
+        <p>Работаем с полиэтиленом высокого (ПВД), низкого (ПНД) и среднего (ПСД) давления.</p>
+        <p>
+            Наши мешки и пакеты изготавливаются с боковым и донным швом, доступны в любых размерах, включая
+            нестандартные. Наносим флексопечать до 6 цветов для брендирования вашей продукции.
+        </p>
+    {% endset %}
+{% endif %}
+
+<section class="catalog-category section is-page-head">
     <div class="container">
         <h1 class="title">{{ catalogCategoryTitle }}</h1>
 
@@ -73,47 +95,10 @@
             {% endfor %}
         </div>
 
-        <div class="catalog-category-text">
-            <h2 class="text-title">Мы предлагаем широкий ассортимент полиэтиленовой упаковки:</h2>
-
-            <ul class="text-list">
-                <li>
-                    <img
-                        class="bullet"
-                        src="./assets/images/content/catalog-category/list-bullet.svg"
-                        width="12"
-                        height="16"
-                        alt=""
-                        aria-hidden="true"
-                    />
-                    <p>
-                        <span>Пленки: </span>
-                        <strong>полотно, рукав, полурукав, термоусадочную пленку.</strong>
-                    </p>
-                </li>
-                <li>
-                    <img
-                        class="bullet"
-                        src="./assets/images/content/catalog-category/list-bullet.svg"
-                        width="12"
-                        height="16"
-                        alt=""
-                        aria-hidden="true"
-                    />
-                    <p>
-                        <span>Готовые изделия: </span>
-                        <strong>мешки и пакеты.</strong>
-                    </p>
-                </li>
-            </ul>
-
-            <div class="text-body">
-                <p>Работаем с полиэтиленом высокого (ПВД), низкого (ПНД) и среднего (ПСД) давления.</p>
-                <p>
-                    Наши мешки и пакеты изготавливаются с боковым и донным швом, доступны в любых размерах, включая
-                    нестандартные. Наносим флексопечать до 6 цветов для брендирования вашей продукции.
-                </p>
+        {% if catalogCategoryTextHtml %}
+            <div class="catalog-category-text">
+                {{ catalogCategoryTextHtml | safe }}
             </div>
-        </div>
+        {% endif %}
     </div>
 </section>

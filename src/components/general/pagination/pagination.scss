@@ -1,159 +1,137 @@
 @use "core/breakpoints" as bp;
 
 .pagination {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
     width: fit-content;
+    max-width: 100%;
     margin-right: auto;
     margin-left: auto;
 
-    ul {
+    .pag-item,
+    .pag-arrow {
+        box-sizing: border-box;
         display: flex;
-        flex-wrap: wrap;
-        gap: 8px 24px;
+        flex: 0 0 auto;
         align-items: center;
         justify-content: center;
+        width: 43px;
+        height: 43px;
         padding: 0;
-        margin: 0;
-        list-style: none;
-    }
-
-    .page,
-    .ellipsis {
-        display: flex;
-        align-items: center;
-        justify-content: center;
         font-family: var(--font-family-primary);
         font-size: 16px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: 120%;
-        color: #061e49;
-    }
-
-    .page {
-        width: 10px;
-        height: 19px;
-        overflow: visible;
-        transition:
-            width 0.35s ease,
-            height 0.35s ease,
-            color 0.35s ease;
-
-        &.active {
-            width: 44px;
-            height: 45px;
-            color: #055faa;
-        }
-    }
-
-    .ellipsis {
-        width: auto;
-        height: 45px;
-        pointer-events: none;
-    }
-
-    .link {
-        position: relative;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        height: 100%;
-        color: inherit;
+        font-weight: 400;
+        line-height: normal;
+        color: #37383a;
         text-decoration: none;
-        transition: color 0.35s ease;
-
-        &:hover {
-            color: #055faa;
-            text-decoration: none;
-        }
-    }
-
-    .page:not(.active) .link {
-        padding: 13px 17px;
-        margin: -13px -17px;
-    }
-
-    .value {
-        position: relative;
-        z-index: 1;
-        white-space: nowrap;
-    }
-
-    .corner {
-        position: absolute;
-        z-index: 0;
-        display: flex;
-        width: 15px;
-        height: 16px;
-        color: #055faa;
-        pointer-events: none;
-        opacity: 0;
+        background: #fff;
+        border: 1px solid #808080;
+        border-radius: 2px;
         transition:
-            opacity 0.35s ease,
-            transform 0.35s ease;
+            color 0.25s ease,
+            background-color 0.25s ease,
+            border-color 0.25s ease;
 
-        svg {
-            display: block;
-            width: 100%;
-            height: 100%;
-        }
-
-        &.tl {
-            top: 0;
-            left: 0;
-            transform: translate(6px, 6px) scale(0.5);
-        }
-
-        &.tr {
-            top: 0;
-            right: 0;
-            transform: translate(-6px, 6px) scale(-0.5, 0.5);
-        }
-
-        &.br {
-            right: 0;
-            bottom: 0;
-            transform: translate(-6px, -6px) scale(-0.5);
-        }
-
-        &.bl {
-            bottom: 0;
-            left: 0;
-            transform: translate(6px, -6px) scale(0.5, -0.5);
+        @include bp.mq(tablet-l) {
+            width: 29px;
+            min-width: 29px;
+            height: 29px;
+            min-height: 29px;
+            padding: 5px 10px;
+            font-size: 15px;
         }
     }
 
-    .active {
-        .link {
+    a.pag-item,
+    a.pag-arrow {
+        font-size: 16px;
+
+        @include bp.mq(tablet-l) {
+            font-size: 15px;
+        }
+    }
+
+    .pag-item {
+        &.is-active {
+            color: #fff;
             pointer-events: none;
+            background: var(--color-blue);
+            border-color: var(--color-blue);
         }
 
-        .corner {
-            opacity: 1;
+        &.ellipsis {
+            pointer-events: none;
 
-            &.tl {
-                transform: translate(0, 0) scale(1);
+            @include bp.mq(tablet-l) {
+                width: 29px;
+                padding-right: 0;
+                padding-left: 0;
             }
+        }
 
-            &.tr {
-                transform: translate(0, 0) scale(-1, 1);
-            }
+        &:not(.is-active, .ellipsis):hover {
+            color: var(--color-red);
+            border-color: var(--color-red);
+        }
 
-            &.br {
-                transform: translate(0, 0) scale(-1);
-            }
-
-            &.bl {
-                transform: translate(0, 0) scale(1, -1);
+        &.is-desktop-only {
+            @include bp.mq(tablet-l) {
+                display: none;
             }
         }
     }
 
-    @media (prefers-reduced-motion: reduce) {
-        .page,
-        .link,
-        .corner {
-            transition: none;
+    .pag-arrow {
+        color: #37383a;
+        overflow: hidden;
+        transition:
+            color 0.25s ease,
+            border-color 0.25s ease;
+
+        .pag-arrow-icon {
+            display: flex;
+            flex-shrink: 0;
+            align-items: center;
+            justify-content: center;
+            width: 9px;
+            height: 15px;
+
+            svg {
+                display: block;
+                width: 9px;
+                height: 15px;
+            }
         }
+
+        &.prev .pag-arrow-icon {
+            transform: rotate(180deg);
+        }
+
+        &.is-disabled {
+            pointer-events: none;
+            color: #c8c8c8;
+            background: #fff;
+            border-color: #c8c8c8;
+        }
+
+        &:not(.is-disabled):hover {
+            color: var(--color-red);
+            border-color: var(--color-red);
+        }
+
+        &.is-desktop-only {
+            @include bp.mq(tablet-l) {
+                display: none;
+            }
+        }
+    }
+
+    @include bp.mq(tablet-l) {
+        flex-wrap: nowrap;
+        align-items: center;
+        padding: 15px 0;
     }
 }

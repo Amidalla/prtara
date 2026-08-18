@@ -1,8 +1,3 @@
-{% from "components/general/button/button.njk" import render as button %}
-{% from "components/general/input/input.njk" import render as input %}
-{% from "components/general/textarea/textarea.njk" import render as textarea %}
-{% from "components/general/consent-checkbox/consent-checkbox.njk" import render as consentCheckbox %}
-
 {% set catalogShortItems = [
     {
         title: "Пленки и пакеты из полиэтилена",
@@ -59,7 +54,10 @@
 {% set catalogShortIsPage = catalogShortIsPage | default(false) %}
 {% set catalogShortHideForm = catalogShortHideForm | default(false) %}
 
-<section class="catalog-short section{% if catalogShortIsPage %} is-page{% endif %}{% if catalogShortHideForm %} is-cards-only{% endif %}">
+<section
+    class="catalog-short section{% if catalogShortIsPage %} is-page is-page-head{% endif %}{% if catalogShortHideForm %} is-cards-only{% endif %}"
+    data-catalog-short
+>
     <div class="container">
         {% if catalogShortTitleTag == "h1" %}
             <h1 class="title">{{ catalogShortTitle }}</h1>
@@ -68,94 +66,129 @@
         {% endif %}
 
         <div class="catalog-short-inner{% if catalogShortHideForm %} is-cards-only{% endif %}">
-            <div class="catalog-short-grid">
-                {% for item in catalogShortItems %}
-                    <a class="catalog-short-card" href="{{ item.href }}">
-                        <span class="name">{{ item.title }}</span>
-                        <span class="picture">
-                            <img
-                                class="lazy"
-                                src="{{ lazyPlaceholder }}"
-                                data-src="{{ item.image }}"
-                                alt="{{ item.title }}"
-                                width="290"
-                                height="220"
-                            />
-                        </span>
-                        <span class="arrow" aria-hidden="true">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path
-                                    d="M2.39133 21.4587L21.3792 2.61136M21.3792 17.7476L21.3792 2.61136L5.58201 2.61135"
-                                    stroke="currentColor"
+            {% if catalogShortHideForm %}
+                <div class="catalog-short-slider" aria-label="Варианты упаковки">
+                    <button class="nav prev" type="button" aria-label="Назад">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="77" height="42" viewBox="0 0 77 42" fill="none" aria-hidden="true">
+                            <g clip-path="url(#catalog-short-nav-arrow-prev)">
+                                <rect
+                                    class="nav-circle"
+                                    x="-0.75"
+                                    y="0.75"
+                                    width="40.5"
+                                    height="40.5"
+                                    rx="20.25"
+                                    transform="matrix(-1 0 0 1 40.5 0)"
+                                    fill="#F2F2F2"
+                                    stroke="#fff"
                                     stroke-width="1.5"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
                                 />
-                            </svg>
-                        </span>
-                    </a>
-                {% endfor %}
-            </div>
+                                <path class="nav-line" d="M75 21H11" stroke="#134A9B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                <path class="nav-accent" d="M77 21H42" stroke="#B52F59" stroke-width="1.5" stroke-linejoin="round" />
+                                <path class="nav-chevron" d="M21 32L10 21L21 10" stroke="#134A9B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            </g>
+                            <defs>
+                                <clipPath id="catalog-short-nav-arrow-prev">
+                                    <rect width="77" height="42" fill="white" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+                    </button>
+
+                    <div class="swiper">
+                        <div class="swiper-wrapper">
+                            {% for item in catalogShortItems %}
+                                <div class="swiper-slide">
+                                    <a class="catalog-short-card catalog-short-card--slider" href="{{ item.href }}">
+                                        <span class="name">{{ item.title }}</span>
+                                        <span class="picture">
+                                            <img
+                                                class="lazy"
+                                                src="{{ lazyPlaceholder }}"
+                                                data-src="{{ item.image }}"
+                                                alt="{{ item.title }}"
+                                                width="290"
+                                                height="220"
+                                            />
+                                        </span>
+                                        <span class="arrow" aria-hidden="true">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                <path
+                                                    d="M2.39133 21.4587L21.3792 2.61136M21.3792 17.7476L21.3792 2.61136L5.58201 2.61135"
+                                                    stroke="currentColor"
+                                                    stroke-width="1.5"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                />
+                                            </svg>
+                                        </span>
+                                    </a>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+
+                    <button class="nav next" type="button" aria-label="Вперёд">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="77" height="42" viewBox="0 0 77 42" fill="none" aria-hidden="true">
+                            <g clip-path="url(#catalog-short-nav-arrow-next)">
+                                <rect
+                                    class="nav-circle"
+                                    x="0.75"
+                                    y="-0.75"
+                                    width="40.5"
+                                    height="40.5"
+                                    rx="20.25"
+                                    transform="matrix(1 8.74228e-08 8.74228e-08 -1 35 40.5)"
+                                    fill="#F2F2F2"
+                                    stroke="#fff"
+                                    stroke-width="1.5"
+                                />
+                                <path class="nav-line" d="M2 21L66 21" stroke="#134A9B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                <path class="nav-accent" d="M0 21L35 21" stroke="#B52F59" stroke-width="1.5" stroke-linejoin="round" />
+                                <path class="nav-chevron" d="M56 10L67 21L56 32" stroke="#134A9B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            </g>
+                            <defs>
+                                <clipPath id="catalog-short-nav-arrow-next">
+                                    <rect width="77" height="42" fill="white" transform="translate(77 42) rotate(-180)" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+                    </button>
+                </div>
+            {% else %}
+                <div class="catalog-short-grid">
+                    {% for item in catalogShortItems %}
+                        <a class="catalog-short-card" href="{{ item.href }}">
+                            <span class="name">{{ item.title }}</span>
+                            <span class="picture">
+                                <img
+                                    class="lazy"
+                                    src="{{ lazyPlaceholder }}"
+                                    data-src="{{ item.image }}"
+                                    alt="{{ item.title }}"
+                                    width="290"
+                                    height="220"
+                                />
+                            </span>
+                            <span class="arrow" aria-hidden="true">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path
+                                        d="M2.39133 21.4587L21.3792 2.61136M21.3792 17.7476L21.3792 2.61136L5.58201 2.61135"
+                                        stroke="currentColor"
+                                        stroke-width="1.5"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                </svg>
+                            </span>
+                        </a>
+                    {% endfor %}
+                </div>
+            {% endif %}
 
             {% if not catalogShortHideForm %}
-                <aside class="catalog-short-form">
-                    <h3 class="form-title">Оставить заявку</h3>
-
-                    <form class="form" data-validate>
-                        <div class="grid">
-                            <div class="field">
-                                <label class="label" for="{{ catalogShortFormId }}-name">Контактное лицо*:</label>
-                                {{ input(
-                                    type="text",
-                                    id=catalogShortFormId + "-name",
-                                    name="name",
-                                    placeholder="ФИО",
-                                    autocomplete="name",
-                                    required=true,
-                                    minlength="2",
-                                    data={"error": "Введите имя (минимум 2 буквы)"}
-                                ) }}
-                            </div>
-                            <div class="field">
-                                <label class="label" for="{{ catalogShortFormId }}-phone">Телефон*:</label>
-                                {{ input(
-                                    type="tel",
-                                    id=catalogShortFormId + "-phone",
-                                    name="phone",
-                                    placeholder="+7",
-                                    autocomplete="tel",
-                                    data={"mask": "phone", "error": "Введите полный номер телефона"},
-                                    required=true
-                                ) }}
-                            </div>
-                            <div class="field">
-                                <label class="label" for="{{ catalogShortFormId }}-message">Сообщение</label>
-                                {{ textarea(
-                                    id=catalogShortFormId + "-message",
-                                    name="message",
-                                    placeholder="Текст сообщения",
-                                    rows=3,
-                                    data={"error": "Введите сообщение"}
-                                ) }}
-                            </div>
-                            <div class="field-consent">
-                                {{ consentCheckbox(
-                                    id=catalogShortFormId + "-consent",
-                                    text='Я согласен(а) на обработку моих персональных данных в соответствии с <a href="./policy.html">Согласием на обработку персональных данных</a> и <a href="./policy.html">Политикой конфиденциальности</a>',
-                                    data={"error": "Необходимо отметить"},
-                                    required=true
-                                ) }}
-                            </div>
-                            <div class="actions">
-                                {{ button(
-                                    text="Отправить",
-                                    type="submit",
-                                    disabled=true
-                                ) }}
-                            </div>
-                        </div>
-                    </form>
-                </aside>
+                {% include "blocks/common/catalog-short/catalog-short-form.njk" %}
             {% endif %}
         </div>
     </div>

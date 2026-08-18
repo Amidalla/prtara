@@ -1,0 +1,144 @@
+{% from "components/general/button/button.njk" import render as button %}
+{% from "components/general/pagination/pagination.njk" import render as pagination %}
+
+{% set promotionsPageTitle = promotionsPageTitle | default("Акции") %}
+
+{% if not promotionsPageItems %}
+    {% set promotionsPageItems = [
+        {
+            title: "Мешки полиэтиленовые ПСД для упаковки холодильников С",
+            image: "./assets/images/content/promotions/promo-1.png",
+            href: "./product.html",
+            badge: true
+        },
+        {
+            title: "Мешки полиэтиленовые ПСД для упаковки стиральных машин с",
+            image: "./assets/images/content/promotions/promo-2.png",
+            href: "./product.html",
+            badge: true
+        },
+        {
+            title: "Пакеты ПВД больших размеров толщиной до 200 мкм",
+            image: "./assets/images/content/promotions/promo-3.png",
+            href: "./product.html",
+            badge: true
+        },
+        {
+            title: "ПВД пакеты",
+            image: "./assets/images/content/promotions/promo-4.png",
+            href: "./product.html",
+            badge: true
+        },
+        {
+            title: "ПНД с флексопечатью",
+            image: "./assets/images/content/promotions/promo-5.png",
+            href: "./product.html",
+            badge: true
+        },
+        {
+            title: "Пленка полиэтиленовая, полотно, рукав, полурукав, пакеты ПНД",
+            image: "./assets/images/content/promotions/promo-6.png",
+            href: "./product.html",
+            badge: true
+        },
+        {
+            title: "Пленка полиэтиленовая термоусадочная, с флексопечатью",
+            image: "./assets/images/content/promotions/promo-7.png",
+            href: "./product.html",
+            badge: true
+        },
+        {
+            title: "Пленка полиэтиленовая термоусадочная, с флексопечатью",
+            image: "./assets/images/content/promotions/promo-7.png",
+            href: "./product.html",
+            badge: true
+        },
+        {
+            title: "Мешки полиэтиленовые ПСД для упаковки холодильников С",
+            image: "./assets/images/content/promotions/promo-1.png",
+            href: "./product.html",
+            badge: true
+        },
+        {
+            title: "Мешки полиэтиленовые ПСД для упаковки стиральных машин с",
+            image: "./assets/images/content/promotions/promo-2.png",
+            href: "./product.html",
+            badge: true
+        },
+        {
+            title: "Пакеты ПВД больших размеров толщиной до 200 мкм",
+            image: "./assets/images/content/promotions/promo-3.png",
+            href: "./product.html",
+            badge: true
+        },
+        {
+            title: "ПВД пакеты",
+            image: "./assets/images/content/promotions/promo-4.png",
+            href: "./product.html",
+            badge: true
+        }
+    ] %}
+{% endif %}
+
+{% set promotionsPaginationItems = promotionsPaginationItems | default([
+    { type: "prev", disabled: true },
+    { type: "page", number: 1, active: true },
+    { type: "page", number: 2, url: "./promotions.html?page=2" },
+    { type: "page", number: 3, url: "./promotions.html?page=3" },
+    { type: "page", number: 4, url: "./promotions.html?page=4", desktopOnly: true },
+    { type: "ellipsis" },
+    { type: "page", number: 24, url: "./promotions.html?page=24" },
+    { type: "next", url: "./promotions.html?page=2" }
+]) %}
+
+<section class="promotions-page promotions-short section is-page-head">
+    <div class="container">
+        <h1 class="title">{{ promotionsPageTitle }}</h1>
+
+        <div class="promotions-page-grid">
+            {% for item in promotionsPageItems %}
+                <article class="promo-card">
+                    <a class="picture" href="{{ item.href }}">
+                        {% if item.badge %}
+                            <span class="badge" aria-hidden="true">
+                                <img
+                                    src="./assets/images/content/promotions-short/badge-star.svg"
+                                    width="64"
+                                    height="64"
+                                    alt=""
+                                >
+                                <span class="badge-text">%</span>
+                            </span>
+                        {% endif %}
+
+                        <img
+                            class="lazy"
+                            src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                            data-src="{{ item.image }}"
+                            alt="{{ item.title }}"
+                        >
+                    </a>
+
+                    <div class="body">
+                        <h3 class="name">
+                            <a href="{{ item.href }}">{{ item.title }}</a>
+                        </h3>
+
+                        <div class="actions">
+                            {{ button(
+                                text="Заказать",
+                                type="button",
+                                data={ src: "popup-order" }
+                            ) }}
+                            <a class="more" href="{{ item.href }}">Подробнее</a>
+                        </div>
+                    </div>
+                </article>
+            {% endfor %}
+        </div>
+
+        {% if promotionsPaginationItems | length %}
+            {{ pagination(items=promotionsPaginationItems, class="promotions-page-pagination") }}
+        {% endif %}
+    </div>
+</section>

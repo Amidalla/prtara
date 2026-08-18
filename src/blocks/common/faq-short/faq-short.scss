@@ -189,7 +189,7 @@
     .answer {
         display: flex;
         gap: 8px;
-        align-items: flex-start;
+        align-items: center;
         padding: 15px;
         margin: 20px 20px 15px;
         background: var(--faq-short-answer-bg);
@@ -202,27 +202,94 @@
             margin: 20px 10px 8px;
         }
 
+        > *:last-child {
+            margin-bottom: 0;
+        }
+
         .bullet {
             flex: 0 0 auto;
             width: 10px;
             height: 10px;
-            margin-top: 5px;
             background: var(--color-red);
             border-radius: 50%;
         }
 
-        p {
+        .answer-content {
             flex: 1 1 auto;
             min-width: 0;
-            margin: 0;
             font-family: var(--font-family-primary);
             font-size: 18px;
             font-weight: 400;
-            line-height: normal;
+            line-height: 150%;
             color: #37383a;
 
             @include bp.mq(tablet-l) {
                 font-size: 15px;
+            }
+
+            > *:last-child {
+                margin-bottom: 0;
+            }
+
+            p {
+                margin: 0 0 12px;
+            }
+
+            h3,
+            h4 {
+                margin: 0 0 10px;
+                font-size: inherit;
+                font-weight: 700;
+                line-height: normal;
+            }
+
+            ul,
+            ol {
+                margin: 0 0 12px;
+            }
+
+            ul {
+                padding-left: 1.2em;
+                list-style: disc;
+            }
+
+            ol {
+                padding-left: 1.4em;
+            }
+
+            table {
+                width: 100%;
+                margin: 0 0 12px;
+                line-height: normal;
+                border-collapse: collapse;
+
+                th,
+                td {
+                    padding: 8px 10px;
+                    text-align: left;
+                    vertical-align: top;
+                    border: 1px solid #d8dde3;
+                }
+
+                thead th {
+                    font-weight: 600;
+                    background: #e8edf3;
+                }
+            }
+
+            a {
+                color: var(--color-blue);
+                text-decoration: underline;
+
+                @media (hover: hover) {
+                    &:hover {
+                        text-decoration: none;
+                    }
+                }
+            }
+
+            strong {
+                font-weight: 600;
             }
         }
     }
@@ -239,7 +306,7 @@
         .form-title {
             margin: 0 0 28px;
             font-family: var(--font-family-primary);
-            font-size: 28px;
+            font-size: 24px;
             font-style: normal;
             font-weight: 500;
             line-height: normal;
@@ -247,7 +314,6 @@
 
             @include bp.mq(laptop-l) {
                 margin-bottom: 24px;
-                font-size: 24px;
             }
 
             @include bp.mq(tablet-xl) {

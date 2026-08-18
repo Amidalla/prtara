@@ -189,11 +189,12 @@
 }
 
 .popup-callback {
+        position: relative;
         flex-direction: column;
         align-items: flex-start;
         width: 474px;
         max-width: none;
-        padding: 30px;
+        padding: 56px 30px 30px;
         text-align: left;
         background: #fff;
         border-radius: 0;
@@ -218,6 +219,7 @@
                 margin-bottom: 24px;
 
                 .title {
+                    padding-right: 52px;
                     font-family: "Golos Text", sans-serif;
                     font-size: 38px;
                     font-style: normal;
@@ -366,7 +368,7 @@
     .popup-callback {
         width: calc(100vw - 30px);
         max-width: 100%;
-        padding: 24px;
+        padding: 36px 24px 24px;
 
         .popup-close {
             top: 15px;
@@ -384,7 +386,7 @@
             margin-bottom: 18px;
 
             .title {
-                padding-right: 28px;
+                padding-right: 36px;
                 font-size: 30px;
             }
         }
@@ -447,7 +449,7 @@
 @include bp.mq(mobile-l) {
     .popup-callback {
         width: calc(100vw - 24px);
-        padding: 20px;
+        padding: 32px 20px 20px;
 
         .popup-close {
             top: 12px;
@@ -465,7 +467,7 @@
             margin-bottom: 16px;
 
             .title {
-                padding-right: 24px;
+                padding-right: 32px;
                 font-size: 26px;
             }
         }

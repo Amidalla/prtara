@@ -3,18 +3,18 @@
 .about {
     --about-bullet: linear-gradient(151deg, #372584 16.67%, #c41143 98.63%);
 
-    padding: 20px 0 60px;
+    padding-bottom: 60px;
 
     @include bp.mq(laptop) {
-        padding: 18px 0 50px;
+        padding-bottom: 50px;
     }
 
     @include bp.mq(tablet-l) {
-        padding: 16px 0 40px;
+        padding-bottom: 40px;
     }
 
     @include bp.mq(tablet) {
-        padding: 14px 0 32px;
+        padding-bottom: 32px;
     }
 
     .title {
@@ -331,12 +331,8 @@
         &:focus-visible {
             text-decoration: none;
 
-            .shade {
-                opacity: 1;
-            }
-
             .zoom {
-                opacity: 1;
+                opacity: 0.7;
                 transform: translate(-50%, -50%) scale(1.05);
             }
         }
@@ -380,7 +376,7 @@
         width: 70px;
         height: 70px;
         pointer-events: none;
-        opacity: 0;
+        opacity: 1;
         transform: translate(-50%, -50%);
         transition:
             opacity 0.25s ease,

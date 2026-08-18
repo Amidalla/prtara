@@ -68,11 +68,19 @@
     .about-exhibition-text {
         display: flex;
         flex-direction: column;
-        gap: 14px;
+        gap: 22px;
+
+        @include bp.mq(laptop) {
+            gap: 19px;
+        }
+
+        @include bp.mq(tablet) {
+            gap: 14px;
+        }
 
         p {
             margin: 0;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 400;
             line-height: normal;
             color: var(--color-white);
@@ -85,56 +93,64 @@
                 font-size: 15px;
             }
         }
+    }
 
-        .lead {
-            font-size: 18px;
+    .about-exhibition-lead {
+        font-size: 16px;
+        font-weight: 700;
+
+        a {
+            color: inherit;
+            text-decoration: underline;
             font-weight: 700;
+        }
+    }
 
-            @include bp.mq(laptop) {
+    .about-exhibition-body {
+        display: flex;
+        flex-direction: column;
+        gap: 22px;
+
+        @include bp.mq(laptop) {
+            gap: 19px;
+        }
+
+        @include bp.mq(tablet) {
+            gap: 14px;
+        }
+
+        > * {
+            margin: 0;
+        }
+
+        .about-exhibition-list-block {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .about-exhibition-list-block > p {
+            font-size: 18px;
+            font-weight: 600;
+
+            @include bp.mq(tablet-l) {
                 font-size: 16px;
             }
-
-            a {
-                color: inherit;
-                text-decoration: underline;
-            }
         }
 
-        .closing {
-            font-weight: 500;
+        ul {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            padding: 0;
+            margin: 0;
+            list-style: none;
         }
-    }
-
-    .about-exhibition-list-block {
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-    }
-
-    .list-title {
-        margin: 0;
-        font-size: 18px;
-        font-weight: 600;
-        line-height: normal;
-        color: var(--color-white);
-
-        @include bp.mq(tablet-l) {
-            font-size: 16px;
-        }
-    }
-
-    .about-exhibition-list {
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-        padding: 0;
-        margin: 0;
-        list-style: none;
 
         li {
             position: relative;
             padding-left: 18px;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 400;
             line-height: normal;
             color: var(--color-white);
@@ -153,6 +169,15 @@
                 background: #f1eeff;
                 border-radius: 100px;
             }
+        }
+
+        a {
+            color: inherit;
+            text-decoration: underline;
+        }
+
+        strong {
+            font-weight: 600;
         }
     }
 

@@ -8,9 +8,10 @@
 } %}
 {% extends "layouts/default.njk" %}
 {% block content %}
-    <section class="section">
-        <div class="container">
-            <p class="page-stub">Здесь будет страница акций.</p>
-        </div>
-    </section>
+    {% include "blocks/common/promotions-page/promotions-page.njk" %}
+
+    {% set helpShortIsCategory = true %}
+    {% set helpShortFormId = "help-promotions" %}
+    {% set helpShortButtonText = "Задать вопрос" %}
+    {% include "blocks/common/help-short/help-short.njk" %}
 {% endblock %}

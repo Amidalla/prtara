@@ -1,20 +1,6 @@
 @use "core/breakpoints" as bp;
 
 .product {
-    padding: 32px 0 0;
-
-    @include bp.mq(laptop-m) {
-        padding: 28px 0 0;
-    }
-
-    @include bp.mq(tablet-l) {
-        padding: 24px 0 0;
-    }
-
-    @include bp.mq(tablet) {
-        padding: 20px 0 0;
-    }
-
     &.section {
         padding-bottom: 0;
     }
@@ -390,7 +376,7 @@
         -webkit-overflow-scrolling: touch;
     }
 
-    .product-specs-table {
+    .product-specs-scroll table {
         width: 100%;
         min-width: 900px;
         font-family: var(--font-family-primary);
@@ -424,8 +410,8 @@
             background: #f8f8f8;
         }
 
-        tbody th,
-        thead th:first-child {
+        th:first-child,
+        td:first-child {
             position: sticky;
             left: 0;
             z-index: 1;
@@ -439,87 +425,133 @@
             background: #f2f5fb;
         }
 
-        tbody tr:nth-child(even) th {
+        tbody tr:nth-child(even) th:first-child,
+        tbody tr:nth-child(even) td:first-child {
             background: #f8f8f8;
         }
     }
 
     .product-description {
-        .lead {
-            margin: 0 0 24px;
-            font-family: var(--font-family-primary);
-            font-size: 18px;
-            font-weight: 400;
-            line-height: 150%;
-            color: #37383a;
+        font-family: var(--font-family-primary);
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 150%;
+        color: #37383a;
 
-            @include bp.mq(laptop-m) {
-                font-size: 16px;
-            }
+        @include bp.mq(laptop-m) {
+            font-size: 16px;
+        }
+
+        @include bp.mq(tablet) {
+            font-size: 15px;
+        }
+
+        > *:last-child {
+            margin-bottom: 0;
+        }
+
+        p {
+            margin: 0 0 24px;
 
             @include bp.mq(tablet) {
                 margin-bottom: 16px;
-                font-size: 15px;
             }
         }
 
-        .subtitle {
+        h3,
+        h4 {
             margin: 0 0 16px;
-            font-family: var(--font-family-primary);
-            font-size: 18px;
-            font-weight: 500;
+            font-size: inherit;
+            font-weight: 700;
             line-height: normal;
-            color: #37383a;
-
-            @include bp.mq(laptop-m) {
-                font-size: 16px;
-            }
         }
 
-        .desc-list {
+        h3:not(:first-child),
+        h4:not(:first-child) {
+            margin-top: 28px;
+        }
+
+        ul,
+        ol {
+            padding: 0;
+            margin: 0 0 28px;
+        }
+
+        ul {
             display: flex;
             flex-direction: column;
             gap: 10px;
-            padding: 0;
-            margin: 0 0 28px;
             list-style: none;
 
-            &:last-child {
-                margin-bottom: 0;
-            }
-
             li {
-                display: flex;
-                gap: 8px;
-                align-items: flex-start;
-                padding-left: 10px;
-                font-family: var(--font-family-primary);
-                font-size: 18px;
-                font-weight: 400;
-                line-height: 150%;
-                color: #37383a;
+                position: relative;
+                padding-left: 20px;
 
-                .bullet {
-                    display: block;
-                    flex: 0 0 auto;
+                &::before {
+                    position: absolute;
+                    top: 5px;
+                    left: 0;
                     width: 12px;
                     height: 16px;
-                    margin-top: 5px;
-                }
-
-                span {
-                    flex: 1 1 auto;
-                    min-width: 0;
-                }
-
-                @include bp.mq(laptop-m) {
-                    font-size: 16px;
-                }
-
-                @include bp.mq(tablet) {
-                    font-size: 15px;
+                    content: "";
+                    background: url("../../../assets/images/content/product/list-bullet.svg") center / contain
+                        no-repeat;
                 }
             }
+        }
+
+        ol {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding-left: 1.4em;
+        }
+
+        table {
+            width: 100%;
+            margin: 0 0 28px;
+            line-height: normal;
+            border-collapse: collapse;
+
+            th,
+            td {
+                padding: 12px 15px;
+                vertical-align: middle;
+                text-align: left;
+                border: 1px solid #e1e1e3;
+            }
+
+            thead th {
+                font-weight: 500;
+                background: #f2f5fb;
+            }
+
+            tbody tr:nth-child(even) {
+                background: #f8f8f8;
+            }
+        }
+
+        a {
+            color: inherit;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+
+            @media (hover: hover) {
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 0 0 24px;
+        }
+
+        strong {
+            font-weight: 600;
         }
     }
 }

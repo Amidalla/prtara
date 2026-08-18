@@ -414,6 +414,43 @@ header.header {
                 appearance: none;
             }
         }
+
+        .header-search-clear {
+            display: inline-flex;
+            flex: 0 0 auto;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            padding: 0;
+            color: rgb(55 56 58 / 45%);
+            cursor: pointer;
+            background: transparent;
+            border: none;
+            border-radius: 50%;
+            transition:
+                color 0.3s ease,
+                background-color 0.3s ease;
+
+            &:hover,
+            &:focus-visible {
+                color: var(--color-blue);
+                background: rgb(19 74 155 / 8%);
+            }
+
+            &:focus-visible {
+                outline: none;
+            }
+
+            &[hidden] {
+                display: none;
+            }
+
+            svg {
+                width: 20px;
+                height: 20px;
+            }
+        }
     }
 
     .menu-open {

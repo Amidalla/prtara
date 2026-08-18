@@ -1,0 +1,391 @@
+@use "core/breakpoints" as bp;
+
+.contacts-page {
+    .title {
+        margin: 0 0 24px;
+        font-size: var(--font-size-h1);
+        font-weight: 500;
+        line-height: normal;
+        color: #37383a;
+    }
+
+    .contacts-page-main {
+        display: grid;
+        grid-template-columns: 415px minmax(0, 1fr);
+        gap: 50px;
+        align-items: start;
+        margin-bottom: 44px;
+
+        @include bp.mq(laptop-l) {
+            gap: 36px;
+        }
+
+        @include bp.mq(tablet-l) {
+            grid-template-columns: 339px minmax(0, 1fr);
+            gap: 28px;
+            margin-bottom: 32px;
+        }
+
+        @include bp.mq(tablet) {
+            grid-template-columns: 1fr;
+            gap: 24px;
+            margin-bottom: 28px;
+        }
+    }
+
+    .contacts-page-info {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .contacts-page-meta {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        width: 100%;
+        max-width: 461px;
+        margin-bottom: 27px;
+
+        @include bp.mq(laptop) {
+            max-width: none;
+        }
+
+        @include bp.mq(tablet-l) {
+            max-width: 339px;
+            margin-bottom: 24px;
+        }
+
+        @include bp.mq(tablet) {
+            gap: 8px;
+            max-width: none;
+        }
+    }
+
+    .contacts-page-row {
+        width: 100%;
+    }
+
+    .contacts-page-label {
+        font-family: var(--font-family-primary);
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 140%;
+        color: #37383a;
+
+        @include bp.mq(laptop) {
+            font-size: 15px;
+        }
+
+        @include bp.mq(tablet) {
+            font-size: 14px;
+        }
+    }
+
+    .contacts-page-row--phones,
+    .contacts-page-row--address {
+        .contacts-page-label {
+            padding-left: 8.68%;
+        }
+    }
+
+    .contacts-page-row--email,
+    .contacts-page-row--schedule {
+        .contacts-page-label {
+            padding-left: 40px;
+
+            @include bp.mq(laptop) {
+                padding-left: 42px;
+            }
+
+            @include bp.mq(tablet-l) {
+                padding-left: 43px;
+            }
+        }
+    }
+
+    .contacts-page-value {
+        display: flex;
+        gap: 15px;
+        align-items: flex-start;
+        width: 100%;
+        margin-top: 2px;
+        font-family: var(--font-family-primary);
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 26px;
+        color: #37383a;
+
+        @include bp.mq(laptop) {
+            font-size: 16px;
+        }
+
+        @include bp.mq(tablet-l) {
+            font-size: 15px;
+        }
+
+        a,
+        p {
+            margin: 0;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+
+            &:hover {
+                color: var(--color-blue);
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .contacts-page-row--email,
+    .contacts-page-row--schedule {
+        .contacts-page-value {
+            align-items: center;
+            max-width: 339px;
+        }
+    }
+
+    .contacts-page-row--schedule {
+        .contacts-page-value {
+            line-height: 26px;
+        }
+    }
+
+    .contacts-page-row--email {
+        .contacts-page-icon {
+            height: 23px;
+        }
+    }
+
+    .contacts-page-value--phones {
+        a {
+            color: #134a9b;
+            text-decoration: none;
+
+            &:hover {
+                color: #134a9b;
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .contacts-page-icon {
+        display: inline-flex;
+        flex: 0 0 auto;
+        align-items: center;
+        justify-content: center;
+        width: 24px;
+        height: 24px;
+    }
+
+    .contacts-page-phones {
+        display: flex;
+        flex-direction: column;
+        font-family: var(--font-family-primary);
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 27px;
+        color: #134a9b;
+
+        @include bp.mq(laptop) {
+            font-size: 16px;
+        }
+
+        @include bp.mq(tablet-l) {
+            font-size: 15px;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        a,
+        .contacts-page-phone-comma {
+            font-family: inherit;
+            font-size: inherit;
+            font-style: inherit;
+            font-weight: inherit;
+            line-height: inherit;
+            color: #134a9b;
+        }
+    }
+
+    .contacts-page-message {
+        width: 339px;
+
+        @include bp.mq(tablet-l) {
+            width: 100%;
+            max-width: 339px;
+        }
+    }
+
+    .contacts-page-map {
+        min-width: 0;
+        height: 460px;
+        overflow: hidden;
+        background: #eceef2;
+
+        iframe {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        @include bp.mq(tablet-l) {
+            height: 298px;
+        }
+
+        @include bp.mq(tablet) {
+            height: 260px;
+        }
+
+        @include bp.mq(mobile-l) {
+            height: 220px;
+        }
+    }
+
+    .contacts-page-requisites-title {
+        margin: 0 0 31px;
+        font-size: 38px;
+        font-weight: 500;
+        line-height: normal;
+        color: #37383a;
+
+        @include bp.mq(tablet-l) {
+            margin-bottom: 16px;
+            font-size: 24px;
+        }
+
+        @include bp.mq(tablet) {
+            font-size: 22px;
+        }
+    }
+
+    .contacts-page-requisites-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 58px;
+        align-items: start;
+
+        @include bp.mq(laptop-l) {
+            gap: 40px;
+        }
+
+        @include bp.mq(tablet-l) {
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+    }
+
+    .contacts-page-requisites-col {
+        min-width: 0;
+    }
+
+    .contacts-page-requisites-block {
+        margin-bottom: 16px;
+
+        h3,
+        p {
+            margin: 0;
+            color: #37383a;
+        }
+
+        h3 {
+            margin-bottom: 8px;
+            font-size: 24px;
+            font-weight: 500;
+            line-height: 34px;
+
+            @include bp.mq(tablet-l) {
+                font-size: 18px;
+            }
+        }
+
+        p {
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 26px;
+
+            @include bp.mq(tablet-l) {
+                font-size: 16px;
+            }
+
+            @include bp.mq(tablet) {
+                font-size: 15px;
+            }
+        }
+    }
+
+    .contacts-page-requisites-list,
+    .contacts-page-bank {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        p {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 500;
+            line-height: 34px;
+            color: #37383a;
+
+            @include bp.mq(tablet-l) {
+                font-size: 18px;
+            }
+        }
+    }
+
+    .contacts-page-bank {
+        margin-bottom: 14px;
+
+        @include bp.mq(tablet-l) {
+            margin-bottom: 8px;
+        }
+    }
+
+    .contacts-page-management {
+        margin-bottom: 34px;
+
+        @include bp.mq(tablet-l) {
+            margin-bottom: 0;
+        }
+
+        p {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 26px;
+            color: #37383a;
+
+            @include bp.mq(tablet-l) {
+                font-size: 16px;
+            }
+
+            @include bp.mq(tablet) {
+                font-size: 15px;
+            }
+        }
+
+        strong {
+            font-weight: 700;
+        }
+    }
+
+    .contacts-page-download {
+        width: 339px;
+        margin-top: 18px;
+
+        @include bp.mq(tablet-l) {
+            width: auto;
+            min-width: 232px;
+            margin-top: 16px;
+        }
+    }
+}

@@ -1,0 +1,175 @@
+@use "core/breakpoints" as bp;
+
+.promotions-page {
+    --promotions-page-border: #808080;
+
+    padding-bottom: 0;
+
+    .title {
+        margin: 0 0 42px;
+        font-size: var(--font-size-h2);
+        font-weight: 500;
+        line-height: normal;
+        color: #37383a;
+
+        @include bp.mq(laptop) {
+            margin-bottom: 24px;
+        }
+
+        @include bp.mq(tablet) {
+            margin-bottom: 24px;
+        }
+
+        @include bp.mq(mobile-l) {
+            margin-bottom: 20px;
+        }
+    }
+
+    .promotions-page-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 0;
+        width: 100%;
+
+        @include bp.mq(tablet-xl) {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        @include bp.mq(tablet) {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+
+    .promo-card {
+        height: 484px;
+        border: 0;
+        border-right: 1px solid var(--promotions-page-border);
+        border-bottom: 1px solid var(--promotions-page-border);
+
+        &:nth-child(-n + 4) {
+            border-top: 1px solid var(--promotions-page-border);
+        }
+
+        &:nth-child(4n + 1) {
+            border-left: 1px solid var(--promotions-page-border);
+        }
+
+        @include bp.mq(laptop) {
+            height: 430px;
+        }
+
+        @include bp.mq(tablet-xl) {
+            height: 400px;
+
+            &:nth-child(-n + 4) {
+                border-top: 0;
+            }
+
+            &:nth-child(4n + 1) {
+                border-left: 0;
+            }
+
+            &:nth-child(-n + 3) {
+                border-top: 1px solid var(--promotions-page-border);
+            }
+
+            &:nth-child(3n + 1) {
+                border-left: 1px solid var(--promotions-page-border);
+            }
+        }
+
+        @include bp.mq(tablet-l) {
+            height: 340px;
+        }
+
+        @include bp.mq(tablet) {
+            height: 320px;
+
+            &:nth-child(-n + 3) {
+                border-top: 0;
+            }
+
+            &:nth-child(3n + 1) {
+                border-left: 0;
+            }
+
+            &:nth-child(-n + 2) {
+                border-top: 1px solid var(--promotions-page-border);
+            }
+
+            &:nth-child(odd) {
+                border-left: 1px solid var(--promotions-page-border);
+            }
+        }
+
+        @include bp.mq(mobile-l) {
+            height: auto;
+        }
+    }
+
+    .picture {
+        display: block;
+        flex: 0 0 303px;
+        height: 303px;
+        min-height: 303px;
+        padding: 0;
+        overflow: hidden;
+
+        @include bp.mq(laptop) {
+            flex-basis: 250px;
+            height: 250px;
+            min-height: 250px;
+        }
+
+        @include bp.mq(tablet-xl) {
+            flex-basis: 220px;
+            height: 220px;
+            min-height: 220px;
+        }
+
+        @include bp.mq(tablet-l) {
+            flex-basis: 180px;
+            height: 180px;
+            min-height: 180px;
+        }
+
+        @include bp.mq(tablet) {
+            flex-basis: 160px;
+            height: 160px;
+            min-height: 160px;
+        }
+
+        @include bp.mq(mobile-l) {
+            flex-basis: 180px;
+            height: 180px;
+            min-height: 180px;
+        }
+
+        > img {
+            display: block;
+            width: 100%;
+            max-width: none;
+            height: 100%;
+            max-height: none;
+            margin: 0;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+
+    .body {
+        padding-top: 22px;
+    }
+
+    .promo-card a:not(.button) {
+        font-weight: 500;
+    }
+
+    .promotions-page-pagination {
+        margin: 32px 0 0;
+
+        @include bp.mq(tablet) {
+            margin-top: 24px;
+        }
+    }
+}

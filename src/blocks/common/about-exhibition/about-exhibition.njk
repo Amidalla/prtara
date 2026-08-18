@@ -1,50 +1,47 @@
 {% set lazyPlaceholder = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" %}
-
-{% set aboutExhibitionItems = [
-    "упаковку из полиэтилена;",
-    "упаковку из многослойных пленок, рулонную;",
-    "картонную упаковку;",
-    "БОПП пленки;",
-    "паллетную упаковку, другие виды упаковки."
-] %}
+{% set aboutExhibitionTitle = aboutExhibitionTitle | default("Будем рады встрече на выставке RosUpack 2026!") %}
+{% set aboutExhibitionLead = aboutExhibitionLead | default('С&nbsp;16 по 19 июня 2026&nbsp;наша компания примет участие в 30-й Международной выставке упаковочной индустрии <a href="https://rosupack.com/ru/" target="_blank" rel="noopener noreferrer">RosUpack</a>!') %}
+{% set aboutExhibitionPromoCode = aboutExhibitionPromoCode | default("PROMREGIONTARA") %}
+{% set aboutExhibitionClosing = aboutExhibitionClosing | default("Ждем Вас на нашем стенде&nbsp;№&nbsp;F6121&nbsp;с 16 по 19 июня 2026 года в МВЦ «Крокус Экспо»!") %}
+{% set aboutExhibitionImage = aboutExhibitionImage | default("./assets/images/content/about/booth.jpg") %}
+{% if not aboutExhibitionBodyHtml %}
+    {% set aboutExhibitionBodyHtml %}
+        <p>
+            Приглашаем вас посетить наш&nbsp;стенд №&nbsp;F6121 в зале №&nbsp;15, павильон 3, МВЦ «Крокус Экспо»!
+        </p>
+        <div class="about-exhibition-list-block">
+            <p>На выставке наша компания представит:</p>
+            <ul>
+                <li>упаковку из полиэтилена;</li>
+                <li>упаковку из многослойных пленок, рулонную;</li>
+                <li>картонную упаковку;</li>
+                <li>БОПП пленки;</li>
+                <li>паллетную упаковку, другие виды упаковки.</li>
+            </ul>
+        </div>
+        <p>Наши специалисты с удовольствием проконсультируют вас и ответят на любые вопросы.</p>
+    {% endset %}
+{% endif %}
 
 <section class="about-exhibition section">
     <div class="container">
         <div class="about-exhibition-inner">
             <div class="about-exhibition-content">
-                <h2 class="title">Будем рады встрече на выставке RosUpack 2026!</h2>
+                <h2 class="title">{{ aboutExhibitionTitle }}</h2>
 
                 <div class="about-exhibition-text">
-                    <p class="lead">
-                        С&nbsp;16 по 19 июня 2026&nbsp;наша компания примет участие в 30-й Международной выставке
-                        упаковочной индустрии
-                        <a href="https://rosupack.com/ru/" target="_blank" rel="noopener noreferrer">RosUpack</a>!
-                    </p>
-                    <p>
-                        Приглашаем вас посетить наш&nbsp;стенд №&nbsp;F6121 в зале №&nbsp;15, павильон 3, МВЦ «Крокус
-                        Экспо»!
-                    </p>
-
-                    <div class="about-exhibition-list-block">
-                        <p class="list-title">На выставке наша компания представит:</p>
-                        <ul class="about-exhibition-list">
-                            {% for item in aboutExhibitionItems %}
-                                <li>{{ item }}</li>
-                            {% endfor %}
-                        </ul>
+                    <p class="about-exhibition-lead">{{ aboutExhibitionLead | safe }}</p>
+                    <div class="about-exhibition-body">
+                        {{ aboutExhibitionBodyHtml | safe }}
                     </div>
-
-                    <p>Наши специалисты с удовольствием проконсультируют вас и ответят на любые вопросы.</p>
 
                     <p class="promo">
                         Используя наш <strong>промокод</strong>
-                        <span class="promo-code">PROMREGIONTARA</span>
+                        <span class="promo-code">{{ aboutExhibitionPromoCode }}</span>
                         вы сможете бесплатно получить электронный билет
                     </p>
 
-                    <p class="closing">
-                        Ждем Вас на нашем стенде&nbsp;№&nbsp;F6121&nbsp;с 16 по 19 июня 2026 года в МВЦ «Крокус Экспо»!
-                    </p>
+                    <p>{{ aboutExhibitionClosing | safe }}</p>
                 </div>
             </div>
 
@@ -52,7 +49,7 @@
                 <img
                     class="lazy"
                     src="{{ lazyPlaceholder }}"
-                    data-src="./assets/images/content/about/booth.jpg"
+                    data-src="{{ aboutExhibitionImage }}"
                     alt="Стенд ООО Промрегионтара на выставке"
                     width="585"
                     height="454"

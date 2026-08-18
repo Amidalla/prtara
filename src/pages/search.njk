@@ -1,0 +1,12 @@
+{% set meta = { title: "Поиск" } %}
+{% set page = { breadcrumbs: true, heading: false } %}
+{% set breadcrumbs = {
+    items: [
+        { title: "Главная", url: "./home.html" },
+        { title: "Поиск" }
+    ]
+} %}
+{% extends "layouts/default.njk" %}
+{% block content %}
+    {% include "blocks/common/search-page/search-page.njk" %}
+{% endblock %}

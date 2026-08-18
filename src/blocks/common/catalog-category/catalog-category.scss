@@ -4,18 +4,18 @@
 .catalog-category {
     --catalog-category-border: #808080;
 
-    padding: 32px 0 30px;
+    padding-bottom: 30px;
 
     @include bp.mq(laptop-m) {
-        padding: 28px 0 50px;
+        padding-bottom: 50px;
     }
 
     @include bp.mq(tablet-l) {
-        padding: 24px 0 27px;
+        padding-bottom: 27px;
     }
 
     @include bp.mq(tablet) {
-        padding: 20px 0 21.5px;
+        padding-bottom: 21.5px;
     }
 
     .title {
@@ -278,7 +278,8 @@
             padding-top: 24px;
         }
 
-        .text-title {
+        h2,
+        h3 {
             margin: 0 0 16px;
             font-family: var(--font-family-primary);
             font-size: 24px;
@@ -296,7 +297,28 @@
             }
         }
 
-        .text-list {
+        p {
+            margin: 0;
+            font-family: var(--font-family-primary);
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 150%;
+            color: #37383a;
+
+            @include bp.mq(laptop-m) {
+                font-size: 16px;
+            }
+
+            @include bp.mq(tablet) {
+                font-size: 15px;
+            }
+
+            & + p {
+                margin-top: 0;
+            }
+        }
+
+        ul {
             display: flex;
             flex-direction: column;
             gap: 10px;
@@ -305,47 +327,8 @@
             list-style: none;
 
             li {
-                display: flex;
-                gap: 8px;
-                align-items: flex-start;
-                padding-left: 10px;
-
-                .bullet {
-                    display: block;
-                    flex: 0 0 auto;
-                    width: 12px;
-                    height: 16px;
-                    margin-top: 5px;
-                }
-
-                p {
-                    flex: 1 1 auto;
-                    min-width: 0;
-                    margin: 0;
-                    font-family: var(--font-family-primary);
-                    font-size: 18px;
-                    font-weight: 400;
-                    line-height: 150%;
-                    color: #37383a;
-
-                    strong {
-                        font-weight: 600;
-                    }
-
-                    @include bp.mq(laptop-m) {
-                        font-size: 16px;
-                    }
-
-                    @include bp.mq(tablet) {
-                        font-size: 15px;
-                    }
-                }
-            }
-        }
-
-        .text-body {
-            p {
-                margin: 0;
+                position: relative;
+                padding-left: 30px;
                 font-family: var(--font-family-primary);
                 font-size: 18px;
                 font-weight: 400;
@@ -360,10 +343,30 @@
                     font-size: 15px;
                 }
 
-                & + p {
-                    margin-top: 0;
+                &::before {
+                    position: absolute;
+                    top: 5px;
+                    left: 10px;
+                    width: 12px;
+                    height: 16px;
+                    content: "";
+                    background: url("../../../assets/images/content/catalog-category/list-bullet.svg") center / contain
+                        no-repeat;
+                }
+
+                p {
+                    margin: 0;
                 }
             }
+        }
+
+        strong {
+            font-weight: 600;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: underline;
         }
     }
 }

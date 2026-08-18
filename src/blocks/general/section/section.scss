@@ -1,4 +1,5 @@
 @use "core/breakpoints" as bp;
+@use "core/mixins" as mixins;
 
 .section {
     padding: 60px 0;
@@ -9,5 +10,9 @@
 
     @include bp.mq(tablet-l) {
         padding: 42px 0;
+    }
+
+    &.is-page-head {
+        @include mixins.section-page-head-padding;
     }
 }

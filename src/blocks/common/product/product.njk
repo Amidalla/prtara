@@ -37,7 +37,7 @@
     }
 ]) %}
 
-<section class="product section" data-product>
+<section class="product section is-page-head" data-product>
     <div class="container">
         <div class="product-hero">
             <h1 class="title">{{ productTitle }}</h1>
@@ -123,7 +123,7 @@
         <div class="product-specs" id="product-specs">
             <h2 class="section-title">Характеристики</h2>
             <div class="product-specs-scroll">
-                <table class="product-specs-table">
+                <table>
                     <thead>
                         <tr>
                             {% for header in productSpecsHeaders %}
@@ -150,13 +150,13 @@
 
         <div class="product-description" id="product-description">
             <h2 class="section-title">Описание</h2>
-            <p class="lead">
+            <p>
                 Термоусадочная плёнка — это полимерный материал, который при нагревании сокращается и плотно
                 облегает упакованный предмет.
             </p>
 
-            <h3 class="subtitle">Универсальные свойства термоусадочных плёнок</h3>
-            <ul class="desc-list">
+            <h3>Универсальные свойства термоусадочных плёнок</h3>
+            <ul>
                 {% set productProps = [
                     "способность к усадке;",
                     "плотное прилегание и фиксация;",
@@ -167,22 +167,12 @@
                     "безопасность для контакта с пищевыми продуктами."
                 ] %}
                 {% for item in productProps %}
-                    <li>
-                        <img
-                            class="bullet"
-                            src="./assets/images/content/product/list-bullet.svg"
-                            width="12"
-                            height="16"
-                            alt=""
-                            aria-hidden="true"
-                        />
-                        <span>{{ item }}</span>
-                    </li>
+                    <li>{{ item }}</li>
                 {% endfor %}
             </ul>
 
-            <h3 class="subtitle">Применение</h3>
-            <ul class="desc-list">
+            <h3>Применение</h3>
+            <ul>
                 {% set productApps = [
                     "пищевая промышленность;",
                     "групповая упаковка;",
@@ -194,17 +184,7 @@
                     "розничная торговля и подарки."
                 ] %}
                 {% for item in productApps %}
-                    <li>
-                        <img
-                            class="bullet"
-                            src="./assets/images/content/product/list-bullet.svg"
-                            width="12"
-                            height="16"
-                            alt=""
-                            aria-hidden="true"
-                        />
-                        <span>{{ item }}</span>
-                    </li>
+                    <li>{{ item }}</li>
                 {% endfor %}
             </ul>
         </div>

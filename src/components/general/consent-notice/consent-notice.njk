@@ -1,6 +1,6 @@
 {% macro render(
         content="",
-        buttonText="Принимаю",
+        buttonText="Хорошо",
         id="",
         class="",
         data={},
@@ -30,18 +30,16 @@
             {% endfor %}
         {% endif %}
     >
-        <div class="container">
-            <div class="block">
-                <div class="box">
-                    <div class="text" id="consent-notice-title">{{ content | safe }}</div>
-                </div>
-                {{ button(
-                    type="button",
-                    text=buttonText,
-                    data={ consent: "accept" },
-                    aria={ label: "Принять условия" }
-                ) }}
-            </div>
+        <div class="inner">
+            <div class="text" id="consent-notice-title">{{ content | safe }}</div>
+            {{ button(
+                type="button",
+                text=buttonText,
+                variant="red",
+                class="action",
+                data={ consent: "accept" },
+                aria={ label: "Принять условия использования cookie" }
+            ) }}
         </div>
     </div>
 {% endmacro %}

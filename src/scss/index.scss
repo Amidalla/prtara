@@ -66,6 +66,7 @@
 @use "../blocks/common/about/about";
 @use "../blocks/common/about-exhibition/about-exhibition";
 @use "../blocks/common/promotions-short/promotions-short";
+@use "../blocks/common/promotions-page/promotions-page";
 @use "../blocks/common/faq-short/faq-short";
 @use "../blocks/common/help-short/help-short";
 @use "../blocks/common/geography-short/geography-short";
@@ -87,3 +88,6 @@
 @use "../blocks/common/policy-content/policy-content";
 @use "../blocks/common/error-404/error-404";
 @use "../blocks/common/contacts-short/contacts-short";
+@use "../blocks/common/contacts-page/contacts-page";
+@use "../blocks/common/delivery-page/delivery-page";
+@use "../blocks/common/search-page/search-page";

@@ -1,0 +1,189 @@
+{% from "components/general/button/button.njk" import render as button %}
+{% set contactsPageTitle = contactsPageTitle | default("Контакты") %}
+{% set contactsPagePhoneLabel = contactsPagePhoneLabel | default("Телефон") %}
+{% set contactsPagePhones = contactsPagePhones | default([
+    [
+        { href: "tel:+74965413663", text: "8 (496)541-36-63" },
+        { href: "tel:+74965492041", text: "8 (496)549-20-41" }
+    ],
+    [
+        { href: "tel:+79852599289", text: "8(985)259-92-89" }
+    ]
+]) %}
+{% set contactsPageAddressLabel = contactsPageAddressLabel | default("Адрес") %}
+{% set contactsPageAddress = contactsPageAddress | default("г. Сергиев Посад, Московская обл., Ярославское ш., 4Б") %}
+{% set contactsPageEmailLabel = contactsPageEmailLabel | default("Почта") %}
+{% set contactsPageEmail = contactsPageEmail | default("info@prtara.ru") %}
+{% set contactsPageEmailHref = contactsPageEmailHref | default("mailto:info@prtara.ru") %}
+{% set contactsPageScheduleLabel = contactsPageScheduleLabel | default("Пн-пт") %}
+{% set contactsPageSchedule = contactsPageSchedule | default("с 9:00 до 17:00") %}
+{% set contactsPageMapEmbed = contactsPageMapEmbed | default("https://yandex.ru/map-widget/v1/?ll=38.161062%2C56.338260&z=16&ol=biz&oid=1117510855") %}
+{% set contactsPageRequisitesTitle = contactsPageRequisitesTitle | default("Реквизиты") %}
+{% set contactsPageLegalAddressTitle = contactsPageLegalAddressTitle | default("Юридический адрес:") %}
+{% set contactsPageLegalAddress = contactsPageLegalAddress | default("141313, Московская область, город Сергиев Посад, ул. 1-Я Рыбная, д. 84, кв. 41") %}
+{% set contactsPageActualAddressTitle = contactsPageActualAddressTitle | default("Фактический адрес:") %}
+{% set contactsPageActualAddress = contactsPageActualAddress | default("141313, Московская область, город Сергиев Посад, Ярославское ш., 4-Б, офис № 7, 8, 9, 10") %}
+{% set contactsPageLeftDetails = contactsPageLeftDetails | default([
+    "ИНН/КПП 5042076360/504201001",
+    "ОГРН 1045008353444",
+    "ОКВЭД 51.70",
+    "ОКПО 70475408"
+]) %}
+{% set contactsPageBankTitle = contactsPageBankTitle | default("ООО “Промрегионтара” Сергиево-Посадское отделение №2578") %}
+{% set contactsPageBankName = contactsPageBankName | default("ПАО “СБЕРБАНК РОССИИ” Г. МОСКВА") %}
+{% set contactsPageBankDetails = contactsPageBankDetails | default([
+    "БИК 044525225",
+    "К/с № 30101810400000000225",
+    "К/с № 40702810540020000796",
+    "Банк: ПАО “СБЕРБАНК РОССИИ” Г. МОСКВА"
+]) %}
+{% set contactsPageManagementHtml = contactsPageManagementHtml | default('
+    <p>Генеральный директор: <strong>Майков Валентин Вадимович (на основании устава)</strong></p>
+    <p>Главный бухгалтер: <strong>Омельянчук Елена Викторовна</strong></p>
+') %}
+{% set contactsPageRequisitesHref = contactsPageRequisitesHref | default("#") %}
+
+<section class="contacts-page section is-page-head">
+    <div class="container">
+        <h1 class="title">{{ contactsPageTitle }}</h1>
+
+        <div class="contacts-page-main">
+            <div class="contacts-page-info">
+                <div class="contacts-page-meta">
+                    <div class="contacts-page-row contacts-page-row--phones">
+                        <div class="contacts-page-label">{{ contactsPagePhoneLabel }}</div>
+                        <div class="contacts-page-value contacts-page-value--phones">
+                            <span class="contacts-page-icon" aria-hidden="true">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <g clip-path="url(#contacts-page-icon-phone)">
+                                        <path d="M6.625 10.795C8.065 13.625 10.38 15.94 13.215 17.38L15.415 15.175C15.69 14.9 16.085 14.82 16.43 14.93C17.55 15.3 18.755 15.5 20 15.5C20.555 15.5 21 15.945 21 16.5V20C21 20.555 20.555 21 20 21C10.61 21 3 13.39 3 4C3 3.445 3.45 3 4 3H7.5C8.055 3 8.5 3.445 8.5 4C8.5 5.245 8.7 6.45 9.07 7.57C9.18 7.915 9.1 8.31 8.825 8.585L6.625 10.795Z" fill="#134A9B" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="contacts-page-icon-phone">
+                                            <rect width="24" height="24" fill="white" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                            </span>
+                            <div class="contacts-page-phones">
+                                {% for line in contactsPagePhones %}
+                                    <p>
+                                        {% for item in line %}
+                                            <a href="{{ item.href }}">{{ item.text }}</a>{% if not loop.last %}<span class="contacts-page-phone-comma">,</span>{% endif %}
+                                        {% endfor %}
+                                    </p>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contacts-page-row contacts-page-row--address">
+                        <div class="contacts-page-label">{{ contactsPageAddressLabel }}</div>
+                        <div class="contacts-page-value">
+                            <span class="contacts-page-icon" aria-hidden="true">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <g clip-path="url(#contacts-page-icon-location)">
+                                        <path d="M12 2C8.135 2 5 5.135 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.135 15.865 2 12 2ZM12 11.5C10.62 11.5 9.5 10.38 9.5 9C9.5 7.62 10.62 6.5 12 6.5C13.38 6.5 14.5 7.62 14.5 9C14.5 10.38 13.38 11.5 12 11.5Z" fill="#134A9B" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="contacts-page-icon-location">
+                                            <rect width="24" height="24" fill="white" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                            </span>
+                            <p>{{ contactsPageAddress }}</p>
+                        </div>
+                    </div>
+
+                    <div class="contacts-page-row contacts-page-row--email">
+                        <div class="contacts-page-label">{{ contactsPageEmailLabel }}</div>
+                        <div class="contacts-page-value">
+                            <span class="contacts-page-icon" aria-hidden="true">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="23" viewBox="0 0 24 23" fill="none">
+                                    <path d="M20 3.83301H4C2.9 3.83301 2.01 4.69551 2.01 5.74967L2 17.2497C2 18.3038 2.9 19.1663 4 19.1663H20C21.1 19.1663 22 18.3038 22 17.2497V5.74967C22 4.69551 21.1 3.83301 20 3.83301ZM20 7.66634L12 12.458L4 7.66634V5.74967L12 10.5413L20 5.74967V7.66634Z" fill="#134A9B" />
+                                </svg>
+                            </span>
+                            <a href="{{ contactsPageEmailHref }}">{{ contactsPageEmail }}</a>
+                        </div>
+                    </div>
+
+                    <div class="contacts-page-row contacts-page-row--schedule">
+                        <div class="contacts-page-label">{{ contactsPageScheduleLabel }}</div>
+                        <div class="contacts-page-value">
+                            <span class="contacts-page-icon" aria-hidden="true">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2ZM16.2 16.2L11 13V7H12.5V12.2L17 14.9L16.2 16.2Z" fill="#134A9B" />
+                                </svg>
+                            </span>
+                            <p>{{ contactsPageSchedule }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                {{ button(
+                    text="Написать сообщение",
+                    type="button",
+                    class="contacts-page-message",
+                    variant="red",
+                    data={ src: "popup-callback", popup_title: "Написать сообщение" }
+                ) }}
+            </div>
+
+            <div class="contacts-page-map">
+                <iframe
+                    src="{{ contactsPageMapEmbed }}"
+                    title="{{ contactsPageAddress }}"
+                    loading="lazy"
+                    allowfullscreen
+                    referrerpolicy="no-referrer-when-downgrade"
+                ></iframe>
+            </div>
+        </div>
+
+        <div class="contacts-page-requisites">
+            <h2 class="contacts-page-requisites-title">{{ contactsPageRequisitesTitle }}</h2>
+
+            <div class="contacts-page-requisites-grid">
+                <div class="contacts-page-requisites-col">
+                    <div class="contacts-page-requisites-block">
+                        <h3>{{ contactsPageLegalAddressTitle }}</h3>
+                        <p>{{ contactsPageLegalAddress }}</p>
+                    </div>
+
+                    <div class="contacts-page-requisites-block">
+                        <h3>{{ contactsPageActualAddressTitle }}</h3>
+                        <p>{{ contactsPageActualAddress }}</p>
+                    </div>
+
+                    <div class="contacts-page-requisites-list">
+                        {% for item in contactsPageLeftDetails %}
+                            <p>{{ item }}</p>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="contacts-page-requisites-col">
+                    <div class="contacts-page-bank">
+                        <p>{{ contactsPageBankTitle }}</p>
+                        <p>{{ contactsPageBankName }}</p>
+                        {% for item in contactsPageBankDetails %}
+                            <p>{{ item }}</p>
+                        {% endfor %}
+                    </div>
+
+                    <div class="contacts-page-management">
+                        {{ contactsPageManagementHtml | safe }}
+                    </div>
+                </div>
+            </div>
+
+            {{ button(
+                text="Скачать реквизиты",
+                type="link",
+                href=contactsPageRequisitesHref,
+                class="contacts-page-download"
+            ) }}
+        </div>
+    </div>
+</section>

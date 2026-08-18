@@ -2,105 +2,80 @@
 
 .consent-notice {
     position: fixed;
-    bottom: 0;
-    left: 0;
+    bottom: 324px;
+    left: 50%;
     z-index: 100;
     display: none;
-    width: 100%;
-    padding: 30px 0;
-    overflow: hidden;
+    width: min(718px, calc(100% - 60px));
+    padding: 14px 22px;
     background: var(--color-white);
-    border-radius: 10px 10px 0 0;
-    box-shadow: 0 -14px 47px 0 rgb(0 0 0 / 10%);
-
-    @include bp.mq(laptop) {
-        padding: 20px 0;
-    }
-
-    // --------------------------------------
-    // Состояния
-    // --------------------------------------
+    border-radius: 2px;
+    box-shadow: 0 4px 33.1px -7px rgb(0 0 0 / 25%);
+    backdrop-filter: blur(8.55px);
+    transform: translateX(-50%);
 
     &.is-visible {
         display: flex;
     }
 
-    // --------------------------------------
-    // Элементы
-    // --------------------------------------
-
-    .block {
+    .inner {
         display: flex;
-        align-items: center;
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+        width: 100%;
+    }
 
-        @include bp.mq(tablet) {
-            flex-wrap: wrap;
-        }
+    .text {
+        font-family: var(--font-family-primary);
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        color: var(--color-black);
 
-        .box {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            padding-right: 20px;
-            margin-right: auto;
+        a:not(.button) {
+            font-size: inherit;
+            font-weight: inherit;
+            line-height: inherit;
+            color: var(--color-red);
+            text-decoration: none;
 
-            @include bp.mq(tablet) {
-                margin-bottom: 20px;
-            }
-
-            .image {
-                display: flex;
-                flex: 0 0 auto;
-                max-width: 106px;
-
-                @include bp.mq(laptop) {
-                    max-width: 66px;
-                }
-
-                @include bp.mq(tablet) {
-                    max-width: 56px;
-                }
-            }
-
-            .text {
-                max-width: 778px;
-                font-size: 16px;
-                font-weight: 400;
-                line-height: 130%;
-                color: var(--color-3);
-
-                @include bp.mq(laptop) {
-                    max-width: 678px;
-                    font-size: 16px;
-                }
-
-                @include bp.mq(tablet) {
-                    max-width: unset;
-                    font-size: 15px;
-                }
-
-                a {
-                    color: var(--color-primary);
-                    text-decoration: none;
-
-                    &:hover {
-                        text-decoration: underline;
-                    }
-                }
+            &:hover {
+                color: var(--color-red-hover);
             }
         }
+    }
 
-        .button {
-            width: 100%;
-            max-width: 344px;
+    .action.button {
+        flex: 0 0 auto;
+        width: 218px;
+        height: 48px;
+        padding: 18px 20px;
+        font-size: 18px;
+    }
 
-            @include bp.mq(laptop) {
-                max-width: 264px;
-            }
+    @include bp.mq(tablet) {
+        top: 50%;
+        bottom: auto;
+        width: min(344px, calc(100% - 30px));
+        padding: 15px;
+        transform: translate(-50%, -50%);
 
-            @include bp.mq(tablet) {
-                max-width: unset;
-            }
+        .inner {
+            gap: 15px;
+        }
+
+        .text {
+            font-size: 15px;
+            color: #2f3645;
+        }
+
+        .action.button {
+            width: 110px;
+            height: auto;
+            padding: 8px 10px;
+            font-size: 15px;
         }
     }
 }
