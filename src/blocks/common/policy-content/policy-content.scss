@@ -1,91 +1,161 @@
 @use "core/breakpoints" as bp;
 
 .policy-content {
-    padding-top: 48px;
-    padding-bottom: 64px;
-    color: var(--color-3);
-    background: var(--color-2);
+    padding-bottom: 60px;
+    color: var(--color-black);
+    background: var(--color-white);
 
-    @include bp.mq(mobile-l) {
-        padding-top: 33px;
+    @include bp.mq(laptop) {
+        padding-bottom: 40px;
     }
 
-    h1 {
-        margin: 0 0 40px;
-        font-family: var(--font-family-primary);
-        font-size: 48px;
-        font-weight: 500;
-        line-height: 120%;
-        color: var(--color-3);
-        text-transform: uppercase;
+    @include bp.mq(tablet-l) {
+        padding-bottom: 32px;
+    }
 
-        &::after {
-            display: block;
-            width: 53px;
-            height: 3px;
-            margin-top: 10px;
-            content: "";
-            background: var(--color-blue);
+    .title {
+        margin: 0 0 26px;
+        font-size: var(--font-size-h1);
+        font-weight: 500;
+        line-height: normal;
+        color: #37383a;
+
+        @include bp.mq(laptop) {
+            margin-bottom: 20px;
         }
 
-        @include bp.mq(tablet-xl) {
-            font-size: 40px;
+        @include bp.mq(tablet-l) {
+            font-size: 38px;
+        }
+
+        @include bp.mq(tablet) {
+            margin-bottom: 24px;
         }
 
         @include bp.mq(mobile-l) {
-            margin-bottom: 25px;
-            font-size: 28px;
-
-            &::after {
-                width: 50px;
-            }
+            margin-bottom: 20px;
         }
     }
 
     h2 {
-        margin: 30px 0 10px;
-        font-family: var(--font-family-primary);
+        margin: 32px 0 16px;
         font-size: 38px;
-        font-style: normal;
         font-weight: 500;
-        line-height: 120%;
-        color: #2c2a68;
-        text-transform: uppercase;
+        line-height: normal;
+        color: #37383a;
 
-        &::after {
-            display: block;
-            width: 50px;
-            height: 3px;
-            margin-top: 10px;
-            content: "";
-            background: #055faa;
-            border-radius: 2px;
+        @include bp.mq(laptop) {
+            margin: 24px 0 16px;
+            font-size: 28px;
         }
 
-        @include bp.mq(tablet-xl) {
-            font-size: 32px;
-        }
-
-        @include bp.mq(mobile-l) {
+        @include bp.mq(tablet-l) {
             font-size: 24px;
         }
     }
 
-    h1 + h2 {
+    .title + h2 {
         margin-top: 0;
     }
 
     p {
         margin: 0;
-        font-family: var(--font-family-primary);
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: 150%;
-        color: var(--color-3);
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 140%;
+        color: #37383a;
+
+        @include bp.mq(laptop) {
+            font-size: 16px;
+        }
+
+        @include bp.mq(tablet-l) {
+            font-size: 15px;
+        }
     }
 
     p + p {
         margin-top: 16px;
+    }
+
+    a {
+        color: var(--color-blue);
+        text-decoration: none;
+        transition: color 0.25s ease;
+
+        &:hover {
+            color: var(--color-red);
+        }
+    }
+
+    ul,
+    ol {
+        padding-left: 24px;
+        margin: 16px 0 0;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 140%;
+        color: #37383a;
+
+        @include bp.mq(laptop) {
+            font-size: 16px;
+        }
+
+        @include bp.mq(tablet-l) {
+            font-size: 15px;
+        }
+
+        ul,
+        ol {
+            margin-top: 8px;
+        }
+    }
+
+    ul {
+        list-style: disc outside;
+    }
+
+    ol {
+        padding-left: 26px;
+        list-style: decimal outside;
+    }
+
+    ul ul {
+        list-style: circle;
+    }
+
+    ul ul ul {
+        list-style: square;
+    }
+
+    ol ol {
+        list-style: lower-alpha;
+    }
+
+    ol ol ol {
+        list-style: lower-roman;
+    }
+
+    li {
+        padding-left: 4px;
+    }
+
+    li + li {
+        margin-top: 8px;
+    }
+
+    li > p {
+        margin: 0;
+    }
+
+    ul + p,
+    ol + p,
+    p + ul,
+    p + ol {
+        margin-top: 16px;
+    }
+
+    strong {
+        font-weight: 600;
     }
 }

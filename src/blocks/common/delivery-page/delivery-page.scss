@@ -31,7 +31,7 @@
         gap: 32px;
         align-items: start;
 
-        @media (max-width: 1366px) {
+        @media (width <= 1366px) {
             grid-template-columns: 1fr;
         }
     }
@@ -449,7 +449,7 @@
         position: sticky;
         top: calc(var(--header-height) + 16px);
 
-        @media (max-width: 1366px) {
+        @media (width <= 1366px) {
             display: none;
         }
     }

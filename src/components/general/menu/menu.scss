@@ -2,7 +2,7 @@
 
 .menu {
     position: fixed;
-    top: var(--header-height, 0px);
+    top: var(--header-height, 0);
     right: 0;
     z-index: 120;
     display: flex;
@@ -176,8 +176,8 @@
         align-items: center;
         justify-content: center;
         width: 204px;
-        height: auto;
         min-width: 0;
+        height: auto;
         padding: 6px 15px 8px;
         font-family: "Golos Text", sans-serif;
         font-size: 15px;
@@ -208,19 +208,19 @@
     }
 
     @include bp.mq(tablet-l) {
+        gap: 22.5px;
         align-items: flex-start;
         width: 419px;
         padding: 18px 43px 160.5px 20px;
-        gap: 22.5px;
         background: #fff;
-        backdrop-filter: blur(3.9000000953674316px);
+        backdrop-filter: blur(3.9px);
     }
 
     @include bp.mq(tablet) {
         flex-shrink: 0;
+        gap: 20.5px;
         width: 312px;
         padding: 18px 22px 154.5px 20px;
-        gap: 20.5px;
     }
 
     @include bp.mq(mobile-l) {

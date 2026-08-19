@@ -38,8 +38,3 @@ export const PopupSuccess = {
 
 /** @deprecated Используйте PopupSuccess */
 export const PopupFeedbackSuccess = PopupSuccess;
-
-export function popupSuccess() {
-    // API: window.PopupSuccess.open() / .close()
-    // open({ title: "Заказать звонок" }) — опциональный заголовок
-}

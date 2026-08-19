@@ -85,8 +85,8 @@
     }
 
     .pag-arrow {
-        color: #37383a;
         overflow: hidden;
+        color: #37383a;
         transition:
             color 0.25s ease,
             border-color 0.25s ease;
@@ -111,8 +111,8 @@
         }
 
         &.is-disabled {
-            pointer-events: none;
             color: #c8c8c8;
+            pointer-events: none;
             background: #fff;
             border-color: #c8c8c8;
         }

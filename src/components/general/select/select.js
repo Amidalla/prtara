@@ -8,27 +8,21 @@ export function select(context = document) {
         if (root.dataset.init === "true") return;
         root.dataset.init = "true";
 
-        const controller = new AbortController();
-        // const { signal } = controller;
-
-        // Initialize NiceSelect on all selects
-        const selects = root.querySelectorAll(".select select");
+        const selects = root.querySelectorAll("select");
         const niceSelectInstances = [];
 
-        selects.forEach((select) => {
+        selects.forEach((selectEl) => {
             const placeholder = root.dataset.placeholder || "";
-            const instance = niceSelectBind(select, {
+            const instance = niceSelectBind(selectEl, {
                 searchable: false,
-                placeholder: placeholder
+                placeholder
             });
             niceSelectInstances.push(instance);
         });
 
-        // Cleanup
         root.addEventListener(
             "destroy",
             () => {
-                controller.abort();
                 niceSelectInstances.forEach((instance) => instance.destroy());
             },
             { once: true }

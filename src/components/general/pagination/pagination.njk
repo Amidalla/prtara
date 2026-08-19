@@ -33,22 +33,24 @@
 
             {% if item.type == "prev" %}
                 {% if item.disabled %}
-                    <span class="pag-arrow prev is-disabled{{ desktopOnlyClass }}" aria-disabled="true" aria-label="Назад">
-                        <span class="pag-arrow-icon">{{ pagArrowIcon | safe }}</span>
+                    <span class="pag-arrow prev is-disabled{{ desktopOnlyClass }}" aria-disabled="true">
+                        <span class="visually-hidden">Назад</span>
+                        <span class="pag-arrow-icon" aria-hidden="true">{{ pagArrowIcon | safe }}</span>
                     </span>
                 {% else %}
                     <a class="pag-arrow prev{{ desktopOnlyClass }}" href="{{ item.url }}" aria-label="Назад">
-                        <span class="pag-arrow-icon">{{ pagArrowIcon | safe }}</span>
+                        <span class="pag-arrow-icon" aria-hidden="true">{{ pagArrowIcon | safe }}</span>
                     </a>
                 {% endif %}
             {% elif item.type == "next" %}
                 {% if item.disabled %}
-                    <span class="pag-arrow next is-disabled{{ desktopOnlyClass }}" aria-disabled="true" aria-label="Вперёд">
-                        <span class="pag-arrow-icon">{{ pagArrowIcon | safe }}</span>
+                    <span class="pag-arrow next is-disabled{{ desktopOnlyClass }}" aria-disabled="true">
+                        <span class="visually-hidden">Вперёд</span>
+                        <span class="pag-arrow-icon" aria-hidden="true">{{ pagArrowIcon | safe }}</span>
                     </span>
                 {% else %}
                     <a class="pag-arrow next{{ desktopOnlyClass }}" href="{{ item.url }}" aria-label="Вперёд">
-                        <span class="pag-arrow-icon">{{ pagArrowIcon | safe }}</span>
+                        <span class="pag-arrow-icon" aria-hidden="true">{{ pagArrowIcon | safe }}</span>
                     </a>
                 {% endif %}
             {% elif item.type == "ellipsis" %}

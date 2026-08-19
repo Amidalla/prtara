@@ -11,7 +11,6 @@ import { popupCallback } from "../components/common/popup-callback/popup-callbac
 import { popupOrder } from "../components/common/popup-order/popup-order.js";
 import { popupFeedback } from "../components/common/popup-feedback/popup-feedback.js";
 import {
-    popupSuccess,
     PopupSuccess,
     PopupFeedbackSuccess
 } from "../components/common/popup-success/popup-success.js";
@@ -25,9 +24,6 @@ import { promotionsShort } from "../blocks/common/promotions-short/promotions-sh
 import { faqShort } from "../blocks/common/faq-short/faq-short.js";
 import { product } from "../blocks/common/product/product.js";
 import { certificates } from "../blocks/common/certificates/certificates.js";
-import { partnersShort } from "../blocks/common/partners-short/partners-short.js";
-import { worksShort } from "../blocks/common/works-short/works-short.js";
-import { newsShort } from "../blocks/common/news-short/news-short.js";
 import { catalogShort } from "../blocks/common/catalog-short/catalog-short.js";
 import { showPopup } from "./utils/popup.js";
 import { lazyLoad } from "./utils/lazy-load.js";
@@ -43,7 +39,6 @@ const components = [
     popupCallback,
     popupOrder,
     popupFeedback,
-    popupSuccess,
     langSwitcher,
     header,
     footer,
@@ -54,9 +49,6 @@ const components = [
     faqShort,
     product,
     certificates,
-    partnersShort,
-    worksShort,
-    newsShort,
     catalogShort
 ];
 

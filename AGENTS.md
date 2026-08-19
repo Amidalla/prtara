@@ -57,8 +57,7 @@ export function componentName(context = document) {
 
 ### Иконки
 
-- Кнопка со стрелкой: `components/general/icons/button-icon.njk` → `buttonIcon()`
-- Уголок: `components/general/icons/corner-icon.njk` → `cornerIcon()`
+Иконки кнопок и уголков встроены в разметку блоков. Отдельных макросов `buttonIcon` / `cornerIcon` в проекте нет.
 
 ### Качество кода
 
@@ -84,9 +83,9 @@ export function componentName(context = document) {
 4. JS → импорт и массив `components` в `src/js/index.js`
 5. `npm run lint`
 
-## Страницы (заглушки под вёрстку)
+## Страницы
 
-Основные страницы сейчас — заглушки с классом `.page-stub`. Не удалять страницы из карты сайта и меню без явной задачи.
+Не удалять страницы из карты сайта и меню без явной задачи.
 
 | Файл | Назначение |
 |------|------------|
@@ -99,6 +98,7 @@ export function componentName(context = document) {
 | `contacts.html` | Контакты |
 | `delivery.html` | Доставка и оплата |
 | `promotions.html` | Акции |
+| `search.html` | Поиск |
 | `error-404.html` | 404 |
 | `policy.html` | Политика ПДн |
 | `index.html` | Карта страниц (dev) |
@@ -107,4 +107,4 @@ export function componentName(context = document) {
 
 - Не коммитить без запроса пользователя
 - Не менять визуал при рефакторинге без явной задачи
-- Favicons: ссылки в meta есть, файлы положить в `src/assets/favicons/`
+- Favicons: файлы в `src/assets/favicons/`, ссылки в `src/blocks/general/meta/meta.njk`

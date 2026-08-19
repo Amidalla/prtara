@@ -27,9 +27,7 @@ const paths = {
     html: "src/pages/**/*.njk",
     templates: "src",
     styles: "src/scss/index.scss",
-    componentStyles: ["src/blocks/**/*.scss", "src/components/**/*.scss", "src/scss/core/*.scss"],
     js: "src/js/index.js",
-    componentJS: ["src/blocks/**/*.js", "src/components/**/*.js", "src/js/core/*.js"],
     assets: "src/assets/**/*",
     devDist: "temp",
     prodDist: "build"

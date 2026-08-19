@@ -1,25 +1,28 @@
 # Prtara
 
-Вёрстка сайта **Prtara**. Статический генератор на Gulp + Nunjucks + SCSS + esbuild.
+Вёрстка сайта **Пром Регион Тара** (упаковка и упаковочные материалы). Статический генератор: Gulp + Nunjucks + SCSS + esbuild.
 
 Репозиторий: [github.com/Amidalla/prtara](https://github.com/Amidalla/prtara)
 
 ## Страницы
 
-| Страница | Файл | Статус |
-|----------|------|--------|
-| Главная | `home.html` | заглушка под вёрстку |
-| Каталог | `catalog.html` | заглушка под вёрстку |
-| Каталог (2 уровень) | `catalog-category.html` | заглушка под вёрстку |
-| Карточка товара | `product.html` | заглушка под вёрстку |
-| Сертификаты | `certificates.html` | заглушка под вёрстку |
-| О компании | `about.html` | заглушка под вёрстку |
-| Контакты | `contacts.html` | заглушка под вёрстку |
-| Доставка и оплата | `delivery.html` | заглушка под вёрстку |
-| Акции | `promotions.html` | заглушка под вёрстку |
-| Политика ПДн | `policy.html` | служебная |
-| 404 | `error-404.html` | готово |
-| Карта страниц (dev) | `index.html` | служебная |
+| Страница | Файл |
+|----------|------|
+| Главная | `home.html` |
+| Каталог | `catalog.html` |
+| Каталог, 2 уровень | `catalog-category.html` |
+| Карточка товара | `product.html` |
+| О компании | `about.html` |
+| Сертификаты | `certificates.html` |
+| Контакты | `contacts.html` |
+| Доставка и оплата | `delivery.html` |
+| Акции | `promotions.html` |
+| Поиск | `search.html` |
+| Политика ПДн | `policy.html` |
+| 404 | `error-404.html` |
+| Карта страниц | `index.html` |
+
+`index.html` — служебная карта макетов для разработки и натяжки. На продакшене её можно не публиковать.
 
 ## Установка
 
@@ -41,12 +44,15 @@ BrowserSync: `http://localhost:3000`, сборка в `temp/`.
 npm run build
 ```
 
-Вывод в `build/` (минификация CSS/JS, оптимизация изображений).
+Вывод в `build/`: минификация CSS/JS, оптимизация изображений. В HTML подключаются `bundle.min.css` и `bundle.min.js`.
 
-## Полезные команды
+## Команды
 
 | Команда | Описание |
 |---------|----------|
+| `npm start` | dev-сервер → `temp/` |
+| `npm run build` | прод-сборка → `build/` |
+| `gulp clean` | удалить `temp/` и `build/` |
 | `npm run lint` | ESLint + Stylelint |
 | `npm run fix` | автоисправление lint + Prettier |
 | `npm run validate` | W3C-проверка HTML из `build/` |
@@ -58,25 +64,27 @@ npm run build
 ```
 src/
   pages/          # страницы (.njk → .html)
-  layouts/        # макеты
-  blocks/         # крупные секции страниц
+  layouts/        # макет default.njk, пункты меню
+  blocks/         # секции страниц
   components/     # переиспользуемые UI
-  layouts/        # макеты + пункты меню (mainNavItems)
   assets/         # изображения, шрифты, favicons
   scss/           # точка входа index.scss + core
   js/             # точка входа index.js + utils
 ```
 
+- Dev: `html`, `styles`, `scripts`, `assets`, `serve` → `temp/`
+- Prod: `htmlProd`, `stylesProd`, `scriptsProd`, `assetsProd` → `build/`
+- Nunjucks `path`: `src`
+- Sass `includePaths`: blocks, components, scss/core
+
 ## Навигация
 
-Пункты меню шапки, футера и мобильного меню задаются в `src/layouts/default.njk` (`mainNavItems`, `mainNavItemsMobile`).
+Пункты меню шапки, футера и мобильного меню задаются в `src/layouts/default.njk`:
 
-## Иконки кнопок
-
-Общие SVG для кнопок и уголков:
-
-- `src/components/general/icons/button-icon.njk`
-- `src/components/general/icons/corner-icon.njk`
+- `mainNavItems` — основное меню
+- `headerNavItems` — верхняя навигация шапки
+- `catalogMenuItems` — каталог в шапке и футере
+- `mainNavItemsMobile` — мобильное меню
 
 ## Попапы и API для натяжки
 
@@ -84,6 +92,7 @@ src/
 
 - `#popup-callback` — заказ звонка
 - `#popup-callback-success` — успех callback
+- `#popup-order` — заказ товара
 - `#popup-feedback` — обратная связь
 - `#popup-success` — успех отправки любой формы
 
@@ -104,4 +113,22 @@ window.reinit(document); // после AJAX-подстановки размет�
 
 ## Favicons
 
-Ссылки прописаны в `src/blocks/general/meta/meta.njk`. Файлы нужно положить в `src/assets/favicons/` перед продакшном.
+Файлы лежат в `src/assets/favicons/`, ссылки — в `src/blocks/general/meta/meta.njk`.
+
+## Библиотеки
+
+| Пакет | Назначение |
+|-------|------------|
+| lozad | lazy-load `.lazy` + `data-src` |
+| swiper | слайдеры |
+| @fancyapps/ui | попапы |
+| imask | маски телефона |
+| nice-select2 | кастомный select (форма feedback) |
+
+## Добавление блока или компонента
+
+1. Папка в `src/blocks/...` или `src/components/...`
+2. `.njk` (макрос или include), `.scss`, при необходимости `.js`
+3. `@use` в `src/scss/index.scss`
+4. JS — импорт и массив `components` в `src/js/index.js`
+5. `npm run lint`

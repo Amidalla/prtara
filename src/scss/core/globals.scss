@@ -151,15 +151,6 @@ p {
     clip-path: inset(0);
 }
 
-.page-stub {
-    margin: 0;
-    font-family: var(--font-family-primary);
-    font-size: 20px;
-    font-weight: 600;
-    line-height: 140%;
-    color: var(--color-blue);
-}
-
 .site {
     display: flex;
     flex-direction: column;
@@ -395,8 +386,8 @@ p {
     height: 100%;
     pointer-events: none;
     background: rgb(19 74 155 / 80%);
-    backdrop-filter: blur(3.9px);
     opacity: 0;
+    backdrop-filter: blur(3.9px);
     transition:
         opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1),
         visibility 0.35s cubic-bezier(0.4, 0, 0.2, 1);

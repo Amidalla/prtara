@@ -29,7 +29,7 @@
 {% set aboutShortPromoDate = aboutShortPromoDate | default("С&nbsp;16 по 19 июня") %}
 {% set aboutShortPromoTitle = aboutShortPromoTitle | default("Выставка RosUpack 2026!") %}
 {% set aboutShortPromoTitleAside = aboutShortPromoTitleAside | default("Выставка RosUpack<br>2026!") %}
-{% set aboutShortPromoHref = aboutShortPromoHref | default("./promotions.html") %}
+{% set aboutShortPromoHref = aboutShortPromoHref | default("https://rosupack.com/ru/") %}
 {% set aboutShortCertsTitle = aboutShortCertsTitle | default("Сертификаты и патенты") %}
 {% set aboutShortDeliveryIcon = aboutShortDeliveryIcon | default("./assets/images/content/about-short/delivery-icon.svg") %}
 {% set aboutShortDeliveryTextHtml = aboutShortDeliveryTextHtml | default("Доставка в любой регион России!") %}
@@ -114,6 +114,8 @@
                             text="Подробнее",
                             type="link",
                             href=aboutShortPromoHref,
+                            target="_blank",
+                            rel="noopener noreferrer",
                             variant="red"
                         ) }}
                     </div>
@@ -170,6 +172,8 @@
                         text="Подробнее",
                         type="link",
                         href=aboutShortPromoHref,
+                        target="_blank",
+                        rel="noopener noreferrer",
                         variant="red"
                     ) }}
                 </div>

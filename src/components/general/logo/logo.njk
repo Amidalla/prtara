@@ -1,4 +1,4 @@
-{% macro render(href="./home.html", class="") %}
+{% macro render(href="./home.html", class="", clipId="logo-clip") %}
     {% set logoClasses = "logo" %}
     {% if class %}
         {% set logoClasses = logoClasses + " " + class %}
@@ -6,7 +6,7 @@
 
     <a class="{{ logoClasses }}" href="{{ href }}" aria-label="Пром Регион Тара — на главную">
         <svg xmlns="http://www.w3.org/2000/svg" width="159" height="66" viewBox="0 0 159 66" fill="none" aria-hidden="true">
-            <g clip-path="url(#logo_clip)">
+            <g clip-path="url(#{{ clipId }})">
                 <path
                     fill-rule="evenodd"
                     clip-rule="evenodd"
@@ -107,7 +107,7 @@
                 />
             </g>
             <defs>
-                <clipPath id="logo_clip">
+                <clipPath id="{{ clipId }}">
                     <rect width="158.967" height="66" fill="white" />
                 </clipPath>
             </defs>

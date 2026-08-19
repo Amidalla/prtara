@@ -13,7 +13,6 @@
 // --------------------------------------
 @use "./core/variables";
 @use "./core/fonts";
-@use "./core/mixins";
 @use "./core/globals";
 
 // --------------------------------------
@@ -29,7 +28,6 @@
 @use "../components/general/menu/menu";
 @use "../components/general/navigation-top/navigation-top";
 @use "../components/general/navigation-mobile/navigation-mobile";
-@use "../components/general/navigation-bottom/navigation-bottom";
 @use "../components/general/breadcrumbs/breadcrumbs";
 @use "../components/general/pagination/pagination";
 @use "../components/general/consent-notice/consent-notice";
@@ -37,8 +35,6 @@
 @use "../components/general/logo/logo";
 @use "../components/general/input-file/input-file";
 
-@use "../components/common/contacts-footer/contacts-footer";
-@use "../components/common/copyright/copyright";
 @use "../components/common/lang-switcher/lang-switcher";
 @use "../components/common/catalog-menu/catalog-menu";
 @use "../components/common/popup-callback/popup-callback";
@@ -46,10 +42,6 @@
 @use "../components/common/popup-order/popup-order";
 @use "../components/common/popup-feedback/popup-feedback";
 @use "../components/common/popup-success/popup-success";
-@use "../components/common/contacts-mobile/contacts-mobile";
-@use "../components/common/work-card/work-card";
-@use "../components/common/news-card/news-card";
-@use "../components/common/service-card/service-card";
 
 // --------------------------------------
 // -- Blocks
@@ -70,24 +62,8 @@
 @use "../blocks/common/faq-short/faq-short";
 @use "../blocks/common/help-short/help-short";
 @use "../blocks/common/geography-short/geography-short";
-@use "../blocks/common/about-description/about-description";
-@use "../blocks/common/about-text/about-text";
-@use "../blocks/common/services-short/services-short";
-@use "../blocks/common/services-description/services-description";
-@use "../blocks/common/service-subsection/service-subsection";
-@use "../blocks/common/service-description/service-description";
-@use "../blocks/common/benefits/benefits";
-@use "../blocks/common/advantages/advantages";
-@use "../blocks/common/partners-short/partners-short";
-@use "../blocks/common/works-short/works-short";
-@use "../blocks/common/works-content/works-content";
-@use "../blocks/common/we-are-working/we-are-working";
-@use "../blocks/common/news-short/news-short";
-@use "../blocks/common/news-content/news-content";
-@use "../blocks/common/news-detail/news-detail";
 @use "../blocks/common/policy-content/policy-content";
 @use "../blocks/common/error-404/error-404";
-@use "../blocks/common/contacts-short/contacts-short";
 @use "../blocks/common/contacts-page/contacts-page";
 @use "../blocks/common/delivery-page/delivery-page";
 @use "../blocks/common/search-page/search-page";

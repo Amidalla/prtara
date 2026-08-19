@@ -8,14 +8,12 @@ export function input(context = document) {
         if (root.dataset.init === "true") return;
         root.dataset.init = "true";
 
-        const controller = new AbortController();
-
-        IMask(root, {
+        const mask = IMask(root, {
             mask: "+{7} (000) 000-00-00",
             lazy: true,
             placeholderChar: "_"
         });
 
-        root.addEventListener("destroy", () => controller.abort(), { once: true });
+        root.addEventListener("destroy", () => mask.destroy(), { once: true });
     });
 }

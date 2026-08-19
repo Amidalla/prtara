@@ -683,12 +683,12 @@
 
             p {
                 margin: 0;
-                color: #fff;
                 font-family: var(--font-family-primary);
                 font-size: 29.333px;
                 font-style: normal;
                 font-weight: 400;
                 line-height: 34.667px;
+                color: #fff;
 
                 @include bp.mq(laptop-l) {
                     font-size: 18px;
