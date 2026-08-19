@@ -26,6 +26,26 @@
     { title: "Пленки защитные", href: "./catalog-category.html" },
     { title: "Другие виды упаковки", href: "./catalog-category.html" }
 ] %}
+{% set socialItems = socialItems | default([
+    {
+        href: "https://max.ru/",
+        label: "Max",
+        icon: "./assets/images/content/socials/max.svg",
+        iconLight: "./assets/images/content/socials/max-light.svg"
+    },
+    {
+        href: "https://vk.com/",
+        label: "VK",
+        icon: "./assets/images/content/socials/vk.svg",
+        iconLight: "./assets/images/content/socials/vk-light.svg"
+    },
+    {
+        href: "https://t.me/",
+        label: "Telegram",
+        icon: "./assets/images/content/socials/telegram.svg",
+        iconLight: "./assets/images/content/socials/telegram-light.svg"
+    }
+]) %}
 {% set mainNavItemsMobile = [
     {
         title: "Продукция",
